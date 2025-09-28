@@ -1,9 +1,11 @@
-type Filtro = {
+type Props = {
     surname: boolean;
+    page_back: string;
 }
 
-const NameForm = (filtro: Filtro) => {
-    const apellido = filtro.surname;
+const NameForm = (props: Props) => {
+    const apellido: boolean = props.surname;
+    const page_back: string = props.page_back;
 
     return(
         <div>
@@ -33,7 +35,26 @@ const NameForm = (filtro: Filtro) => {
                 </div>
                 <div class="column_data">
                     <div class="row_buttons">
-                        <button type="button" disabled>Volver</button>
+                        {
+                            page_back === "Events" &&
+                            <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
+                        }
+                        {
+                            page_back === "People" &&
+                            <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
+                        }
+                        {
+                            page_back === "Organizations" &&
+                            <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
+                        }
+                        {
+                            page_back === "Literature" &&
+                            <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
+                        }
+                        {
+                            page_back === "Heraldries" &&
+                            <button type="button" onClick={() => location.href="/heraldry/heraldries"}>Volver</button>
+                        }
                         <button type="submit">Enviar</button>
                     </div>
                 </div>

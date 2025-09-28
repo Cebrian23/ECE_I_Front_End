@@ -1,13 +1,15 @@
-type Filtro = {
+type Props = {
     doubleFilter: boolean;
     type: string;
     start?: boolean;
+    page_back: string;
 }
 
-const DateForm = (filtro: Filtro) => {
-    const doubleFilter: boolean = filtro.doubleFilter;
-    const type: string = filtro.type;
-    const start: boolean | undefined = filtro.start;
+const DateForm = (props: Props) => {
+    const doubleFilter: boolean = props.doubleFilter;
+    const type: string = props.type;
+    const start: boolean | undefined = props.start;
+    const page_back: string = props.page_back;
 
     return (
         <div>
@@ -91,7 +93,7 @@ const DateForm = (filtro: Filtro) => {
                                 }
                                 {
                                     type === "Literature" &&
-                                    <label for="year_a">Mes de publicación</label>
+                                    <label for="month_a">Mes de publicación</label>
                                 }
                                 <br/>
                                 {
@@ -133,10 +135,17 @@ const DateForm = (filtro: Filtro) => {
                                 }
                             </div>
                             <div class="column_data">
-                                <input name="year_a" type="number" min="1700" max="2025"/>
+                                {
+                                    start === true &&
+                                    <input name="year_a" type="number" min="1700" max="2025" defaultValue="1700" required/>
+                                }
+                                {
+                                    start === false &&
+                                    <input name="year_a" type="number" min="1700" max="2025" defaultValue="2025" required/>
+                                }
                                 <br/>
                                 <select name="month_a">
-                                    <option value="unkown" selected></option>
+                                    <option value="unkown" selected>...Seleccione un mes...</option>
                                     <option value="Enero">Enero</option>
                                     <option value="Febrero">Febrero</option>
                                     <option value="Marzo">Marzo</option>
@@ -151,7 +160,14 @@ const DateForm = (filtro: Filtro) => {
                                     <option value="Diciembre">Diciembre</option>
                                 </select>
                                 <br/>
-                                <input name="day_a" type="number" min="1" max="31"/>
+                                {
+                                    start === true &&
+                                    <input name="day_a" type="number" min="1" max="31" defaultValue="1"/>
+                                }
+                                {
+                                    start === false &&
+                                    <input name="day_a" type="number" min="1" max="31" defaultValue="31"/>
+                                }
                             </div>
                         </div>
                     }
@@ -215,10 +231,10 @@ const DateForm = (filtro: Filtro) => {
                                     }
                                 </div>
                                 <div class="column_data">
-                                    <input name="year_a" type="number" min="1700" max="2025"/>
+                                    <input name="year_a" type="number" min="1700" max="2025" defaultValue="1700" required/>
                                     <br/>
                                     <select name="month_a">
-                                        <option value="unkown" selected></option>
+                                        <option value="unkown" selected>...Seleccione un mes...</option>
                                         <option value="Enero">Enero</option>
                                         <option value="Febrero">Febrero</option>
                                         <option value="Marzo">Marzo</option>
@@ -233,7 +249,7 @@ const DateForm = (filtro: Filtro) => {
                                         <option value="Diciembre">Diciembre</option>
                                     </select>
                                     <br/>
-                                    <input name="day_a" type="number" min="1" max="31"/>
+                                    <input name="day_a" type="number" min="1" max="31" defaultValue="1"/>
                                 </div>
                             </div>
                             <div class="row_data">
@@ -293,10 +309,10 @@ const DateForm = (filtro: Filtro) => {
                                     }
                                 </div>
                                 <div class="column_data">
-                                    <input name="year_b" type="number" min="1700" max="2025"/>
+                                    <input name="year_b" type="number" min="1700" max="2025" defaultValue="2025" required/>
                                     <br/>
                                     <select name="month_b">
-                                        <option value="unkown" selected></option>
+                                        <option value="unkown" selected>...Seleccione un mes...</option>
                                         <option value="Enero">Enero</option>
                                         <option value="Febrero">Febrero</option>
                                         <option value="Marzo">Marzo</option>
@@ -311,7 +327,7 @@ const DateForm = (filtro: Filtro) => {
                                         <option value="Diciembre">Diciembre</option>
                                     </select>
                                     <br/>
-                                    <input name="day_b" type="number" min="1" max="31"/>
+                                    <input name="day_b" type="number" min="1" max="31" defaultValue="31"/>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +335,26 @@ const DateForm = (filtro: Filtro) => {
                 </div>
                 <div class="column_data">
                     <div class="row_buttons">
-                        <button type="button" disabled>Volver</button>
+                        {
+                            page_back === "Events" &&
+                            <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
+                        }
+                        {
+                            page_back === "People" &&
+                            <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
+                        }
+                        {
+                            page_back === "Organizations" &&
+                            <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
+                        }
+                        {
+                            page_back === "Literature" &&
+                            <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
+                        }
+                        {
+                            page_back === "Heraldries" &&
+                            <button type="button" onClick={() => location.href="/heraldry/heraldries"}>Volver</button>
+                        }
                         <button type="submit">Enviar</button>
                     </div>
                     
