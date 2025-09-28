@@ -1,11 +1,11 @@
-type DobleFiltro = {
-    filter: boolean;
+type Filtro = {
+    doubleFilter: boolean;
     type: string;
     start?: boolean;
 }
 
-const FormDate = (filtro: DobleFiltro) => {
-    const filter: boolean = filtro.filter;
+const FormDate = (filtro: Filtro) => {
+    const doubleFilter: boolean = filtro.doubleFilter;
     const type: string = filtro.type;
     const start: boolean | undefined = filtro.start;
 
@@ -15,7 +15,7 @@ const FormDate = (filtro: DobleFiltro) => {
                 <h1>Filtro por fecha</h1>
                 <div class="row_data">
                     {
-                        filter === false && 
+                        doubleFilter === false && 
                         <div class="row_data">
                             <div class="column_data">
                                 {
@@ -51,6 +51,10 @@ const FormDate = (filtro: DobleFiltro) => {
                                         }
                                     </label>
                                 }
+                                {
+                                    type === "Literature" &&
+                                    <label for="year_a">Año de publicación</label>
+                                }
                                 <br/>
                                 {
                                     type === "Event" &&
@@ -84,6 +88,10 @@ const FormDate = (filtro: DobleFiltro) => {
                                             start === false && "Mes de disolución:"
                                         }
                                     </label>
+                                }
+                                {
+                                    type === "Literature" &&
+                                    <label for="year_a">Mes de publicación</label>
                                 }
                                 <br/>
                                 {
@@ -119,6 +127,10 @@ const FormDate = (filtro: DobleFiltro) => {
                                         }
                                     </label>
                                 }
+                                {
+                                    type === "Literature" &&
+                                    <label for="year_a">Día de publicación</label>
+                                }
                             </div>
                             <div class="column_data">
                                 <input name="year_a" type="number" min="1700" max="2025"/>
@@ -144,50 +156,62 @@ const FormDate = (filtro: DobleFiltro) => {
                         </div>
                     }
                     {
-                        filter === true &&
+                        doubleFilter === true &&
                         <div class="row_data">
                             <div class="row_data">
                                 <div class="column_data">
                                     {
-                                        type === "Event" && <label for="year_b">Año de inicio:</label>
+                                        type === "Event" && <label for="year_a">Año de inicio:</label>
                                     }
                                     {
-                                        type === "Person" && <label for="year_b">Año de nacimiento:</label>
+                                        type === "Person" && <label for="year_a">Año de nacimiento:</label>
                                     }
                                     {
-                                        type === "Organization" && <label for="year_b">Año de creación:</label>
+                                        type === "Organization" && <label for="year_a">Año de creación:</label>
                                     }
                                     {
-                                        type !== "Event" && type !== "Person" && type !== "Organization" &&
-                                        <label for="year_b">Año:</label>
-                                    }
-                                    <br/>
-                                    {
-                                        type === "Event" && <label for="month_b">Mes de inicio:</label>
+                                        type === "Literature" &&
+                                        <label for="year_a">Año de publicación mínimo</label>
                                     }
                                     {
-                                        type === "Person" && <label for="month_b">Mes de nacimiento:</label>
-                                    }
-                                    {
-                                        type === "Organization" && <label for="month_b">Mes de creación:</label>
-                                    }
-                                    {
-                                        type !== "Event" && type !== "Person" && type !== "Organization" &&
-                                        <label for="month_b">Mes:</label>
+                                        type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
+                                        <label for="year_a">Año:</label>
                                     }
                                     <br/>
                                     {
-                                        type === "Event" && <label for="day_b">Día de inicio:</label>
+                                        type === "Event" && <label for="month_a">Mes de inicio:</label>
                                     }
                                     {
-                                        type === "Person" && <label for="day_b">Día de nacimiento:</label>
+                                        type === "Person" && <label for="month_a">Mes de nacimiento:</label>
                                     }
                                     {
-                                        type === "Organization" && <label for="day_b">Día de creación:</label>
+                                        type === "Organization" && <label for="month_a">Mes de creación:</label>
                                     }
                                     {
-                                        type !== "Event" && type !== "Person" && type !== "Organization" &&
-                                        <label for="day_b">Día:</label>
+                                        type === "Literature" &&
+                                        <label for="month_a">Mes de publicación mínimo</label>
+                                    }
+                                    {
+                                        type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
+                                        <label for="month_a">Mes:</label>
+                                    }
+                                    <br/>
+                                    {
+                                        type === "Event" && <label for="day_a">Día de inicio:</label>
+                                    }
+                                    {
+                                        type === "Person" && <label for="day_a">Día de nacimiento:</label>
+                                    }
+                                    {
+                                        type === "Organization" && <label for="day_a">Día de creación:</label>
+                                    }
+                                    {
+                                        type === "Literature" &&
+                                        <label for="day_a">Día de publicación mínimo</label>
+                                    }
+                                    {
+                                        type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
+                                        <label for="day_a">Día:</label>
                                     }
                                 </div>
                                 <div class="column_data">
@@ -224,7 +248,11 @@ const FormDate = (filtro: DobleFiltro) => {
                                         type === "Organization" && <label for="year_b">Año de disolución:</label>
                                     }
                                     {
-                                        type !== "Event" && type !== "Person" && type !== "Organization" &&
+                                        type === "Literature" &&
+                                        <label for="year_b">Año de publicación máximo</label>
+                                    }
+                                    {
+                                        type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
                                         <label for="year_b">Año:</label>
                                     }
                                     <br/>
@@ -238,7 +266,11 @@ const FormDate = (filtro: DobleFiltro) => {
                                         type === "Organization" && <label for="month_b">Mes de disolución:</label>
                                     }
                                     {
-                                        type !== "Event" && type !== "Person" && type !== "Organization" &&
+                                        type === "Literature" &&
+                                        <label for="month_b">Mes de publicación máximo</label>
+                                    }
+                                    {
+                                        type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
                                         <label for="month_b">Mes:</label>
                                     }
                                     <br/>
@@ -252,7 +284,11 @@ const FormDate = (filtro: DobleFiltro) => {
                                         type === "Organization" && <label for="day_b">Día de disolución:</label>
                                     }
                                     {
-                                        type !== "Event" && type !== "Person" && type !== "Organization" &&
+                                        type === "Literature" &&
+                                        <label for="day_b">Día de publicación máximo</label>
+                                    }
+                                    {
+                                        type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
                                         <label for="day_b">Día:</label>
                                     }
                                 </div>

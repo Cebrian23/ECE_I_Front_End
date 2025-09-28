@@ -1,4 +1,10 @@
-const FormName = () => {
+type Filtro = {
+    surname: boolean;
+}
+
+const FormName = (filtro: Filtro) => {
+    const apellido = filtro.surname;
+
     return(
         <div>
             <form>
@@ -6,13 +12,23 @@ const FormName = () => {
                 <div class="row_data">
                     <div class="column_data">
                         <label for="name">Nombre:</label>
-                        <br/>
-                        <label for="surname">Apellidos:</label>
+                        {
+                            apellido.valueOf() === true &&
+                            <>
+                                <br/>
+                                <label for="surname">Apellidos:</label>
+                            </>
+                        }
                     </div>
                     <div class="column_data">
                         <input type="text" name="name" required/>
-                        <br/>
-                        <input type="text" name="surname"/>
+                        {
+                            apellido.valueOf() === true &&
+                            <>
+                                <br/>
+                                <input type="text" name="surname"/>
+                            </>
+                        }
                     </div>
                 </div>
                 <div class="column_data">
