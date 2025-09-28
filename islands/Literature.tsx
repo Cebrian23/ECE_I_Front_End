@@ -44,19 +44,19 @@ const Literature = () => {
             }
             {
                 nameFilter.valueOf() === true &&
-                <NameForm surname={false}/>
+                <NameForm surname={false} page_back="Literature"/>
             }
             {
                 initDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start/>
+                <DateForm doubleFilter={false} type="Event" start page_back="Literature"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start={false}/>
+                <DateForm doubleFilter={false} type="Event" start={false} page_back="Literature"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&
-                <DateForm doubleFilter type="Event"/>
+                <DateForm doubleFilter type="Event" page_back="Literature"/>
             }
         </div>
     );

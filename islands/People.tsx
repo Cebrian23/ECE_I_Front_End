@@ -51,23 +51,23 @@ const People = () => {
             }
             {
                 nameFilter.valueOf() === true && surnameFilter.valueOf() === false &&
-                <NameForm surname={false}/>
+                <NameForm surname={false} page_back="People"/>
             }
             {
                 nameFilter.valueOf() === true && surnameFilter.valueOf() === true &&
-                <NameForm surname/>
+                <NameForm surname page_back="People"/>
             }
             {
                 initDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start/>
+                <DateForm doubleFilter={false} type="Event" start page_back="People"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start={false}/>
+                <DateForm doubleFilter={false} type="Event" start={false} page_back="People"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&
-                <DateForm doubleFilter type="Event"/>
+                <DateForm doubleFilter type="Event" page_back="People"/>
             }
         </div>
     );

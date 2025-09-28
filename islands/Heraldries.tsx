@@ -25,7 +25,7 @@ const Heraldries = () => {
             }
             {
                 nameFilter.valueOf() === true &&
-                <NameForm surname={false}/>
+                <NameForm surname={false} page_back="Heraldries"/>
             }
         </div>
     );
