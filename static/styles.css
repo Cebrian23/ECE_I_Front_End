@@ -45,13 +45,14 @@ form{
     align-items: center;
     align-content: center;
     border: 1px solid;
-    max-width: 600px;
+    width: 600px;
 }
 
 .row_data{
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 10px;
 }
 
 .column_data{
