@@ -76,14 +76,21 @@ form{
 }
 
 input{
-    width: 110px;
+    width: 150px;
 }
 
 select{
-    width: 117px;
+    width: 157px;
 }
 
 .data_filter{
     display: grid;
     grid-template-columns: 450px 250px 450px;
+}
+
+button{
+    a{
+        text-decoration: none;
+        color: black;
+    }
 }
