@@ -8,18 +8,25 @@ import * as $_layout from "./routes/_layout.tsx";
 import * as $album_id_ from "./routes/album/[id].tsx";
 import * as $band_id_ from "./routes/band/[id].tsx";
 import * as $book_id_ from "./routes/book/[id].tsx";
+import * as $book_literature from "./routes/book/literature.tsx";
 import * as $event_id_ from "./routes/event/[id].tsx";
+import * as $event_events from "./routes/event/events.tsx";
 import * as $heraldry_id_ from "./routes/heraldry/[id].tsx";
+import * as $heraldry_heraldries from "./routes/heraldry/heraldries.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $organization_id_ from "./routes/organization/[id].tsx";
+import * as $organization_organizations from "./routes/organization/organizations.tsx";
 import * as $person_id_ from "./routes/person/[id].tsx";
+import * as $person_people from "./routes/person/people.tsx";
 import * as $song_id_ from "./routes/song/[id].tsx";
 import * as $writer_id_ from "./routes/writer/[id].tsx";
 import * as $DateForm from "./islands/DateForm.tsx";
 import * as $Events from "./islands/Events.tsx";
 import * as $Heraldries from "./islands/Heraldries.tsx";
+import * as $Literature from "./islands/Literature.tsx";
 import * as $NameForm from "./islands/NameForm.tsx";
 import * as $Organizations from "./islands/Organizations.tsx";
+import * as $People from "./islands/People.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -30,11 +37,16 @@ const manifest = {
     "./routes/album/[id].tsx": $album_id_,
     "./routes/band/[id].tsx": $band_id_,
     "./routes/book/[id].tsx": $book_id_,
+    "./routes/book/literature.tsx": $book_literature,
     "./routes/event/[id].tsx": $event_id_,
+    "./routes/event/events.tsx": $event_events,
     "./routes/heraldry/[id].tsx": $heraldry_id_,
+    "./routes/heraldry/heraldries.tsx": $heraldry_heraldries,
     "./routes/index.tsx": $index,
     "./routes/organization/[id].tsx": $organization_id_,
+    "./routes/organization/organizations.tsx": $organization_organizations,
     "./routes/person/[id].tsx": $person_id_,
+    "./routes/person/people.tsx": $person_people,
     "./routes/song/[id].tsx": $song_id_,
     "./routes/writer/[id].tsx": $writer_id_,
   },
@@ -42,8 +54,10 @@ const manifest = {
     "./islands/DateForm.tsx": $DateForm,
     "./islands/Events.tsx": $Events,
     "./islands/Heraldries.tsx": $Heraldries,
+    "./islands/Literature.tsx": $Literature,
     "./islands/NameForm.tsx": $NameForm,
     "./islands/Organizations.tsx": $Organizations,
+    "./islands/People.tsx": $People,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
