@@ -15,25 +15,31 @@ const Organizations = () => {
                 initialForm.valueOf() === true &&
                 <form>
                     <h1>Selecciona la acción con la que desea obtener los datos:</h1>
+                    <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
+                    <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showInitDateFilter(true);
                     }}>Filtrar por fecha de creación</button>
+                    <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
                     }}>Filtrar por fecha de disolución</button>
+                    <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
                     }}>Filtrar por fecha de creación y disolución</button>
+                    <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                     }}>Mostrar todos los datos</button>
+                    <br/>
                 </form>
             }
             {

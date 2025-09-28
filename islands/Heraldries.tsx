@@ -11,13 +11,16 @@ const Heraldries = () => {
                 initialForm.valueOf() === true &&
                 <form>
                     <h1>Selecciona la acción con la que desea obtener los datos:</h1>
+                    <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
+                    <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                     }}>Mostrar todos los datos</button>
+                    <br/>
                 </form>
             }
             {
