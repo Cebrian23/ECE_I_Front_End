@@ -15,8 +15,11 @@ import * as $organization_id_ from "./routes/organization/[id].tsx";
 import * as $person_id_ from "./routes/person/[id].tsx";
 import * as $song_id_ from "./routes/song/[id].tsx";
 import * as $writer_id_ from "./routes/writer/[id].tsx";
-import * as $FormDate from "./islands/FormDate.tsx";
-import * as $FormName from "./islands/FormName.tsx";
+import * as $DateForm from "./islands/DateForm.tsx";
+import * as $Events from "./islands/Events.tsx";
+import * as $Heraldries from "./islands/Heraldries.tsx";
+import * as $NameForm from "./islands/NameForm.tsx";
+import * as $Organizations from "./islands/Organizations.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -36,8 +39,11 @@ const manifest = {
     "./routes/writer/[id].tsx": $writer_id_,
   },
   islands: {
-    "./islands/FormDate.tsx": $FormDate,
-    "./islands/FormName.tsx": $FormName,
+    "./islands/DateForm.tsx": $DateForm,
+    "./islands/Events.tsx": $Events,
+    "./islands/Heraldries.tsx": $Heraldries,
+    "./islands/NameForm.tsx": $NameForm,
+    "./islands/Organizations.tsx": $Organizations,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
