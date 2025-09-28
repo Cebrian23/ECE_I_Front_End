@@ -32,7 +32,10 @@ const NameForm = (filtro: Filtro) => {
                     </div>
                 </div>
                 <div class="column_data">
-                    <button type="submit">Enviar</button>
+                    <div class="row_buttons">
+                        <button type="button" disabled>Volver</button>
+                        <button type="submit">Enviar</button>
+                    </div>
                 </div>
             </form>
         </div>
