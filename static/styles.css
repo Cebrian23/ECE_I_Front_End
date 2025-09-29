@@ -45,8 +45,9 @@ form{
     align-items: center;
     align-content: center;
     border: 1px solid;
-    width: 600px;
+    max-width: 1000px;
     h1{
+        width: 600px;
         text-align: center;
     }
 }
