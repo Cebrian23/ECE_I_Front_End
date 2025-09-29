@@ -6,6 +6,7 @@ const Head = () =>  {
             <a href="/organization/organizations">Organizaciones Históricas</a>
             <a href="/book/literature">Literatura</a>
             <a href="/heraldry/heraldries">Heráldica</a>
+            <a href="/legend/legends">Leyendas</a>
         </div>
         
     );
