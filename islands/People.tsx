@@ -59,15 +59,15 @@ const People = () => {
             }
             {
                 initDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start page_back="People"/>
+                <DateForm doubleFilter={false} type="Person" start page_back="People"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start={false} page_back="People"/>
+                <DateForm doubleFilter={false} type="Person" start={false} page_back="People"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&
-                <DateForm doubleFilter type="Event" page_back="People"/>
+                <DateForm doubleFilter type="Person" page_back="People"/>
             }
         </div>
     );

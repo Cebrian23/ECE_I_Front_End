@@ -48,15 +48,15 @@ const Organizations = () => {
             }
             {
                 initDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start page_back="Organizations"/>
+                <DateForm doubleFilter={false} type="Organization" start page_back="Organizations"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Event" start={false} page_back="Organizations"/>
+                <DateForm doubleFilter={false} type="Organization" start={false} page_back="Organizations"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&
-                <DateForm doubleFilter type="Event" page_back="Organizations"/>
+                <DateForm doubleFilter type="Organization" page_back="Organizations"/>
             }
         </div>
     );
