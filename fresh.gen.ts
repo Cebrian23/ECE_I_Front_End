@@ -14,6 +14,8 @@ import * as $event_events from "./routes/event/events.tsx";
 import * as $heraldry_id_ from "./routes/heraldry/[id].tsx";
 import * as $heraldry_heraldries from "./routes/heraldry/heraldries.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $legend_id_ from "./routes/legend/[id].tsx";
+import * as $legend_legends from "./routes/legend/legends.tsx";
 import * as $organization_id_ from "./routes/organization/[id].tsx";
 import * as $organization_organizations from "./routes/organization/organizations.tsx";
 import * as $person_id_ from "./routes/person/[id].tsx";
@@ -23,6 +25,7 @@ import * as $writer_id_ from "./routes/writer/[id].tsx";
 import * as $DateForm from "./islands/DateForm.tsx";
 import * as $Events from "./islands/Events.tsx";
 import * as $Heraldries from "./islands/Heraldries.tsx";
+import * as $Legends from "./islands/Legends.tsx";
 import * as $Literature from "./islands/Literature.tsx";
 import * as $NameForm from "./islands/NameForm.tsx";
 import * as $Organizations from "./islands/Organizations.tsx";
@@ -43,6 +46,8 @@ const manifest = {
     "./routes/heraldry/[id].tsx": $heraldry_id_,
     "./routes/heraldry/heraldries.tsx": $heraldry_heraldries,
     "./routes/index.tsx": $index,
+    "./routes/legend/[id].tsx": $legend_id_,
+    "./routes/legend/legends.tsx": $legend_legends,
     "./routes/organization/[id].tsx": $organization_id_,
     "./routes/organization/organizations.tsx": $organization_organizations,
     "./routes/person/[id].tsx": $person_id_,
@@ -54,6 +59,7 @@ const manifest = {
     "./islands/DateForm.tsx": $DateForm,
     "./islands/Events.tsx": $Events,
     "./islands/Heraldries.tsx": $Heraldries,
+    "./islands/Legends.tsx": $Legends,
     "./islands/Literature.tsx": $Literature,
     "./islands/NameForm.tsx": $NameForm,
     "./islands/Organizations.tsx": $Organizations,
