@@ -55,7 +55,18 @@ const DateForm = (props: Props) => {
                                 }
                                 {
                                     type === "Literature" &&
-                                    <label for="year_a">Año de publicación</label>
+                                    <label for="year_a">
+                                        {
+                                            start === true && "Año de publicación mínimo:"
+                                        }
+                                        {
+                                            start === false && "Año de publicación máximo:"
+                                        }
+                                    </label>
+                                }
+                                {
+                                    type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
+                                    <label for="year_b">Año:</label>
                                 }
                                 <br/>
                                 {
@@ -92,8 +103,8 @@ const DateForm = (props: Props) => {
                                     </label>
                                 }
                                 {
-                                    type === "Literature" &&
-                                    <label for="month_a">Mes de publicación</label>
+                                    type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
+                                    <label for="month_a">Año:</label>
                                 }
                                 <br/>
                                 {
@@ -130,8 +141,8 @@ const DateForm = (props: Props) => {
                                     </label>
                                 }
                                 {
-                                    type === "Literature" &&
-                                    <label for="year_a">Día de publicación</label>
+                                    type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
+                                    <label for="day_a">día:</label>
                                 }
                             </div>
                             <div class="column_data">
@@ -162,11 +173,11 @@ const DateForm = (props: Props) => {
                                 <br/>
                                 {
                                     start === true &&
-                                    <input name="day_a" type="number" min="1" max="31" defaultValue="1"/>
+                                    <input name="day_a" type="number" min="1" max="31"/>
                                 }
                                 {
                                     start === false &&
-                                    <input name="day_a" type="number" min="1" max="31" defaultValue="31"/>
+                                    <input name="day_a" type="number" min="1" max="31"/>
                                 }
                             </div>
                         </div>
@@ -204,10 +215,6 @@ const DateForm = (props: Props) => {
                                         type === "Organization" && <label for="month_a">Mes de creación:</label>
                                     }
                                     {
-                                        type === "Literature" &&
-                                        <label for="month_a">Mes de publicación mínimo</label>
-                                    }
-                                    {
                                         type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
                                         <label for="month_a">Mes:</label>
                                     }
@@ -220,10 +227,6 @@ const DateForm = (props: Props) => {
                                     }
                                     {
                                         type === "Organization" && <label for="day_a">Día de creación:</label>
-                                    }
-                                    {
-                                        type === "Literature" &&
-                                        <label for="day_a">Día de publicación mínimo</label>
                                     }
                                     {
                                         type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
@@ -249,7 +252,7 @@ const DateForm = (props: Props) => {
                                         <option value="Diciembre">Diciembre</option>
                                     </select>
                                     <br/>
-                                    <input name="day_a" type="number" min="1" max="31" defaultValue="1"/>
+                                    <input name="day_a" type="number" min="1" max="31"/>
                                 </div>
                             </div>
                             <div class="row_data">
@@ -264,10 +267,6 @@ const DateForm = (props: Props) => {
                                         type === "Organization" && <label for="year_b">Año de disolución:</label>
                                     }
                                     {
-                                        type === "Literature" &&
-                                        <label for="year_b">Año de publicación máximo</label>
-                                    }
-                                    {
                                         type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
                                         <label for="year_b">Año:</label>
                                     }
@@ -280,10 +279,6 @@ const DateForm = (props: Props) => {
                                     }
                                     {
                                         type === "Organization" && <label for="month_b">Mes de disolución:</label>
-                                    }
-                                    {
-                                        type === "Literature" &&
-                                        <label for="month_b">Mes de publicación máximo</label>
                                     }
                                     {
                                         type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
@@ -309,7 +304,7 @@ const DateForm = (props: Props) => {
                                     }
                                 </div>
                                 <div class="column_data">
-                                    <input name="year_b" type="number" min="1700" max="2025" defaultValue="2025" required/>
+                                    <input name="year_b" type="number" min="1700" max="2025" defaultValue="2025"/>
                                     <br/>
                                     <select name="month_b">
                                         <option value="unkown" selected>...Seleccione un mes...</option>
