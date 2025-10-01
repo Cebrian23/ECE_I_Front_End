@@ -1,5 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { BookDB } from "../../types/literature/book.ts";
+import { BookDB } from "../../types/literature/Book.ts";
 
 type Data = {
     book?: BookDB,
