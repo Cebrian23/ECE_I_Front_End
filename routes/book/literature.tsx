@@ -1,6 +1,6 @@
 import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
 import Literature from "../../islands/Literature.tsx";
-import { BookDB } from "../../types/literature/book.ts";
+import { BookDB } from "../../types/literature/Book.ts";
 
 type Data = {
     literature?: BookDB[];
