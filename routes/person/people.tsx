@@ -1,9 +1,9 @@
 import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
 import People from "../../islands/People.tsx";
-import { person } from "../../types/history/person.ts";
+import { PersonDB } from "../../types/history/Person.ts";
 
 type Data = {
-    people?: person[],
+    people?: PersonDB[],
 }
 
 export const handler: Handlers<Data> = {
