@@ -17,5 +17,5 @@ export type Event = {
     start_date: Date,
     end_date?: Date,
     people_involved?: Person[],
-    organizations_involved?: Organization[]
+    organizations_involved?: Organization[],
 }
