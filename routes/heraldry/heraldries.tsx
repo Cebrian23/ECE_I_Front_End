@@ -1,8 +1,9 @@
 import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
 import Heraldries from "../../islands/Heraldries.tsx";
+import { HeraldryDB } from "../../types/history/Heraldry.ts";
 
 type Data = {
-    heraldries?: Heraldry[],
+    heraldries?: HeraldryDB[],
 }
 
 export const handler: Handlers<Data> = {

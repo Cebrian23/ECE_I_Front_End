@@ -13,8 +13,12 @@ export const handler: Handlers<Data> = {
         const name = url.searchParams.get("name");
         if(name){
             const surname = url.searchParams.get("surname");
-            if(surname){}
-            else{}
+            if(surname){
+                //
+            }
+            else{
+                //
+            }
         }
         else{
             const year_a = url.searchParams.get("year_a");
@@ -22,8 +26,12 @@ export const handler: Handlers<Data> = {
             const day_a = url.searchParams.get("day_a");
 
             const year_b = url.searchParams.get("year_b");
-            if(year_b){}
-            else{}
+            if(year_b){
+                //
+            }
+            else{
+                //
+            }
         }
 
         return ctx.render({});

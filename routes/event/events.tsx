@@ -20,8 +20,12 @@ export const handler: Handlers<Data> = {
             const day_a = url.searchParams.get("day_a");
 
             const year_b = url.searchParams.get("year_b");
-            if(year_b){}
-            else{}
+            if(year_b){
+                //
+            }
+            else{
+                //
+            }
         }
 
         return ctx.render({});
