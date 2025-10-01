@@ -7,9 +7,11 @@ export type EventDB = OptionalId<{
     name: string,
     start_date: Date,
     end_date?: Date,
-    people_involved: ObjectId[],
-    organizations_involved: ObjectId[],
+    people_involved?: ObjectId[],
+    organizations_involved?: ObjectId[],
 }>
+
+export type EventGQL = {}
 
 export type Event = {
     id: string,

@@ -6,19 +6,21 @@ import { Legend, LegendDB } from "../legend/Legend.ts";
 import { Book, BookDB } from "../literature/Book.ts";
 
 export type TopicsDB = {
-    events: EventDB[],
-    organizations: OrganizationDB[],
-    people: PersonDB[],
-    books: BookDB[],
-    heraldries: HeraldryDB[],
-    legends: LegendDB[],
+    events?: EventDB[],
+    organizations?: OrganizationDB[],
+    people?: PersonDB[],
+    books?: BookDB[],
+    heraldries?: HeraldryDB[],
+    legends?: LegendDB[],
 }
 
+export type TopicsGQL = {}
+
 export type Topics = {
-    events: Event[],
-    organizations: Organization[],
-    people: Person[],
-    books: Book[],
-    heraldries: Heraldry[],
-    legends: Legend[],
+    events?: Event[],
+    organizations?: Organization[],
+    people?: Person[],
+    books?: Book[],
+    heraldries?: Heraldry[],
+    legends?: Legend[],
 }
