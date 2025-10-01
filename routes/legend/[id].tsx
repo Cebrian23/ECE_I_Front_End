@@ -1,17 +1,24 @@
-import { FreshContext, Handlers } from "$fresh/server.ts";
+import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
+import { LegendDB } from "../../types/legend/Legend.ts";
 
-const handler: Handlers = {
-    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
+type Data = {
+    legend?: LegendDB,
+}
+
+const handler: Handlers<Data> = {
+    GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
+        const id = ctx.params.id;
+
         //
         
         return ctx.render({});
     }
 }
 
-const Page = () => {
+const Page = (props: PageProps<Data>) => {
     return (
-        <>
-        </>
+        <div>
+        </div>
     );
 }
 
