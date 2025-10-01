@@ -1,10 +1,17 @@
-import { band } from "./band.ts";
-import { song } from "./song.ts";
+import { ObjectId, OptionalId } from "mongodb";
+import { Song } from "./Song.ts";
 
-export type album = {
+export type AlbumDB = OptionalId<{
+    name: string,
+    year_publish: number,
+    cover: string,
+    songs: ObjectId[],
+}>
+
+export type Album = {
     id: string,
     name: string,
-    year_of_publish: string,
-    songs: song[],
-    creator: band,
+    year_publish: number,
+    cover: string,
+    songs: Song[],
 }
