@@ -7,7 +7,13 @@ export type BookDB = OptionalId<{
     description: string,
 }>
 
-export type BookGQL = {}
+export type BookGQL = {
+    id: string,
+    name: string,
+    cover?: string,
+    year_of_publish: number,
+    description: string,
+}
 
 export type Book = {
     id: string,

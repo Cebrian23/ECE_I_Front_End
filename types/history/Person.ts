@@ -9,7 +9,14 @@ export type PersonDB = OptionalId<{
     death_date?: Date,
 }>
 
-export type PersonGQL = {};
+export type PersonGQL = {
+    id: string,
+    name: string,
+    surname: string,
+    image?: string,
+    birth_date: Date,
+    death_date?: Date,
+};
 
 export type Person = {
     id: string,

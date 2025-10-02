@@ -14,7 +14,14 @@ export type TopicsDB = {
     legends?: LegendDB[],
 }
 
-export type TopicsGQL = {}
+export type TopicsGQL = {
+    events?: EventDB[],
+    organizations?: OrganizationDB[],
+    people?: PersonDB[],
+    books?: BookDB[],
+    heraldries?: HeraldryDB[],
+    legends?: LegendDB[],
+}
 
 export type Topics = {
     events?: Event[],

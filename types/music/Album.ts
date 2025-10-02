@@ -1,5 +1,5 @@
 import { ObjectId, OptionalId } from "mongodb";
-import { Song } from "./Song.ts";
+import { Song, SongDB } from "./Song.ts";
 
 export type AlbumDB = OptionalId<{
     name: string,
@@ -8,7 +8,12 @@ export type AlbumDB = OptionalId<{
     songs: ObjectId[],
 }>
 
-export type AlbumGQL = {}
+export type AlbumGQL = {
+    name: string,
+    year_of_publish: number,
+    cover?: string,
+    songs: SongDB[],
+}
 
 export type Album = {
     id: string,
