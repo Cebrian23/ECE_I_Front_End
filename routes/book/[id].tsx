@@ -16,8 +16,24 @@ const handler: Handlers<Data> = {
 }
 
 const Page = (props: PageProps<Data>) => {
+    const book = props.data.book;
+
     return (
         <div>
+            {
+                book !== undefined &&
+                <div>
+                    <div>
+                        <h1>Página de {book.name}</h1>
+                        <img src={book.cover}/>
+                    </div>
+                    <div>
+                        <p><b>Título: </b>{book.name}</p>
+                        <p><b>Año de publicación: </b>{book.year_of_publish}</p>
+                        <p><b>Sipnosis: </b>{book.description}</p>
+                    </div>
+                </div>
+            }
         </div>
     );
 }

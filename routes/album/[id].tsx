@@ -31,7 +31,7 @@ const Page = (props: PageProps<Data>) => {
                     <ul>
                         {
                             album.songs.map((song) => {
-                                <li><a href={`/song/${song.id}`}></a></li>
+                                <li><a href={`/song/${song.id}`}></a>{}</li>
                             })
                         }
                     </ul>

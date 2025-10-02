@@ -16,8 +16,20 @@ const handler: Handlers<Data> = {
 }
 
 const Page = (props: PageProps<Data>) => {
+    const legend = props.data.legend;
     return (
         <div>
+            {
+                legend !== undefined &&
+                <div>
+                    <div>
+                        <h1>Página de {legend.name}</h1>
+                    </div>
+                    <div>
+                        <p><b>Nombre: </b>{legend.name}</p>
+                    </div>
+                </div>
+            }
         </div>
     );
 }

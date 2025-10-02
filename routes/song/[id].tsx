@@ -16,8 +16,33 @@ const handler: Handlers<Data> = {
 }
 
 const Page = (props: PageProps<Data>) => {
+    const song = props.data.song;
+
     return (
         <div>
+            {
+                song !== undefined &&
+                <div>
+                    <div>
+                        <h1>Página de {song.name}</h1>
+                    </div>
+                    <div>
+                        <p><b>Nombre: </b>{song.name}</p>
+                        {
+                            song.official_video !== undefined &&
+                            <p><b>Vídeo oficial de la canción</b><a href={song.official_video}>Enlace</a></p>
+                        }
+                        <p>
+                            <b>Temas que aborda:</b>
+                            {
+                                song.talk_about.map((topic) => {
+                                    <div></div>
+                                })
+                            }
+                        </p>
+                    </div>
+                </div>
+            }
         </div>
     );
 }

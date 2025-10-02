@@ -16,8 +16,22 @@ const handler: Handlers<Data> = {
 }
 
 const Page = (props: PageProps<Data>) => {
+    const heraldry = props.data.heraldry;
+
     return (
         <div>
+            {
+                heraldry !== undefined &&
+                <div>
+                    <div>
+                        <h1>Página de {heraldry.name}</h1>
+                        <img src={heraldry.image}/>
+                    </div>
+                    <div>
+                        <p><b>Nombre: </b>{heraldry.name}</p>
+                    </div>
+                </div>
+            }
         </div>
     );
 }

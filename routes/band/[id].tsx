@@ -16,8 +16,30 @@ const handler: Handlers<Data> = {
 }
 
 const Page = (props: PageProps<Data>) => {
+    const band = props.data.band;
+
     return (
         <div>
+            {
+                band !== undefined &&
+                <div>
+                    <div>
+                        <h1>Página de {band.name}</h1>
+                        <img src={band.logo}/>
+                    </div>
+                    <div>
+                        <p><b>Nombre: </b>{band.name}</p>
+                        <div>
+                            <b>Albums: </b>
+                            {
+                                band.albums.map((album) => {
+                                    <div></div>
+                                })
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     );
 }
