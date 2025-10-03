@@ -11,6 +11,8 @@ import * as $book_id_ from "./routes/book/[id].tsx";
 import * as $book_literature from "./routes/book/literature.tsx";
 import * as $event_id_ from "./routes/event/[id].tsx";
 import * as $event_events from "./routes/event/events.tsx";
+import * as $festivity_id_ from "./routes/festivity/[id].tsx";
+import * as $festivity_festivities from "./routes/festivity/festivities.tsx";
 import * as $heraldry_id_ from "./routes/heraldry/[id].tsx";
 import * as $heraldry_heraldries from "./routes/heraldry/heraldries.tsx";
 import * as $index from "./routes/index.tsx";
@@ -24,6 +26,7 @@ import * as $song_id_ from "./routes/song/[id].tsx";
 import * as $writer_id_ from "./routes/writer/[id].tsx";
 import * as $DateForm from "./islands/DateForm.tsx";
 import * as $Events from "./islands/Events.tsx";
+import * as $Festivities from "./islands/Festivities.tsx";
 import * as $Heraldries from "./islands/Heraldries.tsx";
 import * as $Legends from "./islands/Legends.tsx";
 import * as $Literature from "./islands/Literature.tsx";
@@ -43,6 +46,8 @@ const manifest = {
     "./routes/book/literature.tsx": $book_literature,
     "./routes/event/[id].tsx": $event_id_,
     "./routes/event/events.tsx": $event_events,
+    "./routes/festivity/[id].tsx": $festivity_id_,
+    "./routes/festivity/festivities.tsx": $festivity_festivities,
     "./routes/heraldry/[id].tsx": $heraldry_id_,
     "./routes/heraldry/heraldries.tsx": $heraldry_heraldries,
     "./routes/index.tsx": $index,
@@ -58,6 +63,7 @@ const manifest = {
   islands: {
     "./islands/DateForm.tsx": $DateForm,
     "./islands/Events.tsx": $Events,
+    "./islands/Festivities.tsx": $Festivities,
     "./islands/Heraldries.tsx": $Heraldries,
     "./islands/Legends.tsx": $Legends,
     "./islands/Literature.tsx": $Literature,
