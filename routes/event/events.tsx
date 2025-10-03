@@ -45,6 +45,7 @@ const Page = (props: PageProps<Data>) => {
                 events !== undefined &&
                 events.map((event) => {
                     <div>
+                        <p>{event.name}</p>
                     </div>
                 })
             }

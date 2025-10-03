@@ -45,6 +45,8 @@ const Page = (props: PageProps<Data>) => {
                 organizations !== undefined &&
                 organizations.map((organization) => {
                     <div>
+                        <img src={organization.logo}/>
+                        <p>{organization.name}</p>
                     </div>
                 })
             }

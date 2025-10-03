@@ -41,6 +41,9 @@ const Page = (props: PageProps<Data>) => {
                 literature !== undefined &&
                 literature.map((book) => {
                     <div>
+                        <img src={book.cover}/>
+                        <p>{book.title}</p>
+                        <p><i>{book.year_of_publish}</i></p>
                     </div>
                 })
             }

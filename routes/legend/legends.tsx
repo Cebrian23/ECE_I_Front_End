@@ -35,6 +35,7 @@ const Page = (props: PageProps<Data>) => {
                 legends !== undefined &&
                 legends.map((legend) => {
                     <div>
+                        <p>{legend.name}</p>
                     </div>
                 })
             }

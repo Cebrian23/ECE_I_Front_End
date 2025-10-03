@@ -51,6 +51,15 @@ const Page = (props: PageProps<Data>) => {
                 people !== undefined &&
                 people.map((person) => {
                     <div>
+                        <img src={person.image}/>
+                        {
+                            person.nickname !== undefined &&
+                            <p>{person.name + ` "${person.nickname[0]}" ` + person.surname}</p>
+                        }
+                        {
+                            person.nickname === undefined &&
+                            <p>{person.name + " " + person.surname}</p>
+                        }
                     </div>
                 })
             }

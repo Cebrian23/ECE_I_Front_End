@@ -35,6 +35,8 @@ const Page = (props: PageProps<Data>) => {
                 heraldries !== undefined &&
                 heraldries.map((heraldry) => {
                     <div>
+                        <img src={heraldry.image}/>
+                        <p>{heraldry.name}</p>
                     </div>
                 })
             }
