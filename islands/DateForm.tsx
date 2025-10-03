@@ -65,7 +65,7 @@ const DateForm = (props: Props) => {
                                     </label>
                                 }
                                 {
-                                    type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
+                                    type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" && type !== "Festivity" &&
                                     <label for="year_b">Año:</label>
                                 }
                                 <br/>
@@ -104,7 +104,7 @@ const DateForm = (props: Props) => {
                                 }
                                 {
                                     type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
-                                    <label for="month_a">Año:</label>
+                                    <label for="month_a">Mes:</label>
                                 }
                                 <br/>
                                 {
@@ -142,20 +142,23 @@ const DateForm = (props: Props) => {
                                 }
                                 {
                                     type !== "Event" && type !== "Person" && type !== "Organization" && type !== "Literature" &&
-                                    <label for="day_a">día:</label>
+                                    <label for="day_a">Día:</label>
                                 }
                             </div>
                             <div class="column_data">
                                 {
-                                    start === true &&
+                                    start === true && type !== "Festivity" &&
                                     <input name="year_a" type="number" min="1700" max="2025" defaultValue="1700" required/>
                                 }
                                 {
-                                    start === false &&
+                                    start === false && type !== "Festivity" &&
                                     <input name="year_a" type="number" min="1700" max="2025" defaultValue="2025" required/>
                                 }
-                                <br/>
-                                <select name="month_a">
+                                {
+                                    type !== "Festivity" &&
+                                    <br/>
+                                }
+                                <select name="month_a" required={type==="Festivity"}>
                                     <option value="unkown" selected>...Seleccione un mes...</option>
                                     <option value="Enero">Enero</option>
                                     <option value="Febrero">Febrero</option>
@@ -171,14 +174,7 @@ const DateForm = (props: Props) => {
                                     <option value="Diciembre">Diciembre</option>
                                 </select>
                                 <br/>
-                                {
-                                    start === true &&
-                                    <input name="day_a" type="number" min="1" max="31"/>
-                                }
-                                {
-                                    start === false &&
-                                    <input name="day_a" type="number" min="1" max="31"/>
-                                }
+                                <input name="day_a" type="number" min="1" max="31" required={type==="Festivity"}/>
                             </div>
                         </div>
                     }
@@ -353,6 +349,10 @@ const DateForm = (props: Props) => {
                         {
                             page_back === "Legends" &&
                             <button type="button" onClick={() => location.href="/legend/legends"}>Volver</button>
+                        }
+                        {
+                            page_back === "Festivities" &&
+                            <button type="button" onClick={() => location.href="/festivity/festivities"}>Volver</button>
                         }
                         <button type="submit">Enviar</button>
                     </div>
