@@ -1,24 +1,24 @@
 import { OptionalId } from "mongodb";
 
 export type BookDB = OptionalId<{
-    name: string,
+    title: string,
     cover?: string,
     year_of_publish: number,
-    description: string,
+    description?: string,
 }>
 
 export type BookGQL = {
     id: string,
-    name: string,
+    title: string,
     cover?: string,
     year_of_publish: number,
-    description: string,
+    description?: string,
 }
 
 export type Book = {
     id: string,
-    name: string,
+    title: string,
     cover?: string,
     year_of_publish: number,
-    description: string,
+    description?: string,
 }
