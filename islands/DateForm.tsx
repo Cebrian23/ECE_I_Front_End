@@ -318,7 +318,7 @@ const DateForm = (props: Props) => {
                                         <option value="Diciembre">Diciembre</option>
                                     </select>
                                     <br/>
-                                    <input name="day_b" type="number" min="1" max="31" defaultValue="31"/>
+                                    <input name="day_b" type="number" min="1" max="31"/>
                                 </div>
                             </div>
                         </div>
