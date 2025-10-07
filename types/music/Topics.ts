@@ -1,26 +1,24 @@
-import { Event, EventDB } from "../history/Event.ts";
-import { Heraldry, HeraldryDB } from "../history/Heraldry.ts";
-import { Organization, OrganizationDB } from "../history/Organization.ts";
-import { Person, PersonDB } from "../history/Person.ts";
-import { Legend, LegendDB } from "../legend/Legend.ts";
-import { Book, BookDB } from "../literature/Book.ts";
+import { ObjectId } from "mongodb";
+import { Event } from "../history/Event.ts";
+import { Heraldry } from "../history/Heraldry.ts";
+import { Organization } from "../history/Organization.ts";
+import { Person } from "../history/Person.ts";
+import { Legend } from "../legend/Legend.ts";
+import { Book } from "../literature/Book.ts";
+import { Festivity } from "../festivity/Festivity.ts";
+import { Mith } from "../legend/Mith.ts";
+import { Monument } from "../history/Monument.ts";
 
 export type TopicsDB = {
-    events?: EventDB[],
-    organizations?: OrganizationDB[],
-    people?: PersonDB[],
-    books?: BookDB[],
-    heraldries?: HeraldryDB[],
-    legends?: LegendDB[],
-}
-
-export type TopicsGQL = {
-    events?: EventDB[],
-    organizations?: OrganizationDB[],
-    people?: PersonDB[],
-    books?: BookDB[],
-    heraldries?: HeraldryDB[],
-    legends?: LegendDB[],
+    events?: ObjectId[],
+    organizations?: ObjectId[],
+    people?: ObjectId[],
+    books?: ObjectId[],
+    heraldries?: ObjectId[],
+    legends?: ObjectId[],
+    miths?: ObjectId[],
+    festivities?: ObjectId[],
+    monuments?: ObjectId[],
 }
 
 export type Topics = {
@@ -30,4 +28,7 @@ export type Topics = {
     books?: Book[],
     heraldries?: Heraldry[],
     legends?: Legend[],
+    miths?: Mith[],
+    festivities?: Festivity[],
+    monuments?: Monument[],
 }
