@@ -1,5 +1,5 @@
 import { OptionalId, ObjectId } from "mongodb";
-import { Topics, TopicsGQL } from "./Topics.ts";
+import { Topics, TopicsDB } from "./Topics.ts";
 
 export type SongDB = OptionalId<{
     name: string,
@@ -10,7 +10,7 @@ export type SongDB = OptionalId<{
 export type SongGQL = {
     id: string,
     name: string,
-    talk_about: TopicsGQL[],
+    talk_about: TopicsDB[],
     official_video?: string,
 }
 
