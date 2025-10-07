@@ -3,7 +3,7 @@ import { Book } from "../literature/Book.ts";
 
 export type WriterDB = OptionalId<{
     name: string,
-    surname: string,
+    surname?: string,
     image?: string,
     books: ObjectId[],
 }>
@@ -11,7 +11,7 @@ export type WriterDB = OptionalId<{
 export type WriterGQL = {
     id: string,
     name: string,
-    surname: string,
+    surname?: string,
     image?: string,
     books: Book[],
 }
@@ -19,7 +19,7 @@ export type WriterGQL = {
 export type Writer = {
     id: string,
     name: string,
-    surname: string,
+    surname?: string,
     image?: string,
     books: Book[],
 }
