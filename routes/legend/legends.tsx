@@ -14,9 +14,6 @@ export const handler: Handlers<Data> = {
         if(name){
             //
         }
-        else{
-            return ctx.render({});
-        }
 
         return ctx.render({});
     }

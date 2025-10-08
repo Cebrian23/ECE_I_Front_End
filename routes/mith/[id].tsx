@@ -1,4 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
+import { url } from "../../Conection/ConecGQL.ts";
 import { MithGQL } from "../../types/legend/Mith.ts";
 
 type Data = {
@@ -9,18 +10,27 @@ export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
-        const new_data: MithGQL | void = await fetch(`https://ece-i-back-end.deno.dev/`, {
-            method: 'GET',
+        console.log(id);
+
+        const datos = `{
+            mith {
+                id
+                name
+                talk_about_in
+            }
+        }`
+
+        const new_data: MithGQL | void = await fetch(url, {
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 query: `
-                    query getMith_id($id: String!) {
+                    query getLegend_id($id: String!) {
                         mith(id: $id) {
                             id,
                             name,
-                            talk_about_in,
+                            talk_about_in
                         }
                     }
                 `,

@@ -1,4 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
+import { url } from "../../Conection/ConecGQL.ts";
 import { HeraldryGQL } from "../../types/history/Heraldry.ts";
 
 type Data = {
@@ -9,7 +10,7 @@ export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
-        const new_data: HeraldryGQL | void = await fetch(`https://ece-i-back-end.deno.dev/`, {
+        const new_data: HeraldryGQL | void = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

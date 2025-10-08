@@ -1,5 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import Legends from "../../islands/Legends.tsx";
+import Monuments from "../../islands/Monuments.tsx";
 import { MonumentDB } from "../../types/history/Monument.ts";
 
 type Data = {
@@ -26,7 +26,7 @@ const Page = (props: PageProps<Data>) => {
         <div>
             {
                 monuments === undefined &&
-                <></>
+                <Monuments/>
             }
             {
                 monuments !== undefined &&

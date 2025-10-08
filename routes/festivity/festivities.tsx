@@ -21,9 +21,6 @@ export const handler: Handlers<Data> = {
             if(month && day){
                 //
             }
-            else{
-                return ctx.render({});
-            }
         }
 
         return ctx.render({});
