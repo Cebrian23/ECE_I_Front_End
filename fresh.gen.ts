@@ -34,6 +34,8 @@ import * as $Festivities from "./islands/Festivities.tsx";
 import * as $Heraldries from "./islands/Heraldries.tsx";
 import * as $Legends from "./islands/Legends.tsx";
 import * as $Literature from "./islands/Literature.tsx";
+import * as $Miths from "./islands/Miths.tsx";
+import * as $Monuments from "./islands/Monuments.tsx";
 import * as $NameForm from "./islands/NameForm.tsx";
 import * as $Organizations from "./islands/Organizations.tsx";
 import * as $People from "./islands/People.tsx";
@@ -75,6 +77,8 @@ const manifest = {
     "./islands/Heraldries.tsx": $Heraldries,
     "./islands/Legends.tsx": $Legends,
     "./islands/Literature.tsx": $Literature,
+    "./islands/Miths.tsx": $Miths,
+    "./islands/Monuments.tsx": $Monuments,
     "./islands/NameForm.tsx": $NameForm,
     "./islands/Organizations.tsx": $Organizations,
     "./islands/People.tsx": $People,
