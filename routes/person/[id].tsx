@@ -5,7 +5,7 @@ type Data = {
     person?: PersonDB,
 }
 
-const handler: Handlers<Data> = {
+export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
@@ -29,31 +29,6 @@ const Page = (props: PageProps<Data>) => {
                     </div>
                     <div>
                         <p><b>Nombre completo: </b>{person.name + " " + person.surname}</p>
-                        <p>
-                            <b>Fecha de nacimiento: </b>
-                            {
-                                person.birth_date.month !== undefined && person.birth_date.day !== undefined &&
-                                <>{person.birth_date.day + " de " + person.birth_date.month + " de " + person.birth_date.year}</>
-                            }
-                            {
-                                (person.birth_date.month !== undefined || person.birth_date.day !== undefined) &&
-                                <>{person.birth_date.year}</>
-                            }
-                        </p>
-                        {
-                            person.death_date?.year !== undefined &&
-                            <p>
-                                <b>Fecha de fallecimiento: </b>
-                                {
-                                    person.death_date.month !== undefined && person.death_date.day !== undefined &&
-                                    <>{person.death_date.day + " de " + person.death_date.month + " de " + person.death_date.year}</>
-                                }
-                                {
-                                    (person.death_date.month !== undefined || person.death_date.day !== undefined) &&
-                                    <>{person.death_date.year}</>
-                                }
-                            </p>
-                        }
                     </div>
                 </div>
             }

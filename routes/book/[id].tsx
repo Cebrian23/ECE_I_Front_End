@@ -5,7 +5,7 @@ type Data = {
     book?: BookDB,
 }
 
-const handler: Handlers<Data> = {
+export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
@@ -24,11 +24,11 @@ const Page = (props: PageProps<Data>) => {
                 book !== undefined &&
                 <div>
                     <div>
-                        <h1>Página de {book.name}</h1>
+                        <h1>Página de {book.title}</h1>
                         <img src={book.cover}/>
                     </div>
                     <div>
-                        <p><b>Título: </b>{book.name}</p>
+                        <p><b>Título: </b>{book.title}</p>
                         <p><b>Año de publicación: </b>{book.year_of_publish}</p>
                         <p><b>Sipnosis: </b>{book.description}</p>
                     </div>

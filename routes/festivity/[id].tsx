@@ -5,7 +5,7 @@ type Data = {
     festivity?: FestivityDB,
 }
 
-const handler: Handlers<Data> = {
+export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
