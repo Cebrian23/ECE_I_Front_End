@@ -18,6 +18,10 @@ import * as $heraldry_heraldries from "./routes/heraldry/heraldries.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $legend_id_ from "./routes/legend/[id].tsx";
 import * as $legend_legends from "./routes/legend/legends.tsx";
+import * as $mith_id_ from "./routes/mith/[id].tsx";
+import * as $mith_miths from "./routes/mith/miths.tsx";
+import * as $monument_id_ from "./routes/monument/[id].tsx";
+import * as $monument_monuments from "./routes/monument/monuments.tsx";
 import * as $organization_id_ from "./routes/organization/[id].tsx";
 import * as $organization_organizations from "./routes/organization/organizations.tsx";
 import * as $person_id_ from "./routes/person/[id].tsx";
@@ -53,6 +57,10 @@ const manifest = {
     "./routes/index.tsx": $index,
     "./routes/legend/[id].tsx": $legend_id_,
     "./routes/legend/legends.tsx": $legend_legends,
+    "./routes/mith/[id].tsx": $mith_id_,
+    "./routes/mith/miths.tsx": $mith_miths,
+    "./routes/monument/[id].tsx": $monument_id_,
+    "./routes/monument/monuments.tsx": $monument_monuments,
     "./routes/organization/[id].tsx": $organization_id_,
     "./routes/organization/organizations.tsx": $organization_organizations,
     "./routes/person/[id].tsx": $person_id_,
