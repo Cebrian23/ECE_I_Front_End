@@ -10,8 +10,12 @@ export type BandDB = OptionalId<{
 export type BandGQL = {
     id: string,
     name: string,
-    logo?: string,
-    albums: Album[],
+    logo: string | null,
+    albums: {
+        name: string,
+        year_of_publish: number,
+        cover: string | null,
+    },
 }
 
 export type Band = {
