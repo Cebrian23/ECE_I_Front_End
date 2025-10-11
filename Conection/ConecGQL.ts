@@ -1,1 +1,0 @@
-export const url = `https://ece-i-back-end-4d86f6kp8qge.deno.dev/`;
