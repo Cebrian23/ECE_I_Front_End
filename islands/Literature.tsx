@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks";
 import NameForm from "./NameForm.tsx";
 import DateForm from "./DateForm.tsx";
+import DoubleDateForm from "./DoubleDateForm.tsx";
 
 const Literature = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);
@@ -48,15 +49,15 @@ const Literature = () => {
             }
             {
                 initDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Literature" start page_back="Literature"/>
+                <DateForm type="Literature" start page_back="Literature"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Literature" start={false} page_back="Literature"/>
+                <DateForm type="Literature" start={false} page_back="Literature"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&
-                <DateForm doubleFilter type="Literature" page_back="Literature"/>
+                <DoubleDateForm type="Literature" page_back="Literature"/>
             }
         </div>
     );

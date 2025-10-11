@@ -1,9 +1,11 @@
 import { useState } from "preact/hooks";
 import NameForm from "./NameForm.tsx";
+import CountryForm from "./CountryForm.tsx";
 
 const Monuments = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);
     const [nameFilter, showNameFilter] = useState<boolean>(false);
+    const [countryFilter, showCountryFilter] = useState<boolean>(false);
     
     return(
         <div>
@@ -19,13 +21,22 @@ const Monuments = () => {
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
+                        showCountryFilter(true);
+                    }}>Filtrar por país de localización</button>
+                    <br/>
+                    <button type="button" onClick={() => {
+                        showInitialForm(false);
                     }}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
             {
                 nameFilter.valueOf() === true &&
-                <NameForm surname={false} page_back="Literature"/>
+                <NameForm surname={false} page_back="Monuments"/>
+            }
+            {
+                countryFilter.valueOf() === true &&
+                <CountryForm/>
             }
         </div>
     );

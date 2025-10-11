@@ -24,6 +24,10 @@ const Festivities = () => {
                         showInitDateFilter(true);
                     }}>Filtrar por fecha</button>
                     <br/>
+                    <button type="button" onClick={() => {
+                        showInitialForm(false);
+                    }}>Mostrar todos los datos</button>
+                    <br/>
                 </form>
             }
             {
@@ -32,7 +36,7 @@ const Festivities = () => {
             }
             {
                 dateFilter.valueOf() === true &&
-                <DateForm doubleFilter={false} type="Festivity" page_back="Festivities"/>
+                <DateForm type="Festivity" page_back="Festivities"/>
             }
         </div>
     );
