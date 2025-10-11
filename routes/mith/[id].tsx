@@ -6,43 +6,31 @@ type Data = {
     mith?: MithGQL,
 }
 
+const Mith_id = `#graphql
+    query Query ($id: String!) {
+        getHeraldry_id (id: $id) {
+            id,
+            name,
+            talk_about_in {
+                id
+                name
+                cover
+                album_in {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
         console.log(id);
 
-        const datos = `{
-            mith {
-                id
-                name
-                talk_about_in
-            }
-        }`
-
-        const new_data: MithGQL | void = await fetch(url, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: `
-                    query getLegend_id($id: String!) {
-                        mith(id: $id) {
-                            id,
-                            name,
-                            talk_about_in
-                        }
-                    }
-                `,
-                variables: { id: `${id}` }
-            })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data));
-        
-        if(new_data){
-            return ctx.render({mith: new_data});
-        }
+        //
 
         return ctx.render({});
     }

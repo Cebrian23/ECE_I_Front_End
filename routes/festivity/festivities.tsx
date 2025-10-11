@@ -14,14 +14,6 @@ export const handler: Handlers<Data> = {
         if(name){
             //
         }
-        else{
-            const month = url.searchParams.get("month_a");
-            const day = url.searchParams.get("day_a");
-
-            if(month && day){
-                //
-            }
-        }
 
         return ctx.render({});
     }

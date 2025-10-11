@@ -6,35 +6,30 @@ type Data = {
     heraldry?: HeraldryGQL,
 }
 
+const Heraldry_id = `#graphql
+    query Query ($id: String!) {
+        getMith_id (id: $id) {
+            id,
+            name,
+            image
+            talk_about_in {
+                id
+                name
+                cover
+                album_in {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
-        const new_data: HeraldryGQL | void = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: `
-                    query getHeraldry_name($id: String!) {
-                        mith(id: $id) {
-                            id,
-                            name,
-                            image,
-                            talk_about_in,
-                        }
-                    }
-                `,
-                variables: { id: `${id}` }
-            })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data));
-        
-        if(new_data){
-            return ctx.render({heraldry: new_data});
-        }
+        //
         
         return ctx.render({});
     }

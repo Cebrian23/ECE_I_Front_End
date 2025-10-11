@@ -6,35 +6,30 @@ type Data = {
     legend?: LegendGQL,
 }
 
+const Legend_id = `#graphql
+    query Query ($id: String!) {
+        getLegend_id (id: $id) {
+            id,
+            name,
+            talk_about_in {
+                id
+                name
+                cover
+                album_in {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
-        const new_data: LegendGQL | void = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                query: `
-                    query getLegend_id($id: String!) {
-                        mith(id: $id) {
-                            id,
-                            name,
-                            talk_about_in
-                        }
-                    }
-                `,
-                variables: { id: `${id}` }
-            })
-        })
-        .then(response => response.json())
-        .then(data => console.log(data));
-        
-        if(new_data){
-            return ctx.render({legend: new_data});
-        }
-        
+        //
+
         return ctx.render({});
     }
 }

@@ -5,6 +5,24 @@ type Data = {
     festivity?: FestivityDB,
 }
 
+const Festivity_id = `#graphql
+    query Query ($id: String!) {
+        getMith_id (id: $id) {
+            id,
+            name,
+            talk_about_in {
+                id
+                name
+                cover
+                album_in {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
