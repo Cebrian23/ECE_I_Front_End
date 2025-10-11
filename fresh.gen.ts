@@ -28,7 +28,9 @@ import * as $person_id_ from "./routes/person/[id].tsx";
 import * as $person_people from "./routes/person/people.tsx";
 import * as $song_id_ from "./routes/song/[id].tsx";
 import * as $writer_id_ from "./routes/writer/[id].tsx";
+import * as $CountryForm from "./islands/CountryForm.tsx";
 import * as $DateForm from "./islands/DateForm.tsx";
+import * as $DoubleDateForm from "./islands/DoubleDateForm.tsx";
 import * as $Events from "./islands/Events.tsx";
 import * as $Festivities from "./islands/Festivities.tsx";
 import * as $Heraldries from "./islands/Heraldries.tsx";
@@ -71,7 +73,9 @@ const manifest = {
     "./routes/writer/[id].tsx": $writer_id_,
   },
   islands: {
+    "./islands/CountryForm.tsx": $CountryForm,
     "./islands/DateForm.tsx": $DateForm,
+    "./islands/DoubleDateForm.tsx": $DoubleDateForm,
     "./islands/Events.tsx": $Events,
     "./islands/Festivities.tsx": $Festivities,
     "./islands/Heraldries.tsx": $Heraldries,
