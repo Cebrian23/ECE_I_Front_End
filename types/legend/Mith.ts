@@ -10,7 +10,12 @@ export type MithGQL = {
     talked_about_in: {
         id: string,
         name: string,
-    }
+        cover: string
+        album_in: {
+            id: string,
+            name: string,
+        }
+    }[]
 }
 
 export type Mith = {
