@@ -7,6 +7,15 @@ export type LegendDB = OptionalId<{
 export type LegendGQL = {
     id: string,
     name: string,
+    talked_about_in: {
+        id: string,
+        name: string,
+        cover: string
+        album_in: {
+            id: string,
+            name: string,
+        }
+    }[]
 }
 
 export type Legend = {
