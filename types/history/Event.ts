@@ -5,7 +5,7 @@ import { Date } from "./Date.ts";
 
 export type EventDB = OptionalId<{
     name: string,
-    start_date: Date,
+    start_date?: Date,
     end_date?: Date,
     people_involved?: ObjectId[],
     organizations_involved?: ObjectId[],
@@ -14,7 +14,7 @@ export type EventDB = OptionalId<{
 export type Event = {
     id: string,
     name: string,
-    start_date: Date,
+    start_date?: Date,
     end_date?: Date,
     people_involved?: Person[],
     organizations_involved?: Organization[],
