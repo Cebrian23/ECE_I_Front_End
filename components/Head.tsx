@@ -2,9 +2,9 @@ const Head = () =>  {
     return(
         <div class="head">
             <a href="/">Home</a>
-            <a href="/event/events">Eventos Históricos</a>
-            <a href="/person/people">Personas Históricas</a>
-            <a href="/organization/organizations">Organizaciones Históricas</a>
+            <a href="/event/events">Eventos</a>
+            <a href="/person/people">Personas</a>
+            <a href="/organization/organizations">Organizaciones</a>
             <a href="/book/literature">Literatura</a>
             <a href="/heraldry/heraldries">Heráldica</a>
             <a href="/legend/legends">Leyendas</a>
