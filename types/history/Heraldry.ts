@@ -8,7 +8,16 @@ export type HeraldryDB = OptionalId<{
 export type HeraldryGQL = {
     id: string,
     name: string,
-    image?: string,
+    image: string | null,
+    talked_about_in: {
+        id: string,
+        name: string,
+        cover: string
+        album_in: {
+            id: string,
+            name: string,
+        }
+    }[]
 }
 
 export type Heraldry = {
