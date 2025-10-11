@@ -11,8 +11,8 @@ export type WriterDB = OptionalId<{
 export type WriterGQL = {
     id: string,
     name: string,
-    surname?: string,
-    image?: string,
+    surname: string | null,
+    image: string | null,
     books: Book[],
 }
 
