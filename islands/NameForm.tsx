@@ -63,6 +63,10 @@ const NameForm = (props: Props) => {
                             page_back === "Festivities" &&
                             <button type="button" onClick={() => location.href="/festivity/festivities"}>Volver</button>
                         }
+                        {
+                            page_back === "Monuments" &&
+                            <button type="button" onClick={() => location.href="/monument/monuments"}>Volver</button> 
+                        }
                         <button type="submit">Enviar</button>
                     </div>
                 </div>
