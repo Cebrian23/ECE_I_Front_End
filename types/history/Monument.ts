@@ -5,7 +5,8 @@ export type MonumentDB = OptionalId<{
     name: string,
     creation?: Date_monument,
     destruction?: Date_monument,
-    country_in: string,
+    still_exists: boolean,
+    country_in?: string,
 }>
 
 export type Monument = {
@@ -13,5 +14,6 @@ export type Monument = {
     name: string,
     creation?: Date_monument,
     destruction?: Date_monument,
-    country_in: string,
+    still_exists: boolean,
+    country_in?: string,
 }
