@@ -1,5 +1,4 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { url } from "../../Conection/ConecGQL.ts";
 import { HeraldryGQL } from "../../types/history/Heraldry.ts";
 
 type Data = {
@@ -8,11 +7,11 @@ type Data = {
 
 const Heraldry_id = `#graphql
     query Query ($id: String!) {
-        getMith_id (id: $id) {
-            id,
-            name,
+        getHeraldry_id (id: $id) {
+            id
+            name
             image
-            talk_about_in {
+            talk_about_in_song {
                 id
                 name
                 cover
@@ -20,6 +19,37 @@ const Heraldry_id = `#graphql
                     id
                     name
                 }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
+            }
+        }
+    }
+`
+
+const Heraldry_name = `#graphql
+    query Query ($name: String!) {
+        getHeraldry_name (name: $name) {
+            id
+            name
+            image
+            talk_about_in_song {
+                id
+                name
+                cover
+                album_in {
+                    id
+                    name
+                }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
             }
         }
     }
@@ -45,7 +75,7 @@ const Page = (props: PageProps<Data>) => {
                 <div>
                     <div>
                         <h1>Página de {heraldry.name}</h1>
-                        <img src={heraldry.image}/>
+                        <img src={heraldry.image!}/>
                     </div>
                     <div>
                         <p><b>Nombre: </b>{heraldry.name}</p>

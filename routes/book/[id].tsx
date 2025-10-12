@@ -5,6 +5,80 @@ type Data = {
     book?: BookDB,
 }
 
+const Book_id = `#graphql
+    query Query ($id: String!) {
+        getBook_id (id: $id) {
+            id
+            title
+            year_of_publish
+            cover
+            writer
+            description
+            talk_about_in_song {
+                id
+                name
+                cover
+                year_of_publish
+                album_in {
+                    id
+                    name
+                    creator {
+                        id
+                        name
+                    }
+                }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
+                creator {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
+const Book_title = `#graphql
+    query Query ($title: String!) {
+        getBook_title (title: $title) {
+            id
+            title
+            year_of_publish
+            cover
+            writer
+            description
+            talk_about_in_song {
+                id
+                name
+                cover
+                year_of_publish
+                album_in {
+                    id
+                    name
+                    creator {
+                        id
+                        name
+                    }
+                }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
+                creator {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;

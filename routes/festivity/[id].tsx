@@ -7,10 +7,10 @@ type Data = {
 
 const Festivity_id = `#graphql
     query Query ($id: String!) {
-        getMith_id (id: $id) {
-            id,
-            name,
-            talk_about_in {
+        getFestivity_id (id: $id) {
+            id
+            name
+            talk_about_in_song {
                 id
                 name
                 cover
@@ -18,6 +18,36 @@ const Festivity_id = `#graphql
                     id
                     name
                 }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
+            }
+        }
+    }
+`
+
+const Festivity_name = `#graphql
+    query Query ($name: String!) {
+        getFestivity_name (name: $name) {
+            id
+            name
+            talk_about_in_song {
+                id
+                name
+                cover
+                album_in {
+                    id
+                    name
+                }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
             }
         }
     }

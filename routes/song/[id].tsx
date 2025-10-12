@@ -5,6 +5,42 @@ type Data = {
     song?: SongDB,
 }
 
+const Song_id = `#graphql
+    query Query ($id: String!) {
+        getSong_id (id: $id) {
+            id
+            name
+            cover
+            talk_about {}
+            official_video
+            album_in {
+                id
+                name
+                year_of_publish
+                creator
+            }
+        }
+    }
+`
+
+const Song_name = `#graphql
+    query Query ($name: String!) {
+        getSong_name (name: $name) {
+            id
+            name
+            cover
+            talk_about {}
+            official_video
+            album_in {
+                id
+                name
+                year_of_publish
+                creator
+            }
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;

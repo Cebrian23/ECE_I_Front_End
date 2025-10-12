@@ -1,5 +1,4 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { url } from "../../Conection/ConecGQL.ts";
 import { MithGQL } from "../../types/legend/Mith.ts";
 
 type Data = {
@@ -8,10 +7,10 @@ type Data = {
 
 const Mith_id = `#graphql
     query Query ($id: String!) {
-        getHeraldry_id (id: $id) {
-            id,
-            name,
-            talk_about_in {
+        getMith_id (id: $id) {
+            id
+            name
+            talk_about_in_song {
                 id
                 name
                 cover
@@ -19,6 +18,36 @@ const Mith_id = `#graphql
                     id
                     name
                 }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
+            }
+        }
+    }
+`
+
+const Mith_name = `#graphql
+    query Query ($name: String!) {
+        getMith_name (name: $name) {
+            id
+            name
+            talk_about_in_song {
+                id
+                name
+                cover
+                album_in {
+                    id
+                    name
+                }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
             }
         }
     }

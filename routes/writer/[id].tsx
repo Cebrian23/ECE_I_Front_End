@@ -5,6 +5,40 @@ type Data = {
     writer?: WriterDB,
 }
 
+const Writer_id = `#graphql
+    query Query ($id: String!) {
+        getWriter_id (id: $id) {
+            id
+            name
+            surname
+            image
+            books {
+                id
+                name
+                cover
+                year_of_publish
+            },
+        }
+    }
+`
+
+const Writer_name = `#graphql
+    query Query ($name: String!) {
+        getWriter_name (name: $name) {
+            id
+            name
+            surname
+            image
+            books {
+                id
+                name
+                cover
+                year_of_publish
+            },
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;

@@ -5,6 +5,42 @@ type Data = {
     monument?: MonumentDB,
 }
 
+const Organization_id = `#graphql
+    query Query ($id: String!) {
+        getOrganization_id (id: $id) {
+            id
+            name
+            creation {}
+            distruction {}
+            still_exists
+            talk_about_in_song {
+                id
+                name
+                cover
+                year_of_publish
+                album_in {
+                    id
+                    name
+                    creator {
+                        id
+                        name
+                    }
+                }
+            }
+            talk_about_in_album {
+                id
+                name
+                cover
+                year_of_publish
+                creator {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`
+
 export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
