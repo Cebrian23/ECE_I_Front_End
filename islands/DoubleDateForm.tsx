@@ -213,13 +213,6 @@ const DoubleDateForm = (props: Props) => {
                             </div>
                     </div>
                 </div>
-            {
-                year_1.valueOf()
-            }
-            <br/>
-            {
-                year_2.valueOf()
-            }
             </form>
         </div>
     );
