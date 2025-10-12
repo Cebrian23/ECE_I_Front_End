@@ -1,17 +1,12 @@
-import { ObjectId, OptionalId } from "mongodb";
 import { Song } from "./Song.ts";
 import { Topics } from "./Topics.ts";
 
-export type AlbumDB = OptionalId<{
-    name: string,
-    year_of_publish: number,
-    cover?: string,
-    songs: ObjectId[],
-    conceptual_album: boolean,
-}>
-
 export type AlbumGQL = {
     name: string,
+    creator: {
+        id: string,
+        name: string,
+    }
     year_of_publish: number,
     cover: string | null,
     songs: {
@@ -26,18 +21,23 @@ export type AlbumGQL = {
         organizations: {
             id: string,
             name: string,
+            image: string,
         }[],
         people: {
             id: string,
             name: string,
+            surname: string,
+            image: string,
         }[],
         books: {
             id: string,
-            name: string,
+            title: string,
+            cover: string,
         }[],
         heraldries: {
             id: string,
             name: string,
+            image: string,
         }[],
         legends: {
             id: string,
@@ -50,10 +50,15 @@ export type AlbumGQL = {
         festivities: {
             id: string,
             name: string,
+            date: {
+                month: string,
+                day: string,
+            }
         }[],
         monuments: {
             id: string,
             name: string,
+            image: string,
         }[],
     } | null,
     conceptual_album: boolean,

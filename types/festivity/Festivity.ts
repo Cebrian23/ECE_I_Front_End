@@ -1,24 +1,28 @@
-import { OptionalId } from "mongodb";
 import { Festivity_date } from "./Festivity_date.ts";
-
-export type FestivityDB = OptionalId<{
-    name: string,
-    date: Festivity_date,
-}>
 
 export type FestivityGQL = {
     id: string,
     name: string,
-    date: Festivity_date,
-    talked_about_in: {
+    date: {
+        month: string,
+        day: number,
+    },
+    talked_about_in_song: {
         id: string,
         name: string,
-        cover: string
+        cover: string,
         album_in: {
             id: string,
             name: string,
+            year_of_publish: number,
         }
-    }[]
+    }[],
+    talked_about_in_album: {
+        id: string,
+        name: string,
+        cover: string,
+        year_of_publish: number,
+    }[],
 }
 
 export type Festivity = {

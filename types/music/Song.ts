@@ -1,11 +1,4 @@
-import { OptionalId, ObjectId } from "mongodb";
 import { Topics } from "./Topics.ts";
-
-export type SongDB = OptionalId<{
-    name: string,
-    talk_about: ObjectId[],
-    official_video?: string,
-}>
 
 export type SongGQL = {
     id: string,
@@ -18,18 +11,23 @@ export type SongGQL = {
         organizations: {
             id: string,
             name: string,
+            image: string,
         }[],
         people: {
             id: string,
             name: string,
+            surname: string,
+            image: string,
         }[],
         books: {
             id: string,
-            name: string,
+            title: string,
+            cover: string,
         }[],
         heraldries: {
             id: string,
             name: string,
+            image: string,
         }[],
         legends: {
             id: string,
@@ -42,13 +40,23 @@ export type SongGQL = {
         festivities: {
             id: string,
             name: string,
+            date: {
+                month: string,
+                day: string,
+            }
         }[],
         monuments: {
             id: string,
             name: string,
+            image: string,
         }[],
     },
+    cover: string,
     official_video: string | null,
+    album_in: {
+        id: string,
+        name: string,
+    }
 }
 
 export type Song = {
