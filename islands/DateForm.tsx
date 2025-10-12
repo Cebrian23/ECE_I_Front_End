@@ -1,3 +1,5 @@
+import { useEffect, useState } from "preact/hooks";
+
 type Props = {
     type: string;
     start?: boolean;
@@ -8,6 +10,20 @@ const DateForm = (props: Props) => {
     const type: string = props.type;
     const start: boolean | undefined = props.start;
     const page_back: string = props.page_back;
+
+    const [day, setDay] = useState<string>("1");
+    const [month, setMonth] = useState<string>("");
+
+    useEffect(() => {
+        if((month.valueOf() === "Abril" || month.valueOf() === "Junio" ||
+            month.valueOf() === "Septiembre" || month.valueOf() === "Noviembre")
+            && (Number(day.valueOf()) >= 30)){
+            setDay("30");
+        }
+        else if((month.valueOf() === "Febrero") && (Number(day.valueOf()) >= 28)){
+            setDay("28");
+        }
+    }, [month, day]);
 
     return (
         <div>
@@ -72,17 +88,29 @@ const DateForm = (props: Props) => {
                         <div class="column_data">
                             {
                                 start === true && type !== "Festivity" &&
-                                <input name="year_a" type="number" min="1700" max="2025" defaultValue="1700" required/>
+                                <div class="row_data">
+                                    <input name="year" type="number" min="1700" max="2025" defaultValue="1700" required/>
+                                    <select name="ac_dc" required>
+                                        <option value="d.C" selected>d.C</option>
+                                        <option value="a.C">a.C</option>
+                                    </select>
+                                </div>
                             }
                             {
                                 start === false && type !== "Festivity" &&
-                                <input name="year_a" type="number" min="1700" max="2025" defaultValue="2025" required/>
+                                <div class="row_data">
+                                    <input name="year" type="number" min="1700" max="2025" defaultValue="2025" required/>
+                                    <select name="ac_dc" required>
+                                        <option value="d.C" selected>d.C</option>
+                                        <option value="a.C">a.C</option>
+                                    </select>
+                                </div>
                             }
                             {
                                 type === "Festivity" &&
                                 <>
-                                    <select name="month_a" required>
-                                        <option value="unkown" selected>...Seleccione un mes...</option>
+                                    <select name="month" required onChange={(e) => setMonth(e.currentTarget.value)}>
+                                        <option value="" selected>...Seleccione un mes...</option>
                                         <option value="Enero">Enero</option>
                                         <option value="Febrero">Febrero</option>
                                         <option value="Marzo">Marzo</option>
@@ -97,7 +125,29 @@ const DateForm = (props: Props) => {
                                         <option value="Diciembre">Diciembre</option>
                                     </select>
                                     <br/>
-                                    <input name="day_a" type="number" min="1" max="31" required/>
+                                    {
+                                        (month.valueOf() === "Enero" || month.valueOf() === "Marzo" ||
+                                        month.valueOf() === "Mayo" || month.valueOf() === "Julio" ||
+                                        month.valueOf() === "Agosto" || month.valueOf() === "Octubre" ||
+                                        month.valueOf() === "Diciembre") && 
+                                        <input name="day" type="number" min="1" max="31"
+                                        onChange={(e) => setDay(e.currentTarget.value)}
+                                        defaultValue={day.valueOf()} required/>
+                                    }
+                                    {
+                                        (month.valueOf() === "Abril" || month.valueOf() === "Junio" ||
+                                        month.valueOf() === "Septiembre" || month.valueOf() === "Noviembre" ||
+                                        month.valueOf() === "") &&
+                                        <input name="day" type="number" min="1" max="30"
+                                        onChange={(e) => setDay(e.currentTarget.value)}
+                                        defaultValue={day.valueOf()} required/>
+                                    }
+                                    {
+                                        month.valueOf() === "Febrero" &&
+                                        <input name="day" type="number" min="1" max="28"
+                                        onChange={(e) => setDay(e.currentTarget.value)}
+                                        defaultValue={day.valueOf()} required/>
+                                    }
                                 </>
                             }
                         </div>
