@@ -1,3 +1,5 @@
+import { useState } from "preact/hooks";
+
 type Props = {
     type: string;
     page_back: string;
@@ -6,6 +8,11 @@ type Props = {
 const DoubleDateForm = (props: Props) => {
     const type: string = props.type;
     const page_back: string = props.page_back;
+
+    const [year_1, setYear_1] = useState<number>(1700);
+    const [year_2, setYear_2] = useState<number>(2025);
+    const [ac_dc_1, setAc_dc_1] = useState<string>("d.C");
+    const [ac_dc_2, setAc_dc_2] = useState<string>("d.C");
 
     return(
         <div>
@@ -35,38 +42,7 @@ const DoubleDateForm = (props: Props) => {
                                         <label for="day_a">Día:</label>
                                     </>
                                 }
-                            </div>
-                        <div class="column_data">
-                                {
-                                    type !== "Festivity" &&
-                                    <input name="year_a" type="number" min="1700" max="2025" defaultValue="1700" required/>
-                                }
-                                {
-                                    type === "Festivity" &&
-                                    <>
-                                        <select name="month_a">
-                                            <option value="unkown" selected>...Seleccione un mes...</option>
-                                            <option value="Enero">Enero</option>
-                                            <option value="Febrero">Febrero</option>
-                                            <option value="Marzo">Marzo</option>
-                                            <option value="Abril">Abril</option>
-                                            <option value="Mayo">Mayo</option>
-                                            <option value="Junio">Junio</option>
-                                            <option value="Julio">Julio</option>
-                                            <option value="Agosto">Agosto</option>
-                                            <option value="Septiembre">Septiembre</option>
-                                            <option value="Octubre">Octubre</option>
-                                            <option value="Noviembre">Noviembre</option>
-                                            <option value="Diciembre">Diciembre</option>
-                                        </select>
-                                        <br/>
-                                        <input name="day_a" type="number" min="1" max="31"/>
-                                    </>
-                                }
-                            </div>
-                    </div>
-                    <div class="row_data">
-                        <div class="column_data">
+                                <br/>
                                 {
                                     type === "Event" && <label for="year_b">Año de fin:</label>
                                 }
@@ -88,34 +64,40 @@ const DoubleDateForm = (props: Props) => {
                                         <label for="day_b">Día:</label>
                                     </>
                                 }
+                                <br/>
                             </div>
                         <div class="column_data">
                                 {
                                     type !== "Festivity" &&
-                                    <input name="year_b" type="number" min="1700" max="2025" defaultValue="2025"/>
-                                }
-                                {
-                                    type === "Festivity" &&
                                     <>
-                                        <select name="month_b">
-                                            <option value="unkown" selected>...Seleccione un mes...</option>
-                                            <option value="Enero">Enero</option>
-                                            <option value="Febrero">Febrero</option>
-                                            <option value="Marzo">Marzo</option>
-                                            <option value="Abril">Abril</option>
-                                            <option value="Mayo">Mayo</option>
-                                            <option value="Junio">Junio</option>
-                                            <option value="Julio">Julio</option>
-                                            <option value="Agosto">Agosto</option>
-                                            <option value="Septiembre">Septiembre</option>
-                                            <option value="Octubre">Octubre</option>
-                                            <option value="Noviembre">Noviembre</option>
-                                            <option value="Diciembre">Diciembre</option>
-                                        </select>
-                                        <br/>
-                                        <input name="day_b" type="number" min="1" max="31"/>
+                                        <div class="row_data">
+                                            <input name="year_a" type="number" min="0" max="2026"
+                                            defaultValue="2020" onChange={(e) => {
+                                                setYear_1(Number(e.currentTarget.value));
+                                            }} required/>
+                                            <select name="ac_dc_1" onChange={(e) => setAc_dc_1(e.currentTarget.value)} required>
+                                                <option value="a.C">a.C</option>
+                                                <option value="d.C" selected>d.C</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <div class="row_data">
+                                                <input name="year_b" type="number" min="0" max="2026"
+                                                defaultValue="2025" onChange={(e) => {
+                                                    setYear_2(Number(e.currentTarget.value));
+                                                }} required/>
+                                                <select name="ac_dc_2" onChange={(e) => setAc_dc_2(e.currentTarget.value)} required>
+                                                    {
+                                                        ac_dc_1.valueOf() === "a.C" &&
+                                                        <option value="a.C">a.C</option>
+                                                    }
+                                                    <option value="d.C" selected>d.C</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </>
                                 }
+                                <br/>
                             </div>
                     </div>
                     <div class="column_data">
