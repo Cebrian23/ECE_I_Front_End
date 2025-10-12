@@ -50,6 +50,16 @@ form{
         width: 600px;
         text-align: center;
     }
+    input{
+        height: 17px;
+        width: 150px;
+        text-align: center;
+    }
+    select{
+        height: 22px;
+        width: 157px;
+        text-align: center;
+    }
 }
 
 .row_data{
@@ -74,14 +84,6 @@ form{
     flex-direction: column;
     align-items: center;
     margin: 10px;
-}
-
-input{
-    width: 150px;
-}
-
-select{
-    width: 157px;
 }
 
 .data_filter{
