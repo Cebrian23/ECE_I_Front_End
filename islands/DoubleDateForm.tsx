@@ -10,7 +10,7 @@ const DoubleDateForm = (props: Props) => {
     const page_back: string = props.page_back;
 
     const [year_1, setYear_1] = useState<number>(1700);
-    const [year_2, setYear_2] = useState<number>(2025);
+    const [year_2, setYear_2] = useState<number>(2000);
     const [ac_dc_1, setAc_dc_1] = useState<string>("d.C");
     const [ac_dc_2, setAc_dc_2] = useState<string>("d.C");
 
@@ -71,22 +71,93 @@ const DoubleDateForm = (props: Props) => {
                                     type !== "Festivity" &&
                                     <>
                                         <div class="row_data">
-                                            <input name="year_a" type="number" min="0" max="2026"
-                                            defaultValue="2020" onChange={(e) => {
-                                                setYear_1(Number(e.currentTarget.value));
-                                            }} required/>
-                                            <select name="ac_dc_1" onChange={(e) => setAc_dc_1(e.currentTarget.value)} required>
+                                            {
+                                                ac_dc_1.valueOf() === "a.C" && ac_dc_2.valueOf() === "a.C" &&
+                                                <>
+                                                    <input name="year_a" type="number" min={year_2.valueOf()} max="600"
+                                                    defaultValue="400" onChange={(e) => {
+                                                        setYear_1(Number(e.currentTarget.value));
+                                                    }} required/>
+                                                </>
+                                            }
+                                            {
+                                                ac_dc_1.valueOf() === "a.C" && ac_dc_2.valueOf() === "d.C" &&
+                                                <>
+                                                    <input name="year_a" type="number" min="0" max="600"
+                                                    defaultValue="400" onChange={(e) => {
+                                                        setYear_1(Number(e.currentTarget.value));
+                                                    }} required/>
+                                                </>
+                                            }
+                                            {
+                                                ac_dc_1.valueOf() === "d.C" && ac_dc_2.valueOf() === "d.C" &&
+                                                <>
+                                                    <input name="year_a" type="number" min="0" max={year_2.valueOf()}
+                                                    defaultValue="1700" onChange={(e) => {
+                                                        setYear_1(Number(e.currentTarget.value));
+                                                    }} required/>
+                                                </>
+                                            }
+                                            <select name="ac_dc_1" onChange={(e) => {
+                                                    if(e.currentTarget.value === "a.C"){
+                                                        setYear_1(400);
+                                                    }
+                                                    else if(e.currentTarget.value === "d.C"){
+                                                        setYear_1(1700);
+
+                                                        if(ac_dc_2.valueOf() === "a.C"){
+                                                            setYear_2(2000);
+                                                            setAc_dc_2("d.C");
+                                                        }
+                                                    }
+
+                                                    setAc_dc_1(e.currentTarget.value);
+                                                }
+                                            } required>
                                                 <option value="a.C">a.C</option>
                                                 <option value="d.C" selected>d.C</option>
                                             </select>
                                         </div>
                                         <div>
                                             <div class="row_data">
-                                                <input name="year_b" type="number" min="0" max="2026"
-                                                defaultValue="2025" onChange={(e) => {
-                                                    setYear_2(Number(e.currentTarget.value));
-                                                }} required/>
-                                                <select name="ac_dc_2" onChange={(e) => setAc_dc_2(e.currentTarget.value)} required>
+                                                {
+                                                    ac_dc_1.valueOf() === "a.C" && ac_dc_2.valueOf() === "a.C" &&
+                                                    <>
+                                                        <input name="year_b" type="number" min="0" max={year_1.valueOf()}
+                                                        defaultValue="40" onChange={(e) => {
+                                                            setYear_2(Number(e.currentTarget.value));
+                                                        }} required/>
+                                                    </>
+                                                }
+                                                {
+                                                    ac_dc_1.valueOf() === "a.C" && ac_dc_2.valueOf() === "d.C" &&
+                                                    <>
+                                                        <input name="year_b" type="number" min="0" max="2026"
+                                                        defaultValue="2000" onChange={(e) => {
+                                                            setYear_2(Number(e.currentTarget.value));
+                                                        }} required/>
+                                                    </>
+                                                }
+                                                {
+                                                    ac_dc_1.valueOf() === "d.C" && ac_dc_2.valueOf() === "d.C" &&
+                                                    <>
+                                                        <input name="year_b" type="number" min={year_1.valueOf()} max="2026"
+                                                        defaultValue="2000" onChange={(e) => {
+                                                            setYear_2(Number(e.currentTarget.value));
+                                                        }} required/>
+                                                    </>
+                                                }
+                                                <select name="ac_dc_2" onChange={(e) => {
+                                                        if(e.currentTarget.value === "a.C"){
+                                                            setYear_2(40);
+                                                        }
+                                                        else if(e.currentTarget.value === "d.C"){
+                                                            setYear_2(200);
+                                                        }
+
+                                                        setAc_dc_2(e.currentTarget.value);
+                                                    }
+                                                } required>
                                                     {
                                                         ac_dc_1.valueOf() === "a.C" &&
                                                         <option value="a.C">a.C</option>
@@ -142,6 +213,13 @@ const DoubleDateForm = (props: Props) => {
                             </div>
                     </div>
                 </div>
+            {
+                year_1.valueOf()
+            }
+            <br/>
+            {
+                year_2.valueOf()
+            }
             </form>
         </div>
     );
