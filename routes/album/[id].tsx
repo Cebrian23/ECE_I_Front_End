@@ -1,9 +1,4 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { AlbumDB } from "../../types/music/Album.ts";
-
-type Data = {
-    album?: AlbumDB,
-}
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 const Album_id = `#graphql
     query Query ($id: String!) {
@@ -12,7 +7,10 @@ const Album_id = `#graphql
             name
             cover
             year_of_publish
-            creator
+            creator{
+                id
+                name
+            }
             songs{
                 id
                 name
@@ -23,26 +21,8 @@ const Album_id = `#graphql
     }
 `
 
-const Album_name = `#graphql
-    query Query ($name: String!) {
-        getAlbum_name (name: $name) {
-            id
-            name
-            cover
-            year_of_publish
-            creator
-            songs{
-                id
-                name
-            }
-            talk_about{}
-            conceptual_album
-        }
-    }
-`
-
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const id = ctx.params.id;
 
         //
@@ -51,28 +31,9 @@ export const handler: Handlers<Data> = {
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const album = props.data.album;
-
+const Page = () => {
     return (
         <div>
-            {
-                album !== undefined &&
-                <div>
-                    <h1>Página de {album.name}</h1>
-                    <img src={album.cover}/>
-                    <p><b>Nombre: </b> {album.name}</p>
-                    <p><b>Año de publicación: </b>{album.year_of_publish}</p>
-                    <p><b>Lista de canciones:</b></p>
-                    <ul>
-                        {
-                            album.songs.map((song) => {
-                                <li><a href={`/song/${song.id}`}></a>{}</li>
-                            })
-                        }
-                    </ul>
-                </div>
-            }
         </div>
     );
 }

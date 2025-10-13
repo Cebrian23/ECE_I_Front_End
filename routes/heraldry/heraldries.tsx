@@ -1,42 +1,18 @@
-import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
-import Heraldries from "../../islands/Heraldries.tsx";
-import { HeraldryDB } from "../../types/history/Heraldry.ts";
+import { Handlers, FreshContext } from "$fresh/server.ts";
 
-type Data = {
-    heraldries?: HeraldryDB[],
-}
-
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) => {
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const url = new URL(req.url);
 
-        const name = url.searchParams.get("name");
-        if(name){
-            //
-        }
-
+        //
+        
         return ctx.render({});
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const heraldries = props.data.heraldries;
-
+const Page = () => {
     return(
         <div>
-            {
-                heraldries === undefined &&
-                <Heraldries/>
-            }
-            {
-                heraldries !== undefined &&
-                heraldries.map((heraldry) => {
-                    <div>
-                        <img src={heraldry.image}/>
-                        <p>{heraldry.name}</p>
-                    </div>
-                })
-            }
         </div>
         
     );

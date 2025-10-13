@@ -1,9 +1,4 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { BandDB } from "../../types/music/Band.ts";
-
-type Data = {
-    band?: BandDB,
-}
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 const Band_id = `#graphql
     query Query ($id: String!) {
@@ -20,24 +15,9 @@ const Band_id = `#graphql
     }
 `
 
-const Band_name = `#graphql
-    query Query ($name: String!) {
-        getAlbum_id (name: $name) {
-            id
-            name
-            logo
-            albums {
-                id
-                name
-                cover
-                year_of_publish
-            }
-        }
-    }
-`
 
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const id = ctx.params.id;
 
         //
@@ -46,31 +26,9 @@ export const handler: Handlers<Data> = {
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const band = props.data.band;
-
+const Page = () => {
     return (
         <div>
-            {
-                band !== undefined &&
-                <div>
-                    <div>
-                        <h1>Página de {band.name}</h1>
-                        <img src={band.logo}/>
-                    </div>
-                    <div>
-                        <p><b>Nombre: </b>{band.name}</p>
-                        <div>
-                            <b>Albums: </b>
-                            {
-                                band.albums.map((album) => {
-                                    <div></div>
-                                })
-                            }
-                        </div>
-                    </div>
-                </div>
-            }
         </div>
     );
 }

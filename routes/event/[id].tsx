@@ -1,9 +1,4 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { EventDB } from "../../types/history/Event.ts";
-
-type Data = {
-    event?: EventDB,
-}
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 const Event_id = `#graphql
     query Query ($id: String!) {
@@ -21,14 +16,11 @@ const Event_id = `#graphql
                 id
                 name
                 cover
-                year_of_publish
                 album_in {
                     id
                     name
-                    creator {
-                        id
-                        name
-                    }
+                    cover
+                    year_of_publish
                 }
             }
             talk_about_in_album {
@@ -36,57 +28,13 @@ const Event_id = `#graphql
                 name
                 cover
                 year_of_publish
-                creator {
-                    id
-                    name
-                }
             }
         }
     }
 `
 
-const Event_name = `#graphql
-    query Query ($name: String!) {
-        getEvent_name (name: $name) {
-            id
-            name
-            start date {}
-            end date {}
-            people_involved {
-                id
-                name
-                image
-            }
-            talk_about_in_song {
-                id
-                name
-                cover
-                year_of_publish
-                album_in {
-                    id
-                    name
-                    creator {
-                        id
-                        name
-                    }
-                }
-            }
-            talk_about_in_album {
-                id
-                name
-                cover
-                year_of_publish
-                creator {
-                    id
-                    name
-                }
-            }
-        }
-    }
-`
-
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const id = ctx.params.id;
 
         //
@@ -95,22 +43,9 @@ export const handler: Handlers<Data> = {
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const event = props.data.event;
-    
+const Page = () => {
     return (
         <div>
-            {
-                event !== undefined &&
-                <div>
-                    <div>
-                        <h1>Página de {event.name}</h1>
-                    </div>
-                    <div>
-                        <p><b>Nombre: </b>{event.name}</p>
-                    </div>
-                </div>
-            }
         </div>
     );
 }

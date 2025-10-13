@@ -1,9 +1,4 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { SongDB } from "../../types/music/Song.ts";
-
-type Data = {
-    song?: SongDB,
-}
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 const Song_id = `#graphql
     query Query ($id: String!) {
@@ -17,32 +12,14 @@ const Song_id = `#graphql
                 id
                 name
                 year_of_publish
-                creator
+                cover
             }
         }
     }
 `
 
-const Song_name = `#graphql
-    query Query ($name: String!) {
-        getSong_name (name: $name) {
-            id
-            name
-            cover
-            talk_about {}
-            official_video
-            album_in {
-                id
-                name
-                year_of_publish
-                creator
-            }
-        }
-    }
-`
-
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const id = ctx.params.id;
 
         //
@@ -51,34 +28,9 @@ export const handler: Handlers<Data> = {
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const song = props.data.song;
-
+const Page = () => {
     return (
         <div>
-            {
-                song !== undefined &&
-                <div>
-                    <div>
-                        <h1>Página de {song.name}</h1>
-                    </div>
-                    <div>
-                        <p><b>Nombre: </b>{song.name}</p>
-                        {
-                            song.official_video !== undefined &&
-                            <p><b>Vídeo oficial de la canción</b><a href={song.official_video}>Enlace</a></p>
-                        }
-                        <p>
-                            <b>Temas que aborda:</b>
-                            {
-                                song.talk_about.map((topic) => {
-                                    <div></div>
-                                })
-                            }
-                        </p>
-                    </div>
-                </div>
-            }
         </div>
     );
 }

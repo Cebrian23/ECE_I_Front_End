@@ -1,9 +1,4 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { OrganizationDB } from "../../types/history/Organization.ts";
-
-type Data = {
-    organization?: OrganizationDB,
-}
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 const Organization_id = `#graphql
     query Query ($id: String!) {
@@ -26,14 +21,11 @@ const Organization_id = `#graphql
                 id
                 name
                 cover
-                year_of_publish
                 album_in {
                     id
                     name
-                    creator {
-                        id
-                        name
-                    }
+                    cover
+                    year_of_publish
                 }
             }
             talk_about_in_album {
@@ -41,62 +33,12 @@ const Organization_id = `#graphql
                 name
                 cover
                 year_of_publish
-                creator {
-                    id
-                    name
-                }
             }
         }
     }
 `
-
-const Organization_name = `#graphql
-    query Query ($name: String!) {
-        getOrganization_id (name: $name) {
-            id
-            name
-            logo
-            creation {}
-            dissolution {}
-            distinguished_members {
-                id
-                name
-                surname
-            }
-            involved_in {
-                id
-                name
-            }
-            talk_about_in_song {
-                id
-                name
-                cover
-                year_of_publish
-                album_in {
-                    id
-                    name
-                    creator {
-                        id
-                        name
-                    }
-                }
-            }
-            talk_about_in_album {
-                id
-                name
-                cover
-                year_of_publish
-                creator {
-                    id
-                    name
-                }
-            }
-        }
-    }
-`
-
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const id = ctx.params.id;
 
         //
@@ -105,23 +47,9 @@ export const handler: Handlers<Data> = {
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const organization = props.data.organization;
-
+const Page = () => {
     return (
         <div>
-            {
-                organization !== undefined &&
-                <div>
-                    <div>
-                        <h1>Página de {organization.name}</h1>
-                        <img src={organization.logo}/>
-                    </div>
-                    <div>
-                        <p><b>Nombre: </b>{organization.name}</p>
-                    </div>
-                </div>
-            }
         </div>
     );
 }

@@ -1,9 +1,4 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { LegendGQL } from "../../types/legend/Legend.ts";
-
-type Data = {
-    legend?: LegendGQL,
-}
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 const Legend_id = `#graphql
     query Query ($id: String!) {
@@ -17,6 +12,8 @@ const Legend_id = `#graphql
                 album_in {
                     id
                     name
+                    cover
+                    year_of_publish
                 }
             }
             talk_about_in_album {
@@ -29,55 +26,19 @@ const Legend_id = `#graphql
     }
 `
 
-const Legend_name = `#graphql
-    query Query ($name: String!) {
-        getLegend_name (name: $name) {
-            id
-            name
-            talk_about_in_song {
-                id
-                name
-                cover
-                album_in {
-                    id
-                    name
-                }
-            }
-            talk_about_in_album {
-                id
-                name
-                cover
-                year_of_publish
-            }
-        }
-    }
-`
-
-export const handler: Handlers<Data> = {
-    GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const id = ctx.params.id;
 
         //
-
+        
         return ctx.render({});
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const legend = props.data.legend;
+const Page = () => {
     return (
         <div>
-            {
-                legend !== undefined &&
-                <div>
-                    <div>
-                        <h1>Página de {legend.name}</h1>
-                    </div>
-                    <div>
-                        <p><b>Nombre: </b>{legend.name}</p>
-                    </div>
-                </div>
-            }
         </div>
     );
 }

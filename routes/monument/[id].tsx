@@ -1,9 +1,4 @@
-import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
-import { MonumentDB } from "../../types/history/Monument.ts";
-
-type Data = {
-    monument?: MonumentDB,
-}
+import { FreshContext, Handlers } from "$fresh/server.ts";
 
 const Organization_id = `#graphql
     query Query ($id: String!) {
@@ -17,14 +12,11 @@ const Organization_id = `#graphql
                 id
                 name
                 cover
-                year_of_publish
                 album_in {
                     id
                     name
-                    creator {
-                        id
-                        name
-                    }
+                    cover
+                    year_of_publish
                 }
             }
             talk_about_in_album {
@@ -32,17 +24,13 @@ const Organization_id = `#graphql
                 name
                 cover
                 year_of_publish
-                creator {
-                    id
-                    name
-                }
             }
         }
     }
 `
 
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const id = ctx.params.id;
 
         //
@@ -51,21 +39,9 @@ export const handler: Handlers<Data> = {
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const monument = props.data.monument;
+const Page = () => {
     return (
         <div>
-            {
-                monument !== undefined &&
-                <div>
-                    <div>
-                        <h1>Página de {monument.name}</h1>
-                    </div>
-                    <div>
-                        <p><b>Nombre: </b>{monument.name}</p>
-                    </div>
-                </div>
-            }
         </div>
     );
 }

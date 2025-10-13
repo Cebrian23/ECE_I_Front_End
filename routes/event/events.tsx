@@ -1,41 +1,18 @@
-import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
-import Events from "../../islands/Events.tsx";
-import { EventDB } from "../../types/history/Event.ts";
+import { Handlers, FreshContext } from "$fresh/server.ts";
 
-type Data = {
-    events?: EventDB[],
-}
-
-export const handler: Handlers<Data> = {
-    GET: async (req: Request, ctx: FreshContext<unknown, Data>) => {
+export const handler: Handlers = {
+    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
         const url = new URL(req.url);
 
-        const name = url.searchParams.get("name");
-        if(name){
-            //
-        }
-
+        //
+        
         return ctx.render({});
     }
 }
 
-const Page = (props: PageProps<Data>) => {
-    const events = props.data.events;
-
+const Page = () => {
     return(
         <div>
-            {
-                events === undefined &&
-                <Events/>
-            }
-            {
-                events !== undefined &&
-                events.map((event) => {
-                    <div>
-                        <p>{event.name}</p>
-                    </div>
-                })
-            }
         </div>
     );
 }
