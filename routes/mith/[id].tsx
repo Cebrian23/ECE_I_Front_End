@@ -1,7 +1,5 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import { MithGQL } from "../../types/legend/Mith.ts";
-import axios from "axios";
-import { useQuery } from "react-query";
 
 type Data = {
     mith?: MithGQL,
@@ -63,20 +61,6 @@ export const handler: Handlers<Data> = {
 
         console.log(id);
 
-        const { data } = useQuery("miths", () => {
-            return axios({
-                url: "https://ece-i-back-end.deno.dev",
-                method: "POST",
-                data: {
-                    query: Mith_id
-                }
-            }).then(response => response.data.data);
-        });
-
-        const datos: MithGQL = data;
-        console.log(datos);
-
-        //return ctx.render({mith: datos});
         return ctx.render({});
     }
 }
