@@ -70,6 +70,6 @@ export type Album = {
     year_of_publish: number,
     cover?: string,
     songs?: Song[],
-    talk_about?: Topics[],
+    talk_about?: Topics,
     conceptual_album: boolean,
 }
