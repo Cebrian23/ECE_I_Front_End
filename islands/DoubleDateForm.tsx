@@ -98,25 +98,28 @@ const DoubleDateForm = (props: Props) => {
                                                     }} required/>
                                                 </>
                                             }
-                                            <select name="ac_dc_1" onChange={(e) => {
-                                                    if(e.currentTarget.value === "a.C"){
-                                                        setYear_1(400);
-                                                    }
-                                                    else if(e.currentTarget.value === "d.C"){
-                                                        setYear_1(1700);
-
-                                                        if(ac_dc_2.valueOf() === "a.C"){
-                                                            setYear_2(2000);
-                                                            setAc_dc_2("d.C");
+                                            {
+                                                page_back !== "Literature" &&
+                                                <select name="ac_dc_1" onChange={(e) => {
+                                                        if(e.currentTarget.value === "a.C"){
+                                                            setYear_1(400);
                                                         }
-                                                    }
+                                                        else if(e.currentTarget.value === "d.C"){
+                                                            setYear_1(1700);
 
-                                                    setAc_dc_1(e.currentTarget.value);
-                                                }
-                                            } required>
-                                                <option value="a.C">a.C</option>
-                                                <option value="d.C" selected>d.C</option>
-                                            </select>
+                                                            if(ac_dc_2.valueOf() === "a.C"){
+                                                                setYear_2(2000);
+                                                                setAc_dc_2("d.C");
+                                                            }
+                                                        }
+
+                                                        setAc_dc_1(e.currentTarget.value);
+                                                    }
+                                                } required>
+                                                    <option value="a.C">a.C</option>
+                                                    <option value="d.C" selected>d.C</option>
+                                                </select>
+                                            }
                                         </div>
                                         <div>
                                             <div class="row_data">
@@ -147,23 +150,26 @@ const DoubleDateForm = (props: Props) => {
                                                         }} required/>
                                                     </>
                                                 }
-                                                <select name="ac_dc_2" onChange={(e) => {
-                                                        if(e.currentTarget.value === "a.C"){
-                                                            setYear_2(40);
-                                                        }
-                                                        else if(e.currentTarget.value === "d.C"){
-                                                            setYear_2(200);
-                                                        }
+                                                {
+                                                    page_back !== "Literature" &&
+                                                    <select name="ac_dc_2" onChange={(e) => {
+                                                            if(e.currentTarget.value === "a.C"){
+                                                                setYear_2(40);
+                                                            }
+                                                            else if(e.currentTarget.value === "d.C"){
+                                                                setYear_2(200);
+                                                            }
 
-                                                        setAc_dc_2(e.currentTarget.value);
-                                                    }
-                                                } required>
-                                                    {
-                                                        ac_dc_1.valueOf() === "a.C" &&
-                                                        <option value="a.C">a.C</option>
-                                                    }
-                                                    <option value="d.C" selected>d.C</option>
-                                                </select>
+                                                            setAc_dc_2(e.currentTarget.value);
+                                                        }
+                                                        } required>
+                                                        {
+                                                            ac_dc_1.valueOf() === "a.C" &&
+                                                            <option value="a.C">a.C</option>
+                                                        }
+                                                        <option value="d.C" selected>d.C</option>
+                                                    </select>
+                                                }
                                             </div>
                                         </div>
                                     </>
@@ -173,44 +179,42 @@ const DoubleDateForm = (props: Props) => {
                     </div>
                     <div class="column_data">
                         <div class="row_buttons">
-                                {
-                                    page_back === "Events" &&
+                            {
+                                page_back === "Events" &&
+                                <>
                                     <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
-                                }
-                                {
-                                    page_back === "People" &&
+                                    <button type="submit" onClick={() => location.href="/event/date/Events_date"}>Enviar</button>
+                                </>
+                            }
+                            {
+                                page_back === "People" &&
+                                <>
                                     <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
-                                }
-                                {
-                                    page_back === "Organizations" &&
+                                    <button type="submit" onClick={() => location.href="/person/date/People_date"}>Enviar</button>
+                                </>
+                            }
+                            {
+                                page_back === "Organizations" &&
+                                <>
                                     <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
-                                }
-                                {
-                                    page_back === "Literature" &&
+                                    <button type="submit" onClick={() => location.href="/organization/date/Organizations_date"}>Enviar</button>
+                                </>
+                            }
+                            {
+                                page_back === "Literature" &&
+                                <>
                                     <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
-                                }
-                                {
-                                    page_back === "Heraldries" &&
-                                    <button type="button" onClick={() => location.href="/heraldry/heraldries"}>Volver</button>
-                                }
-                                {
-                                    page_back === "Legends" &&
-                                    <button type="button" onClick={() => location.href="/legend/legends"}>Volver</button>
-                                }
-                                {
-                                    page_back === "Miths" &&
-                                    <button type="button" onClick={() => location.href="/mith/miths"}>Volver</button>
-                                }
-                                {
-                                    page_back === "Festivities" &&
+                                    <button type="submit" onClick={() => location.href="/book/date/Books_date"}>Enviar</button>
+                                </>
+                            }
+                            {
+                                page_back === "Festivities" &&
+                                <>
                                     <button type="button" onClick={() => location.href="/festivity/festivities"}>Volver</button>
-                                }
-                                {
-                                    page_back === "Monuments" &&
-                                    <button type="button" onClick={() => location.href="/monument/monuments"}>Volver</button> 
-                                }
-                                <button type="submit">Enviar</button>
-                            </div>
+                                    <button type="submit" onClick={() => location.href="/festivity/date/Festivities_date"}>Enviar</button>
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
             </form>
