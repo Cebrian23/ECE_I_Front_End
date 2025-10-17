@@ -14,7 +14,7 @@ const CountryForm = () => {
                 <div class="column_data">
                     <div class="row_buttons">
                         <button type="button" onClick={() => location.href="/monument/monuments"}>Volver</button>
-                        <button type="submit" onClick={() => location.href="/monument/country_in/Monument_country"}>Enviar</button>
+                        <button type="button" onClick={() => location.href="/monument/country_in/Monument_country"}>Enviar</button>
                     </div>
                 </div>
             </form>

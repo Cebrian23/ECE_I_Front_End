@@ -183,35 +183,35 @@ const DoubleDateForm = (props: Props) => {
                                 page_back === "Events" &&
                                 <>
                                     <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
-                                    <button type="submit" onClick={() => location.href="/event/date/Events_date"}>Enviar</button>
+                                    <button type="button" onClick={() => location.href="/event/date/Events_date"}>Enviar</button>
                                 </>
                             }
                             {
                                 page_back === "People" &&
                                 <>
                                     <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
-                                    <button type="submit" onClick={() => location.href="/person/date/People_date"}>Enviar</button>
+                                    <button type="button" onClick={() => location.href="/person/date/People_date"}>Enviar</button>
                                 </>
                             }
                             {
                                 page_back === "Organizations" &&
                                 <>
                                     <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
-                                    <button type="submit" onClick={() => location.href="/organization/date/Organizations_date"}>Enviar</button>
+                                    <button type="button" onClick={() => location.href="/organization/date/Organizations_date"}>Enviar</button>
                                 </>
                             }
                             {
                                 page_back === "Literature" &&
                                 <>
                                     <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
-                                    <button type="submit" onClick={() => location.href="/book/date/Books_date"}>Enviar</button>
+                                    <button type="button" onClick={() => location.href="/book/date/Books_date"}>Enviar</button>
                                 </>
                             }
                             {
                                 page_back === "Festivities" &&
                                 <>
                                     <button type="button" onClick={() => location.href="/festivity/festivities"}>Volver</button>
-                                    <button type="submit" onClick={() => location.href="/festivity/date/Festivities_date"}>Enviar</button>
+                                    <button type="button" onClick={() => location.href="/festivity/date/Festivities_date"}>Enviar</button>
                                 </>
                             }
                         </div>
