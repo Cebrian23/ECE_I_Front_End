@@ -2,6 +2,7 @@ import { Song } from "./Song.ts";
 import { Topics } from "./Topics.ts";
 
 export type AlbumGQL = {
+    id: string,
     name: string,
     creator: {
         id: string,
