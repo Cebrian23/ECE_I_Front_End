@@ -38,7 +38,7 @@ const Page = (props: PageProps<Data>) => {
                             </div>
                             <div>
                                 {
-                                    monument.talked_about_in_song.length !== 0 &&
+                                    monument.talked_about_in_song !== undefined && monument.talked_about_in_song.length !== 0 &&
                                     <>
                                         <h3>Canciones que abordan esta leyenda</h3>
                                         <div>
@@ -59,7 +59,7 @@ const Page = (props: PageProps<Data>) => {
                             </div>
                             <div>
                                 {
-                                    monument.talked_about_in_song.length !== 0 &&
+                                    monument.talked_about_in_album !== undefined && monument.talked_about_in_album.length !== 0 &&
                                     <>
                                         <h3>Albumes que abordan esta leyenda</h3>
                                         <div>

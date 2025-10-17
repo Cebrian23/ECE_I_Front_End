@@ -30,7 +30,7 @@ const Page = (props: PageProps<Data>) => {
                             </div>
                             <div>
                                 {
-                                    festivity.talked_about_in_song.length !== 0 &&
+                                    festivity.talked_about_in_song !== undefined && festivity.talked_about_in_song.length !== 0 &&
                                     <>
                                         <h3>Canciones que abordan esta leyenda</h3>
                                         <div>
@@ -51,7 +51,7 @@ const Page = (props: PageProps<Data>) => {
                             </div>
                             <div>
                                 {
-                                    festivity.talked_about_in_song.length !== 0 &&
+                                    festivity.talked_about_in_album !== undefined && festivity.talked_about_in_album.length !== 0 &&
                                     <>
                                         <h3>Albumes que abordan esta leyenda</h3>
                                         <div>

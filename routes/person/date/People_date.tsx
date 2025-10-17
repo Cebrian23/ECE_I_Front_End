@@ -56,11 +56,20 @@ const Page = (props: PageProps<Data>) => {
                     return(
                         <div>
                             <div>
-                                <h1>{person.name + " " + person.surname}</h1>
+                                <h1>
+                                    {
+                                        person.country_from !== "China" &&
+                                        <>{person.name + " " + person.surname}</>
+                                    }
+                                    {
+                                        person.country_from === "China" &&
+                                        <>{person.surname + " " + person.name}</>
+                                    }
+                                </h1>
                             </div>
                             <div>
                                 {
-                                    person.talked_about_in_song.length !== 0 &&
+                                    person.talked_about_in_song !== undefined && person.talked_about_in_song.length !== 0 &&
                                     <>
                                         <h3>Canciones que abordan esta leyenda</h3>
                                         <div>
@@ -81,7 +90,7 @@ const Page = (props: PageProps<Data>) => {
                             </div>
                             <div>
                                 {
-                                    person.talked_about_in_song.length !== 0 &&
+                                    person.talked_about_in_album !== undefined && person.talked_about_in_album.length !== 0 &&
                                     <>
                                         <h3>Albumes que abordan esta leyenda</h3>
                                         <div>
