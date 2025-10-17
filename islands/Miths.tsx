@@ -17,9 +17,7 @@ const Miths = () => {
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/mith/all/All_miths"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
