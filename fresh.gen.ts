@@ -7,24 +7,48 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $album_id_ from "./routes/album/[id].tsx";
 import * as $band_id_ from "./routes/band/[id].tsx";
-import * as $book_id_ from "./routes/book/[id].tsx";
+import * as $book_all_All_books from "./routes/book/all/All_books.tsx";
+import * as $book_date_Books_date from "./routes/book/date/Books_date.tsx";
+import * as $book_id_id_ from "./routes/book/id/[id].tsx";
 import * as $book_literature from "./routes/book/literature.tsx";
-import * as $event_id_ from "./routes/event/[id].tsx";
+import * as $book_title_Books_title from "./routes/book/title/Books_title.tsx";
+import * as $event_all_All_events from "./routes/event/all/All_events.tsx";
+import * as $event_date_Events_date from "./routes/event/date/Events_date.tsx";
 import * as $event_events from "./routes/event/events.tsx";
-import * as $festivity_id_ from "./routes/festivity/[id].tsx";
+import * as $event_id_id_ from "./routes/event/id/[id].tsx";
+import * as $event_name_Events_name from "./routes/event/name/Events_name.tsx";
+import * as $festivity_all_All_festivities from "./routes/festivity/all/All_festivities.tsx";
+import * as $festivity_date_Festivities_date from "./routes/festivity/date/Festivities_date.tsx";
 import * as $festivity_festivities from "./routes/festivity/festivities.tsx";
-import * as $heraldry_id_ from "./routes/heraldry/[id].tsx";
+import * as $festivity_id_id_ from "./routes/festivity/id/[id].tsx";
+import * as $festivity_name_Festivities_name from "./routes/festivity/name/Festivities_name.tsx";
+import * as $heraldry_all_All_heraldries from "./routes/heraldry/all/All_heraldries.tsx";
 import * as $heraldry_heraldries from "./routes/heraldry/heraldries.tsx";
+import * as $heraldry_id_id_ from "./routes/heraldry/id/[id].tsx";
+import * as $heraldry_name_Heraldries_name from "./routes/heraldry/name/Heraldries_name.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $legend_id_ from "./routes/legend/[id].tsx";
+import * as $legend_all_All_legends from "./routes/legend/all/All_legends.tsx";
+import * as $legend_id_id_ from "./routes/legend/id/[id].tsx";
 import * as $legend_legends from "./routes/legend/legends.tsx";
-import * as $mith_id_ from "./routes/mith/[id].tsx";
+import * as $legend_name_Legends_name from "./routes/legend/name/Legends_name.tsx";
+import * as $mith_all_All_miths from "./routes/mith/all/All_miths.tsx";
+import * as $mith_id_id_ from "./routes/mith/id/[id].tsx";
 import * as $mith_miths from "./routes/mith/miths.tsx";
-import * as $monument_id_ from "./routes/monument/[id].tsx";
+import * as $mith_name_Miths_name from "./routes/mith/name/Miths_name.tsx";
+import * as $monument_all_All_monuments from "./routes/monument/all/All_monuments.tsx";
+import * as $monument_country_in_Monuments_country from "./routes/monument/country_in/Monuments_country.tsx";
+import * as $monument_id_id_ from "./routes/monument/id/[id].tsx";
 import * as $monument_monuments from "./routes/monument/monuments.tsx";
-import * as $organization_id_ from "./routes/organization/[id].tsx";
+import * as $monument_name_Monuments_name from "./routes/monument/name/Monuments_name.tsx";
+import * as $organization_all_All_organizations from "./routes/organization/all/All_organizations.tsx";
+import * as $organization_date_Organizations_date from "./routes/organization/date/Organizations_date.tsx";
+import * as $organization_id_id_ from "./routes/organization/id/[id].tsx";
+import * as $organization_name_Organizations_name from "./routes/organization/name/Organizations_name.tsx";
 import * as $organization_organizations from "./routes/organization/organizations.tsx";
-import * as $person_id_ from "./routes/person/[id].tsx";
+import * as $person_all_All_people from "./routes/person/all/All_people.tsx";
+import * as $person_date_People_date from "./routes/person/date/People_date.tsx";
+import * as $person_id_id_ from "./routes/person/id/[id].tsx";
+import * as $person_name_People_name from "./routes/person/name/People_name.tsx";
 import * as $person_people from "./routes/person/people.tsx";
 import * as $song_id_ from "./routes/song/[id].tsx";
 import * as $writer_id_ from "./routes/writer/[id].tsx";
@@ -50,24 +74,56 @@ const manifest = {
     "./routes/_layout.tsx": $_layout,
     "./routes/album/[id].tsx": $album_id_,
     "./routes/band/[id].tsx": $band_id_,
-    "./routes/book/[id].tsx": $book_id_,
+    "./routes/book/all/All_books.tsx": $book_all_All_books,
+    "./routes/book/date/Books_date.tsx": $book_date_Books_date,
+    "./routes/book/id/[id].tsx": $book_id_id_,
     "./routes/book/literature.tsx": $book_literature,
-    "./routes/event/[id].tsx": $event_id_,
+    "./routes/book/title/Books_title.tsx": $book_title_Books_title,
+    "./routes/event/all/All_events.tsx": $event_all_All_events,
+    "./routes/event/date/Events_date.tsx": $event_date_Events_date,
     "./routes/event/events.tsx": $event_events,
-    "./routes/festivity/[id].tsx": $festivity_id_,
+    "./routes/event/id/[id].tsx": $event_id_id_,
+    "./routes/event/name/Events_name.tsx": $event_name_Events_name,
+    "./routes/festivity/all/All_festivities.tsx":
+      $festivity_all_All_festivities,
+    "./routes/festivity/date/Festivities_date.tsx":
+      $festivity_date_Festivities_date,
     "./routes/festivity/festivities.tsx": $festivity_festivities,
-    "./routes/heraldry/[id].tsx": $heraldry_id_,
+    "./routes/festivity/id/[id].tsx": $festivity_id_id_,
+    "./routes/festivity/name/Festivities_name.tsx":
+      $festivity_name_Festivities_name,
+    "./routes/heraldry/all/All_heraldries.tsx": $heraldry_all_All_heraldries,
     "./routes/heraldry/heraldries.tsx": $heraldry_heraldries,
+    "./routes/heraldry/id/[id].tsx": $heraldry_id_id_,
+    "./routes/heraldry/name/Heraldries_name.tsx":
+      $heraldry_name_Heraldries_name,
     "./routes/index.tsx": $index,
-    "./routes/legend/[id].tsx": $legend_id_,
+    "./routes/legend/all/All_legends.tsx": $legend_all_All_legends,
+    "./routes/legend/id/[id].tsx": $legend_id_id_,
     "./routes/legend/legends.tsx": $legend_legends,
-    "./routes/mith/[id].tsx": $mith_id_,
+    "./routes/legend/name/Legends_name.tsx": $legend_name_Legends_name,
+    "./routes/mith/all/All_miths.tsx": $mith_all_All_miths,
+    "./routes/mith/id/[id].tsx": $mith_id_id_,
     "./routes/mith/miths.tsx": $mith_miths,
-    "./routes/monument/[id].tsx": $monument_id_,
+    "./routes/mith/name/Miths_name.tsx": $mith_name_Miths_name,
+    "./routes/monument/all/All_monuments.tsx": $monument_all_All_monuments,
+    "./routes/monument/country_in/Monuments_country.tsx":
+      $monument_country_in_Monuments_country,
+    "./routes/monument/id/[id].tsx": $monument_id_id_,
     "./routes/monument/monuments.tsx": $monument_monuments,
-    "./routes/organization/[id].tsx": $organization_id_,
+    "./routes/monument/name/Monuments_name.tsx": $monument_name_Monuments_name,
+    "./routes/organization/all/All_organizations.tsx":
+      $organization_all_All_organizations,
+    "./routes/organization/date/Organizations_date.tsx":
+      $organization_date_Organizations_date,
+    "./routes/organization/id/[id].tsx": $organization_id_id_,
+    "./routes/organization/name/Organizations_name.tsx":
+      $organization_name_Organizations_name,
     "./routes/organization/organizations.tsx": $organization_organizations,
-    "./routes/person/[id].tsx": $person_id_,
+    "./routes/person/all/All_people.tsx": $person_all_All_people,
+    "./routes/person/date/People_date.tsx": $person_date_People_date,
+    "./routes/person/id/[id].tsx": $person_id_id_,
+    "./routes/person/name/People_name.tsx": $person_name_People_name,
     "./routes/person/people.tsx": $person_people,
     "./routes/song/[id].tsx": $song_id_,
     "./routes/writer/[id].tsx": $writer_id_,
