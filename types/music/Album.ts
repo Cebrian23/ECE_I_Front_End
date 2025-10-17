@@ -9,12 +9,12 @@ export type AlbumGQL = {
         name: string,
     }
     year_of_publish: number,
-    cover: string | null,
-    songs: {
+    cover?: string,
+    songs?: {
         id: string,
         name: string,
-    }[] | null,
-    talk_about: {
+    }[],
+    talk_about?: {
         events: {
             id: string,
             name: string,
@@ -61,7 +61,7 @@ export type AlbumGQL = {
             name: string,
             image: string,
         }[],
-    } | null,
+    },
     conceptual_album: boolean,
 }
 
