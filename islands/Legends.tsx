@@ -17,9 +17,7 @@ const Legends = () => {
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/legend/all/All_legends"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
