@@ -24,9 +24,7 @@ const Monuments = () => {
                         showCountryFilter(true);
                     }}>Filtrar por país de localización</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/monument/all/All_monuments"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
