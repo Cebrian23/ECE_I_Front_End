@@ -37,9 +37,7 @@ const Organizations = () => {
                         showDoubleDateFilter(true);
                     }}>Filtrar por fecha de creación y disolución</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/organization/all/All_organizations"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
