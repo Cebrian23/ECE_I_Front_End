@@ -20,7 +20,7 @@ const Literature = () => {
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
-                    }}>Filtrar por nombre</button>
+                    }}>Filtrar por título</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
@@ -37,9 +37,7 @@ const Literature = () => {
                         showDoubleDateFilter(true);
                     }}>Filtrar por fecha de publicación mínima y máxima</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/book/all/All_books"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
