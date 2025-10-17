@@ -11,6 +11,7 @@ export type BookGQL = {
         album_in: {
             id: string,
             name: string,
+            cover: string,
             year_of_publish: number,
         }
     }[],
