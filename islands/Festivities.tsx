@@ -24,9 +24,7 @@ const Festivities = () => {
                         showInitDateFilter(true);
                     }}>Filtrar por fecha</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/festivity/all/All_festivities"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
