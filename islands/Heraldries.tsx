@@ -17,9 +17,7 @@ const Heraldries = () => {
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/heraldry/all/All_heraldries"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
