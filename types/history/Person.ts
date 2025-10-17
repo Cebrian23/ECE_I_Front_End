@@ -3,10 +3,10 @@ import { Date } from "./Date.ts";
 export type PersonGQL = {
     id: string,
     name: string,
-    surname: string | null,
-    nickname: string[] | null,
-    image: string | null,
-    birth_date: {
+    surname?: string,
+    nickname?: string[],
+    image?: string,
+    birth_date?: {
         normal_date: {
             year: number,
             month: string | null,
@@ -17,8 +17,8 @@ export type PersonGQL = {
             century: string,
             ac_dc: string,
         } | null,
-    } | null,
-    death_date: {
+    },
+    death_date?: {
         normal_date: {
             year: number,
             month: string | null,
@@ -29,33 +29,33 @@ export type PersonGQL = {
             century: string,
             ac_dc: string,
         } | null
-    } | null,
+    },
     country_from: string,
     historical_position: string,
-    involved_in: {
+    involved_in?: {
         id: string,
         name: string,
     }[],
-    member_of: {
+    member_of?: {
         id: string,
         name: string,
-        image: string,
+        image?: string,
     }[],
-    talked_about_in_song: {
+    talked_about_in_song?: {
         id: string,
         name: string,
-        cover: string
+        cover?: string
         album_in: {
             id: string,
             name: string,
-            cover: string,
+            cover?: string,
             year_of_publish: number,
         }
     }[],
-    talked_about_in_album: {
+    talked_about_in_album?: {
         id: string,
         name: string,
-        cover: string,
+        cover?: string,
         year_of_publish: number,
     }[],
 }
