@@ -4,8 +4,8 @@ import { Person } from "./Person.ts";
 export type OrganizationGQL = {
     id: string,
     name: string,
-    logo: string | null,
-    creation: {
+    logo?: string,
+    creation?: {
         normal_date: {
             year: number,
             month: string | null,
@@ -16,8 +16,8 @@ export type OrganizationGQL = {
             century: string,
             ac_dc: string,
         } | null,
-    } | null,
-    dissolution: {
+    },
+    dissolution?: {
         normal_date: {
             year: number,
             month: string | null,
@@ -28,33 +28,33 @@ export type OrganizationGQL = {
             century: string,
             ac_dc: string,
         } | null,
-    } | null,
-    distinguished_members: {
+    },
+    distinguished_members?: {
         id: string,
         name: string,
-        surname: string,
-        image: string,
+        surname?: string,
+        image?: string,
         country_from: string,
     }[],
-    involved_in: {
+    involved_in?: {
         id: string,
         name: string,
     }[],
-    talked_about_in_song: {
+    talked_about_in_song?: {
         id: string,
         name: string,
-        cover: string
+        cover?: string
         album_in: {
             id: string,
             name: string,
-            cover: string,
+            cover?: string,
             year_of_publish: number,
         }
     }[],
-    talked_about_in_album: {
+    talked_about_in_album?: {
         id: string,
         name: string,
-        cover: string,
+        cover?: string,
         year_of_publish: number,
     }[],
 }
