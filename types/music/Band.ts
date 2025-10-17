@@ -3,11 +3,11 @@ import { Album } from "./Album.ts";
 export type BandGQL = {
     id: string,
     name: string,
-    logo: string | null,
+    logo?: string,
     albums: {
         name: string,
         year_of_publish: number,
-        cover: string | null,
+        cover?: string,
     },
 }
 
