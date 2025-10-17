@@ -3,7 +3,7 @@ import { Date_monument } from "./Date.ts";
 export type MonumentGQL = {
     id: string,
     name: string,
-    creation: {
+    creation?: {
         normal_date: {
             start: {
                 year: number,
@@ -28,8 +28,8 @@ export type MonumentGQL = {
                 ac_dc: string,
             } | null,
         } | null,
-    } | null,
-    destruction: {
+    },
+    destruction?: {
         normal_date: {
             start: {
                 year: number,
@@ -54,24 +54,24 @@ export type MonumentGQL = {
                 ac_dc: string,
             } | null,
         } | null,
-    } | null,
+    },
     still_exists: string,
-    country_in: string | null,
-    talked_about_in_song: {
+    country_in?: string,
+    talked_about_in_song?: {
         id: string,
         name: string,
-        cover: string
+        cover?: string
         album_in: {
             id: string,
             name: string,
-            cover: string,
+            cover?: string,
             year_of_publish: number,
         }
     }[],
-    talked_about_in_album: {
+    talked_about_in_album?: {
         id: string,
         name: string,
-        cover: string,
+        cover?: string,
         year_of_publish: number,
     }[],
 }
