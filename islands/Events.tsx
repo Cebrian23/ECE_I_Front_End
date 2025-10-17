@@ -37,9 +37,7 @@ const Events = () => {
                         showDoubleDateFilter(true);
                     }}>Filtrar por fecha de inicio y fin</button>
                     <br/>
-                    <button type="button" onClick={() => {
-                        showInitialForm(false);
-                    }}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/event/all/All_events"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
