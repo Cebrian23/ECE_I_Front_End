@@ -51,8 +51,8 @@ export type SongGQL = {
             image: string,
         }[],
     },
-    cover: string | null,
-    official_video: string | null,
+    cover?: string,
+    official_video?: string,
     album_in: {
         id: string,
         name: string,
