@@ -43,10 +43,11 @@ export type OrganizationGQL = {
     talked_about_in_song: {
         id: string,
         name: string,
-        cover: string,
+        cover: string
         album_in: {
             id: string,
             name: string,
+            cover: string,
             year_of_publish: number,
         }
     }[],
