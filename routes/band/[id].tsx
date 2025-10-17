@@ -1,34 +1,29 @@
-import { FreshContext, Handlers } from "$fresh/server.ts";
+import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
+import Axios from "axios";
+import { BandGQL } from "../../types/music/Band.ts";
 
-const Band_id = `#graphql
-    query Query ($id: String!) {
-        getAlbum_id (id: $id) {
-            id
-            name
-            albums {
-                id
-                name
-                cover
-                year_of_publish
-            }
-        }
-    }
-`
+type Data = {
+    band: BandGQL,
+}
 
-
-export const handler: Handlers = {
-    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
+export const handler: Handlers<Data> = {
+    GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
 
-        //
+        const data = await Axios.get<BandGQL>(`https://ece-i-back-end-ii.deno.dev/band/id?id=${id}`);
         
-        return ctx.render({});
+        return ctx.render({band: data.data});
     }
 }
 
-const Page = () => {
+const Page = (props: PageProps<Data>) => {
+    const band = props.data.band;
+
+    console.log(band);
+
     return (
         <div>
+            <h1>Página de la banda "{band.name}"</h1>
         </div>
     );
 }

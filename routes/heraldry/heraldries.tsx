@@ -1,20 +1,10 @@
-import { Handlers, FreshContext } from "$fresh/server.ts";
-
-export const handler: Handlers = {
-    GET: async (req: Request, ctx: FreshContext<unknown>) =>{
-        const url = new URL(req.url);
-
-        //
-        
-        return ctx.render({});
-    }
-}
+import Heraldries from "../../islands/Heraldries.tsx";
 
 const Page = () => {
     return(
         <div>
-        </div>
-        
+            <Heraldries/>
+        </div>       
     );
 }
 
