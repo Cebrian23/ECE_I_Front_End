@@ -97,3 +97,23 @@ button{
         color: black;
     }
 }
+
+.a1{
+    text-decoration: none;
+    color: black;
+}
+
+.short_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px black solid;
+    padding: 15px;
+    margin: 25px;
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
