@@ -10,11 +10,13 @@ const DateForm = (props: Props) => {
     const type: string = props.type;
     const start: boolean | undefined = props.start;
     const page_back: string = props.page_back;
+    let contador = 0;
 
     const [day, setDay] = useState<string>("1");
     const [month, setMonth] = useState<string>("");
     const [year, setYear] = useState<string>("");
     const [ac_dc, setAc_dc] = useState<string>("d.C");
+    const [type_date, setType] = useState<string>("");
 
     useEffect(() => {
         if((month.valueOf() === "Abril" || month.valueOf() === "Junio" ||
@@ -24,6 +26,19 @@ const DateForm = (props: Props) => {
         }
         else if((month.valueOf() === "Febrero") && (Number(day.valueOf()) >= 28)){
             setDay("28");
+        }
+
+        if(contador === 0){
+            if(start === true){
+               setYear("1700");
+               setType("Inicio");
+               contador++;
+            }   
+            else if((!start || start === false)){
+               setYear("2025");
+               setType("Fin");
+               contador++;
+            }   
         }
     }, [month, day]);
 
@@ -89,7 +104,7 @@ const DateForm = (props: Props) => {
                         </div>
                         <div class="column_data">
                             {
-                                start === true && type !== "Festivity" && setYear("1700") &&
+                                start === true && type !== "Festivity"&&
                                 <div class="row_data">
                                     <input name="year" type="number" min="1700" max="2026" defaultValue="1700" onChange={(e) => setYear(e.currentTarget.value)} required/>
                                     {
@@ -99,11 +114,12 @@ const DateForm = (props: Props) => {
                                             <option value="a.C">a.C</option>
                                         </select>
                                     }
-                                    <input name="type" type="text" defaultValue="Inicio" hidden required/>
+                                    <input name="type_date" type="text" defaultValue="Inicio" hidden required/>
                                 </div>
+                                
                             }
                             {
-                                start === false && type !== "Festivity" && setYear("2025") &&
+                                start === false && type !== "Festivity" &&
                                 <div class="row_data">
                                     <input name="year" type="number" min="1700" max="2026" defaultValue="2025" onChange={(e) => setYear(e.currentTarget.value)} required/>
                                     {
@@ -113,8 +129,9 @@ const DateForm = (props: Props) => {
                                             <option value="a.C">a.C</option>
                                         </select>
                                     }
-                                    <input name="type" type="text" defaultValue="Fin" hidden required/>
+                                    <input name="type_date" type="text" defaultValue="Fin" hidden required/>
                                 </div>
+                                
                             }
                             {
                                 type === "Festivity" &&
@@ -169,28 +186,28 @@ const DateForm = (props: Props) => {
                             page_back === "Events" &&
                             <>
                                 <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/event/date/Events_date?year=${year}&ac_dc=${ac_dc}`}>Enviar</button>
+                                <button type="button" onClick={() => location.href=`/event/date/Events_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}`}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "People" &&
                             <>
                                 <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/person/date/People_date?year=${year}&ac_dc=${ac_dc}`}>Enviar</button>
+                                <button type="button" onClick={() => location.href=`/person/date/People_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}`}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Organizations" &&
                             <>
                                 <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/organization/date/Organizations_date?year=${year}&ac_dc=${ac_dc}`}>Enviar</button>
+                                <button type="button" onClick={() => location.href=`/organization/date/Organizations_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}`}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Literature" &&
                             <>
                                 <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/book/date/Books_date?year=${year}`}>Enviar</button>
+                                <button type="button" onClick={() => location.href=`/book/date/Books_date?year=${year}&type=${type_date}`}>Enviar</button>
                             </>
                         }
                         {
