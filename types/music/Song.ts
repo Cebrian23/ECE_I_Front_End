@@ -58,6 +58,10 @@ export type SongGQL = {
         name: string,
         year_of_publish: number,
         cover?: string,
+        creator: {
+            id: string,
+            name: string,
+        }
     }
 }
 
@@ -66,4 +70,20 @@ export type Song = {
     name: string,
     talk_about: Topics,
     official_video?: string,
+}
+
+export type Song_Short = {
+    id: string;
+    name: string;
+    cover?: string;
+    album_in: {
+        id: string;
+        name: string;
+        cover?: string;
+        year_of_publish: number;
+        creator: {
+            id: string;
+            name: string;
+        };
+    }
 }
