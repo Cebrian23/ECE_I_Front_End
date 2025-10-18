@@ -1,6 +1,8 @@
 import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { MonumentGQL } from "../../../types/history/Monument.ts";
+import Short_Album from "../../../components/Short_Album.tsx";
+import Short_Song from "../../../components/Short_Song.tsx";
 
 type Data = {
     monuments: MonumentGQL[],
@@ -32,51 +34,38 @@ const Page = (props: PageProps<Data>) => {
             {
                 monuments.map((monument) => {
                     return(
-                        <div>
-                            <div>
-                                <h1>{monument.name}</h1>
-                            </div>
-                            <div>
-                                {
-                                    monument.talked_about_in_song !== undefined && monument.talked_about_in_song.length !== 0 &&
-                                    <>
-                                        <h3>Canciones que abordan esta leyenda</h3>
-                                        <div>
-                                            {
-                                                monument.talked_about_in_song.map((song) => {
-                                                    return(
-                                                        <div>
-                                                            <image src={song.cover}/>
-                                                            <p><a href={song.id}>{song.name}</a></p>
-                                                            <i><a href={song.album_in.id}>{song.album_in.name + " (" + song.album_in.year_of_publish + ")"}</a></i>
-                                                        </div>
-                                                    );
-                                                })
-                                            }
-                                        </div>
-                                    </>
-                                }
-                            </div>
-                            <div>
-                                {
-                                    monument.talked_about_in_album !== undefined && monument.talked_about_in_album.length !== 0 &&
-                                    <>
-                                        <h3>Albumes que abordan esta leyenda</h3>
-                                        <div>
-                                            {
-                                                monument.talked_about_in_album.map((album) => {
-                                                    return(
-                                                        <div>
-                                                            <image src={album.cover}/>
-                                                            <i><a href={album.id}>{album.name + " (" + album.year_of_publish + ")"}</a></i>
-                                                        </div>
-                                                    );
-                                                })
-                                            }
-                                        </div>
-                                    </>
-                                }
-                            </div>
+                        <div class="block">
+                            <h1><a href={`/monument/id/${monument.id}`} class="a1">{monument.name}</a></h1>
+                            {
+                                monument.talked_about_in_song !== undefined && monument.talked_about_in_song.length !== 0 &&
+                                <>
+                                    <h3>Canciones que abordan esta leyenda</h3>
+                                    <div>
+                                        {
+                                            monument.talked_about_in_song.map((song) => {
+                                                return(
+                                                    <Short_Song song={song}/>
+                                                );
+                                            })
+                                        }
+                                    </div>
+                                </>
+                            }
+                            {
+                                monument.talked_about_in_album !== undefined && monument.talked_about_in_album.length !== 0 &&
+                                <>
+                                    <h3>Albumes que abordan esta leyenda</h3>
+                                    <div>
+                                        {
+                                            monument.talked_about_in_album.map((album) => {
+                                                return(
+                                                    <Short_Album album={album}/>
+                                                );
+                                            })
+                                        }
+                                    </div>
+                                </>
+                            }
                         </div>
                     );
                 })
