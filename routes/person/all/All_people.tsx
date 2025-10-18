@@ -32,7 +32,16 @@ const Page = (props: PageProps<Data>) => {
                             <h1>
                                 {
                                     person.country_from !== "China" &&
-                                    <a href={`/person/id/${person.id}`} class="a1">{person.name + " " + person.surname}</a>
+                                    <a href={`/person/id/${person.id}`} class="a1">
+                                        {
+                                            person.surname !== null &&
+                                            <>{person.name + " " + person.surname}</>
+                                        }
+                                        {
+                                            person.surname === null &&
+                                            <>{person.name}</>
+                                        }
+                                    </a>
                                 }
                                 {
                                     person.country_from === "China" &&
