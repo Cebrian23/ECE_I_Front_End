@@ -74,3 +74,14 @@ export type Album = {
     talk_about?: Topics,
     conceptual_album: boolean,
 }
+
+export type Album_Short = {
+    id: string;
+    name: string;
+    cover?: string;
+    year_of_publish: number;
+    creator: {
+        id: string;
+        name: string;
+    };
+}
