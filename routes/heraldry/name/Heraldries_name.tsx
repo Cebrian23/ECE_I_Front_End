@@ -35,7 +35,7 @@ const Page = (props: PageProps<Data>) => {
                 heraldries.map((heraldry) => {
                     return(
                         <div class="block">
-                            <h1><a href={`/heraldy/id/${heraldry.id}`} class="a1">{heraldry.name}</a></h1>
+                            <h1><a href={`/heraldry/id/${heraldry.id}`} class="a1">{heraldry.name}</a></h1>
                             {
                                 heraldry.talked_about_in_song !== undefined && heraldry.talked_about_in_song.length !== 0 &&
                                 <>
