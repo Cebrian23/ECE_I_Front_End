@@ -29,9 +29,9 @@ const Page = (props: PageProps<Data>) => {
                         <div class="block">
                             <h1><a href={`/organization/id/${organization.id}`} class="a1">{organization.name}</a></h1>
                             {
-                                organization.talked_about_in_song !== undefined &&organization.talked_about_in_song.length !== 0 &&
+                                organization.talked_about_in_song !== undefined && organization.talked_about_in_song.length !== 0 &&
                                 <>
-                                    <h3>Canciones que abordan esta leyenda</h3>
+                                    <h3>Canciones que abordan esta organización</h3>
                                     <div>
                                         {
                                             organization.talked_about_in_song.map((song) => {

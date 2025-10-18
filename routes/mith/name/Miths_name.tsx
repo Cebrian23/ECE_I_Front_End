@@ -39,7 +39,7 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 mith.talked_about_in_song !== undefined && mith.talked_about_in_song.length !== 0 &&
                                 <>
-                                    <h3>Canciones que abordan esta leyenda</h3>
+                                    <h3>Canciones que abordan este mito</h3>
                                     <div>
                                         {
                                             mith.talked_about_in_song.map((song) => {
@@ -54,7 +54,7 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 mith.talked_about_in_album !== undefined && mith.talked_about_in_album.length !== 0 &&
                                 <>
-                                    <h3>Albumes que abordan esta leyenda</h3>
+                                    <h3>Albumes que abordan este mito</h3>
                                     <div>
                                         {
                                             mith.talked_about_in_album.map((album) => {

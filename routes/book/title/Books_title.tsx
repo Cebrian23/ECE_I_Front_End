@@ -39,32 +39,32 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 book.talked_about_in_song !== undefined && book.talked_about_in_song.length !== 0 &&
                                 <>
-                                        <h3>Canciones que abordan esta leyenda</h3>
-                                        <div>
-                                            {
-                                                book.talked_about_in_song.map((song) => {
-                                                    return(
-                                                        <Short_Song song={song}/>
-                                                    );
-                                                })
-                                            }
-                                        </div>
-                                    </>
+                                    <h3>Canciones que abordan este libro</h3>
+                                    <div>
+                                        {
+                                            book.talked_about_in_song.map((song) => {
+                                                return(
+                                                    <Short_Song song={song}/>
+                                                );
+                                            })
+                                        }
+                                    </div>
+                                </>
                             }
                             {
                                 book.talked_about_in_album !== undefined && book.talked_about_in_album.length !== 0 &&
                                 <>
-                                        <h3>Albumes que abordan esta leyenda</h3>
-                                        <div>
-                                            {
-                                                book.talked_about_in_album.map((album) => {
-                                                    return(
-                                                        <Short_Album album={album}/>
-                                                    );
-                                                })
-                                            }
-                                        </div>
-                                    </>
+                                    <h3 class="block_name">Albumes que abordan este libro</h3>
+                                    <div class="block_content">
+                                        {
+                                            book.talked_about_in_album.map((album) => {
+                                                return(
+                                                    <Short_Album album={album}/>
+                                                );
+                                            })
+                                        }
+                                    </div>
+                                </>
                             }
                         </div>
                     );

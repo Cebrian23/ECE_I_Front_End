@@ -39,7 +39,7 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 heraldry.talked_about_in_song !== undefined && heraldry.talked_about_in_song.length !== 0 &&
                                 <>
-                                    <h3>Canciones que abordan esta leyenda</h3>
+                                    <h3>Canciones que abordan esta heráldica</h3>
                                     <div>
                                         {
                                             heraldry.talked_about_in_song.map((song) => {
@@ -54,7 +54,7 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 heraldry.talked_about_in_album !== undefined && heraldry.talked_about_in_album.length !== 0 &&
                                 <>
-                                    <h3>Albumes que abordan esta leyenda</h3>
+                                    <h3>Albumes que abordan esta heráldica</h3>
                                     <div>
                                         {
                                             heraldry.talked_about_in_album.map((album) => {

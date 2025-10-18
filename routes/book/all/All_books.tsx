@@ -31,7 +31,7 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 book.talked_about_in_song !== undefined && book.talked_about_in_song.length !== 0 &&
                                 <>
-                                    <h3>Canciones que abordan esta leyenda</h3>
+                                    <h3>Canciones que abordan este libro</h3>
                                     <div>
                                         {
                                             book.talked_about_in_song.map((song) => {
@@ -46,7 +46,7 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 book.talked_about_in_album !== undefined && book.talked_about_in_album.length !== 0 &&
                                 <>
-                                    <h3 class="block_name">Albumes que abordan esta leyenda</h3>
+                                    <h3 class="block_name">Albumes que abordan este libro</h3>
                                     <div class="block_content">
                                         {
                                             book.talked_about_in_album.map((album) => {
