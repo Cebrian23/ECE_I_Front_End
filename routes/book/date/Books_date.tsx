@@ -17,17 +17,17 @@ export const handler: Handlers<Data> = {
         const year_a = url.searchParams.get("year_a")?.replace("+", " ");
         const year_b = url.searchParams.get("year_b")?.replace("+", " ");
 
-        if((!year && !type) || (!year_a && !year_b)){
+        if((!year && !type) && (!year_a && !year_b)){
             return ctx.render();
         }
 
         if(year){
-            if(type!.valueOf() === "Inicio"){
+            if(type === "Inicio"){
                 const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/min_date?year=${year}`);
         
                 return ctx.render({books: data.data});
             }
-            else if(type!.valueOf() === "Fin"){
+            else if(type === "Fin"){
                 const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/max_date?year=${year}`);
         
                 return ctx.render({books: data.data});

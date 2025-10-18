@@ -20,7 +20,7 @@ export const handler: Handlers<Data> = {
         const year_b = url.searchParams.get("year_b")?.replace("+", " ");
         const ac_dc_2 = url.searchParams.get("ac_dc_2")?.replace("+", " ");
     
-        if((!year && !ac_dc && !type) || (!year_a && !ac_dc_1 && !year_b && !ac_dc_2)){
+        if((!year && !ac_dc && !type) && (!year_a && !ac_dc_1 && !year_b && !ac_dc_2)){
             return ctx.render();
         }
         

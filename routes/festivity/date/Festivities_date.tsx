@@ -12,8 +12,8 @@ export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const url = new URL(req.url);
         
-        const month = url.searchParams.get("year")?.replace("+", " ");
-        const day = url.searchParams.get("ac_dc")?.replace("+", " ");
+        const month = url.searchParams.get("month")?.replace("+", " ");
+        const day = url.searchParams.get("day")?.replace("+", " ");
 
         if(!month && !day){
             return ctx.render();

@@ -19,13 +19,17 @@ export const handler: Handlers<Data> = {
         const ac_dc_1 = url.searchParams.get("ac_dc_1")?.replace("+", " ");
         const year_b = url.searchParams.get("year_b")?.replace("+", " ");
         const ac_dc_2 = url.searchParams.get("ac_dc_2")?.replace("+", " ");
-    
-        if((!year && !ac_dc && !type) || (!year_a && !ac_dc_1 && !year_b && !ac_dc_2)){
+
+        if((!year && !ac_dc && !type) && (!year_a && !ac_dc_1 && !year_b && !ac_dc_2)){
             return ctx.render();
         }
-    
-        if(year){
+        
+        console.log(0);
+
+        if(year !== undefined){
+            console.log(1);
             if(type!.valueOf() === "Inicio"){
+                console.log(2);
                 const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/start_date?year=${year}&ac_dc=${ac_dc}`);
     
                 return ctx.render({events: data.data});
@@ -36,7 +40,7 @@ export const handler: Handlers<Data> = {
                 return ctx.render({events: data.data});
             }
         }
-        else if(year_a && year_b){
+        else if(year_a !== undefined && year_b !== undefined){
             const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/double_date?year_a=${year_a}&ac_dc_1=${ac_dc_1}&year_b=${year_b}&ac_dc_2=${ac_dc_2}`);
     
             return ctx.render({events: data.data});
