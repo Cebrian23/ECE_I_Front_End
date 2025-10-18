@@ -49,6 +49,10 @@ export type EventGQL = {
             name: string,
             cover?: string,
             year_of_publish: number,
+            creator: {
+                id: string,
+                name: string,
+            }
         }
     }[],
     talked_about_in_album?: {
@@ -56,6 +60,10 @@ export type EventGQL = {
         name: string,
         cover?: string,
         year_of_publish: number,
+        creator: {
+            id: string,
+            name: string,
+        }
     }[],
 }
 
