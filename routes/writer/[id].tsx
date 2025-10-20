@@ -1,6 +1,7 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { WriterGQL } from "../../types/literature/Writer.ts";
+import Short_Book from "../../components/Short_Book.tsx";
 
 type Data = {
     writer: WriterGQL,
@@ -19,11 +20,44 @@ export const handler: Handlers<Data> = {
 const Page = (props: PageProps<Data>) => {
     const writer = props.data.writer;
 
-    console.log(writer);
-
     return (
         <div>
-            <h1>Página del escritor "{writer.name + " " + writer.surname}"</h1>
+            <div class="card_head">
+                <h1>Página del escritor "
+                    {
+                        writer.surname !== null &&
+                        <>{writer.name + " " + writer.surname}</>
+                    }
+                    {
+                        writer.surname === null &&
+                        <>{writer.name}</>
+                    }
+                "</h1>
+                <img src={writer.image}/>
+            </div>
+            <div>
+                <p>
+                    <b>Nombre del escritor: </b>
+                    {
+                        writer.surname !== null &&
+                        <>{writer.name + " " + writer.surname}</>
+                    }
+                    {
+                        writer.surname === null &&
+                        <>{writer.name}</>
+                    }
+                </p>
+                <p><b>Libros del autor:</b></p>
+                <div class="group">
+                    {
+                        writer.books.map((book) => {
+                            return(
+                                <Short_Book book={book}/>
+                            );
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 }

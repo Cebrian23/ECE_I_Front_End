@@ -1,6 +1,7 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { BandGQL } from "../../types/music/Band.ts";
+import Shorter_Album from "../../components/Shorter_Album.tsx";
 
 type Data = {
     band: BandGQL,
@@ -23,7 +24,23 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <h1>Página de la banda "{band.name}"</h1>
+            <div class="card_head">
+                <h1>Página de la banda "{band.name}"</h1>
+                <img class={band.logo}/>
+            </div>
+            <div>
+                <p><b>Nombre: </b>{band.name}</p>
+                <p><b>Albumes de la banda:</b></p>
+                <div>
+                    {
+                        band.albums.map((album) => {
+                            return(
+                                <Shorter_Album album={album}/>
+                            );
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 }
