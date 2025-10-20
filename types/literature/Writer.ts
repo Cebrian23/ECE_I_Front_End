@@ -1,11 +1,11 @@
-import { Book } from "../literature/Book.ts";
+import { Book, BookGQL } from "../literature/Book.ts";
 
 export type WriterGQL = {
     id: string,
     name: string,
     surname?: string,
     image?: string,
-    books: Book[],
+    books: BookGQL[],
 }
 
 export type Writer = {
@@ -14,4 +14,10 @@ export type Writer = {
     surname?: string,
     image?: string,
     books: Book[],
+}
+
+export type Writer_Short = {
+    id: string,
+    name: string,
+    surname?: string,
 }
