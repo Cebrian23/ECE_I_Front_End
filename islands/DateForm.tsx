@@ -137,8 +137,7 @@ const DateForm = (props: Props) => {
                                 type === "Festivity" &&
                                 <>
                                     <select name="month" required onChange={(e) => setMonth(e.currentTarget.value)}>
-                                        <option value="" selected>...Seleccione un mes...</option>
-                                        <option value="Enero">Enero</option>
+                                        <option value="Enero" selected>Enero</option>
                                         <option value="Febrero">Febrero</option>
                                         <option value="Marzo">Marzo</option>
                                         <option value="Abril">Abril</option>
