@@ -1,9 +1,10 @@
+import { Album_Short } from "./Album.ts";
 import { Topics } from "./Topics.ts";
 
 export type SongGQL = {
     id: string,
     name: string,
-    talk_about: {
+    talk_about?: {
         events: {
             id: string,
             name: string,
@@ -11,23 +12,20 @@ export type SongGQL = {
         organizations: {
             id: string,
             name: string,
-            image: string,
         }[],
         people: {
             id: string,
             name: string,
-            surname: string,
-            image: string,
+            surname?: string,
+            contry_from: string,
         }[],
         books: {
             id: string,
             title: string,
-            cover: string,
         }[],
         heraldries: {
             id: string,
             name: string,
-            image: string,
         }[],
         legends: {
             id: string,
@@ -40,29 +38,15 @@ export type SongGQL = {
         festivities: {
             id: string,
             name: string,
-            date: {
-                month: string,
-                day: string,
-            }
         }[],
         monuments: {
             id: string,
             name: string,
-            image: string,
         }[],
     },
     cover?: string,
     official_video?: string,
-    album_in: {
-        id: string,
-        name: string,
-        year_of_publish: number,
-        cover?: string,
-        creator: {
-            id: string,
-            name: string,
-        }
-    }
+    album_in: Album_Short,
 }
 
 export type Song = {
@@ -73,17 +57,8 @@ export type Song = {
 }
 
 export type Song_Short = {
-    id: string;
-    name: string;
-    cover?: string;
-    album_in: {
-        id: string;
-        name: string;
-        cover?: string;
-        year_of_publish: number;
-        creator: {
-            id: string;
-            name: string;
-        };
-    }
+    id: string,
+    name: string,
+    cover?: string,
+    album_in: Album_Short,
 }
