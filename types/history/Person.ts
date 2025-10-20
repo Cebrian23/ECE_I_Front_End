@@ -1,4 +1,8 @@
+import { Album_Short } from "../music/Album.ts";
+import { Song_Short } from "../music/Song.ts";
 import { Date } from "./Date.ts";
+import { Event_Short } from "./Event.ts";
+import { Organization_Short } from "./Organization.ts";
 
 export type PersonGQL = {
     id: string,
@@ -32,40 +36,10 @@ export type PersonGQL = {
     },
     country_from: string,
     historical_position: string,
-    involved_in?: {
-        id: string,
-        name: string,
-    }[],
-    member_of?: {
-        id: string,
-        name: string,
-        image?: string,
-    }[],
-    talked_about_in_song?: {
-        id: string,
-        name: string,
-        cover?: string
-        album_in: {
-            id: string,
-            name: string,
-            cover?: string,
-            year_of_publish: number,
-            creator: {
-                id: string,
-                name: string,
-            }
-        }
-    }[],
-    talked_about_in_album?: {
-        id: string,
-        name: string,
-        cover?: string,
-        year_of_publish: number,
-        creator: {
-            id: string,
-            name: string,
-        }
-    }[],
+    involved_in?: Event_Short[],
+    member_of?: Organization_Short[],
+    talked_about_in_song?: Song_Short[],
+    talked_about_in_album?: Album_Short[],
 }
 
 export type Person = {
@@ -78,4 +52,11 @@ export type Person = {
     death_date?: Date,
     country_from: string,
     historical_position: string,
+}
+
+export type Person_Short = {
+    id: string,
+    name: string,
+    surname?: string,
+    country_from: string,
 }
