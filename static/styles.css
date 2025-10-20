@@ -117,3 +117,28 @@ button{
     flex-direction: column;
     align-items: center;
 }
+
+.writer_head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card_head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.group{
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+}
+
+.card_block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px black solid;
+    margin-right: 10px;
+}
