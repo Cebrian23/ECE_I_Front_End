@@ -1,3 +1,5 @@
+import { Album_Short } from "../music/Album.ts";
+import { Song_Short } from "../music/Song.ts";
 import { Date_monument } from "./Date.ts";
 
 export type MonumentGQL = {
@@ -55,33 +57,10 @@ export type MonumentGQL = {
             } | null,
         } | null,
     },
-    still_exists: string,
+    still_exists: boolean,
     country_in?: string,
-    talked_about_in_song?: {
-        id: string,
-        name: string,
-        cover?: string
-        album_in: {
-            id: string,
-            name: string,
-            cover?: string,
-            year_of_publish: number,
-            creator: {
-                id: string,
-                name: string,
-            }
-        }
-    }[],
-    talked_about_in_album?: {
-        id: string,
-        name: string,
-        cover?: string,
-        year_of_publish: number,
-        creator: {
-            id: string,
-            name: string,
-        }
-    }[],
+    talked_about_in_song?: Song_Short[],
+    talked_about_in_album?: Album_Short[],
 }
 
 export type Monument = {
