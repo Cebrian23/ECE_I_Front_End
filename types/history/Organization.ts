@@ -1,5 +1,8 @@
+import { Album_Short } from "../music/Album.ts";
+import { Song_Short } from "../music/Song.ts";
 import { Date } from "./Date.ts";
-import { Person } from "./Person.ts";
+import { Event_Short } from "./Event.ts";
+import { Person, Person_Short } from "./Person.ts";
 
 export type OrganizationGQL = {
     id: string,
@@ -29,42 +32,10 @@ export type OrganizationGQL = {
             ac_dc: string,
         } | null,
     },
-    distinguished_members?: {
-        id: string,
-        name: string,
-        surname?: string,
-        image?: string,
-        country_from: string,
-    }[],
-    involved_in?: {
-        id: string,
-        name: string,
-    }[],
-    talked_about_in_song?: {
-        id: string,
-        name: string,
-        cover?: string
-        album_in: {
-            id: string,
-            name: string,
-            cover?: string,
-            year_of_publish: number,
-            creator: {
-                id: string,
-                name: string,
-            }
-        }
-    }[],
-    talked_about_in_album?: {
-        id: string,
-        name: string,
-        cover?: string,
-        year_of_publish: number,
-        creator: {
-            id: string,
-            name: string,
-        }
-    }[],
+    distinguished_members?: Person_Short[],
+    involved_in?: Event_Short[],
+    talked_about_in_song?: Song_Short[],
+    talked_about_in_album?: Album_Short[],
 }
 
 export type Organization = {
@@ -74,4 +45,9 @@ export type Organization = {
     creation?: Date,
     dissolution?: Date,
     distinguished_members?: Person[],
+}
+
+export type Organization_Short = {
+    id: string,
+    name: string,
 }
