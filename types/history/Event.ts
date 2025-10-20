@@ -1,6 +1,8 @@
-import { Person } from "./Person.ts";
-import { Organization } from "./Organization.ts";
+import { Person, Person_Short } from "./Person.ts";
+import { Organization, Organization_Short } from "./Organization.ts";
 import { Date } from "./Date.ts";
+import { Album_Short } from "../music/Album.ts";
+import { Song_Short } from "../music/Song.ts";
 
 export type EventGQL = {
     id: string,
@@ -29,42 +31,10 @@ export type EventGQL = {
             ac_dc: string,
         } | null,
     },
-    people_involved?: {
-        id: string,
-        name: string,
-        surname?: string,
-        image?: string,
-        country_from: string,
-    }[],
-    organizations_involved?: {
-        id: string,
-        name: string,
-    }[],
-    talked_about_in_song?: {
-        id: string,
-        name: string,
-        cover?: string
-        album_in: {
-            id: string,
-            name: string,
-            cover?: string,
-            year_of_publish: number,
-            creator: {
-                id: string,
-                name: string,
-            }
-        }
-    }[],
-    talked_about_in_album?: {
-        id: string,
-        name: string,
-        cover?: string,
-        year_of_publish: number,
-        creator: {
-            id: string,
-            name: string,
-        }
-    }[],
+    people_involved?: Person_Short[],
+    organizations_involved?: Organization_Short[],
+    talked_about_in_song?: Song_Short[],
+    talked_about_in_album?: Album_Short[],
 }
 
 export type Event = {
@@ -74,4 +44,9 @@ export type Event = {
     end_date?: Date,
     people_involved?: Person[],
     organizations_involved?: Organization[],
+}
+
+export type Event_Short = {
+    id: string,
+    name: string,
 }
