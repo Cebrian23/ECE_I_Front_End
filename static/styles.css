@@ -133,7 +133,7 @@ button{
 .group{
     display: grid;
     text-align: center;
-    grid-template-columns: 300px 300px 300px;
+    grid-template-columns: 350px 30px 350px;
 }
 
 .card_block{
