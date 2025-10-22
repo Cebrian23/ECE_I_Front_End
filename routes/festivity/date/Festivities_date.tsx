@@ -67,6 +67,7 @@ const Page = (props: PageProps<Data>) => {
                                     </div>
                                 </>
                             }
+                            <hr width={500}/>
                         </div>
                     );
                 })
