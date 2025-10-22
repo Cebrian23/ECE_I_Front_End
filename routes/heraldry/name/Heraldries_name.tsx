@@ -12,7 +12,7 @@ export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const url = new URL(req.url);
         
-        const name = url.searchParams.get("name")?.replace("+", " ");
+        const name = url.searchParams.get("name")?.replace("%20", " ");
 
         if(!name){
             return ctx.render();

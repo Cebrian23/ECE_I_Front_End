@@ -12,7 +12,7 @@ export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const url = new URL(req.url);
         
-        const country_in = url.searchParams.get("country_in")?.replace("+", " ");
+        const country_in = url.searchParams.get("country_in")?.replace("%20", " ");
 
         if(!country_in){
             return ctx.render();

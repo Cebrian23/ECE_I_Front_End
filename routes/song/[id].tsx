@@ -25,7 +25,7 @@ const Page = (props: PageProps<Data>) => {
         <div>
             <div class="card_head">
                 <h1>Página de la canción "{song.name}"</h1>
-                <img src={song.cover}/>
+                <img src={song.cover} width={250} height={350}/>
             </div>
             <div>
                 <p><b>Nombre: </b>{song.name}</p>

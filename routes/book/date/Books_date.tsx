@@ -12,10 +12,10 @@ export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const url = new URL(req.url);
         
-        const year = url.searchParams.get("year")?.replace("+", " ");
-        const type = url.searchParams.get("type")?.replace("+", " ");
-        const year_a = url.searchParams.get("year_a")?.replace("+", " ");
-        const year_b = url.searchParams.get("year_b")?.replace("+", " ");
+        const year = url.searchParams.get("year")?.replace("%20", " ");
+        const type = url.searchParams.get("type")?.replace("%20", " ");
+        const year_a = url.searchParams.get("year_a")?.replace("%20", " ");
+        const year_b = url.searchParams.get("year_b")?.replace("%20", " ");
 
         if((!year && !type) && (!year_a && !year_b)){
             return ctx.render();

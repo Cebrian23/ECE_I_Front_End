@@ -12,13 +12,13 @@ export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const url = new URL(req.url);
         
-        const year = url.searchParams.get("year")?.replace("+", " ");
-        const ac_dc = url.searchParams.get("ac_dc")?.replace("+", " ");
-        const type = url.searchParams.get("type")?.replace("+", " ");
-        const year_a = url.searchParams.get("year_a")?.replace("+", " ");
-        const ac_dc_1 = url.searchParams.get("ac_dc_1")?.replace("+", " ");
-        const year_b = url.searchParams.get("year_b")?.replace("+", " ");
-        const ac_dc_2 = url.searchParams.get("ac_dc_2")?.replace("+", " ");
+        const year = url.searchParams.get("year")?.replace("%20", " ");
+        const ac_dc = url.searchParams.get("ac_dc")?.replace("%20", " ");
+        const type = url.searchParams.get("type")?.replace("%20", " ");
+        const year_a = url.searchParams.get("year_a")?.replace("%20", " ");
+        const ac_dc_1 = url.searchParams.get("ac_dc_1")?.replace("%20", " ");
+        const year_b = url.searchParams.get("year_b")?.replace("%20", " ");
+        const ac_dc_2 = url.searchParams.get("ac_dc_2")?.replace("%20", " ");
 
         if((!year && !ac_dc && !type) && (!year_a && !ac_dc_1 && !year_b && !ac_dc_2)){
             return ctx.render();
