@@ -8,9 +8,10 @@ const Shorter_Album = (prop: Data) => {
     const album = prop.album;
 
     return(
-        <div>
-            <img src={album.cover}/>
-            <p><i><a href={`/album/${album.id}`}>{album.name + " (" + album.year_of_publish + ")"}</a></i></p>
+        <div class="card_block">
+            <br/>
+            <img src={album.cover} width={300} height={350}/>
+            <p><i><a href={`/album/${album.id}`} class="a1">{album.name + " (" + album.year_of_publish + ")"}</a></i></p>
         </div>
     );
 }
