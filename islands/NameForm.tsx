@@ -62,7 +62,11 @@ const NameForm = (props: Props) => {
                             page_back === "Events" &&
                             <>
                                 <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/event/name/Events_name?name=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                    if(name !== ""){
+                                        location.href=`/event/name/Events_name?name=${name}`
+                                    }
+                                }}>Enviar</button>
                             </>
                         }
                         {
@@ -71,11 +75,19 @@ const NameForm = (props: Props) => {
                                 <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
                                 {
                                     surname.valueOf() === "" &&
-                                    <button type="button" onClick={() => location.href=`/person/name/People_name?name=${name}`}>Enviar</button>
+                                    <button type="button" onClick={() => {
+                                        if(name !== ""){
+                                            location.href=`/person/name/People_name?name=${name}`
+                                        }
+                                    }}>Enviar</button>
                                 }
                                 {
                                     surname.valueOf() !== "" &&
-                                    <button type="button" onClick={() => location.href=`/person/name/People_name?name=${name}&surname=${surname}`}>Enviar</button>
+                                    <button type="button" onClick={() => {
+                                        if(name !== ""){
+                                            location.href=`/person/name/People_name?name=${name}&surname=${surname}`
+                                        }
+                                    }}>Enviar</button>
                                 }
                             </>
                         }
@@ -83,14 +95,22 @@ const NameForm = (props: Props) => {
                             page_back === "Organizations" &&
                             <>
                                 <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/organization/name/Organizations_name?name=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                        if(name !== ""){
+                                            location.href=`/organization/name/Organizations_name?name=${name}`
+                                        }
+                                }}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Literature" &&
                             <>
                                 <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/book/title/Books_title?title=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                    if(name !== ""){
+                                        location.href=`/book/title/Books_title?title=${name}`
+                                    }
+                                }}>Enviar</button>
                             </>
                         }
                         {
