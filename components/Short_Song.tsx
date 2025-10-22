@@ -9,7 +9,7 @@ const Short_Song = (props: Data) => {
 
     return(
         <div class="short_block">
-            <img src={song.cover} width={250} height={300}/>
+            <img src={song.cover} width={250} height={350}/>
             <p><a href={`/song/${song.id}`} class="a1">{song.name}</a></p>
             <i><a href={`/album/${song.album_in.id}`} class="a1">{song.album_in.name + " (" + song.album_in.year_of_publish + ")"}</a></i>
             <p><a href={`/band/${song.album_in.creator.id}`} class="a1">{song.album_in.creator.name}</a></p>
