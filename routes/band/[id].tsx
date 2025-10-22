@@ -31,7 +31,7 @@ const Page = (props: PageProps<Data>) => {
             <div>
                 <p><b>Nombre: </b>{band.name}</p>
                 <p><b>Albumes de la banda:</b></p>
-                <div>
+                <div class="group">
                     {
                         band.albums.map((album) => {
                             return(

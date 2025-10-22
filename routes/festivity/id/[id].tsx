@@ -34,8 +34,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     festivity.talked_about_in_song !== undefined && festivity.talked_about_in_song.length !==0  &&
                     <>
-                        <p>Canciones que abordan esta festividad:</p>
-                        <div>
+                        <p><b>Canciones que abordan esta festividad:</b></p>
+                        <div class="group">
                             {
                                 festivity.talked_about_in_song.map((song) => {
                                     return(
@@ -49,8 +49,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     festivity.talked_about_in_album !== undefined && festivity.talked_about_in_album.length !==0  &&
                     <>
-                        <p>Albumes que abordan esta festividad:</p>
-                        <div>
+                        <p><b>Albumes que abordan esta festividad:</b></p>
+                        <div class="group">
                             {
                                 festivity.talked_about_in_album.map((album) => {
                                     return(

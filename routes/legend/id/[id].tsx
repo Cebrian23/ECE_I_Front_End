@@ -33,8 +33,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     legend.talked_about_in_song !== undefined && legend.talked_about_in_song.length !== 0  &&
                     <>
-                        <p>Canciones que abordan esta leyenda:</p>
-                        <div>
+                        <p><b></b>Canciones que abordan esta leyenda:</p>
+                        <div class="group">
                             {
                                 legend.talked_about_in_song.map((song) => {
                                     return(
@@ -48,8 +48,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     legend.talked_about_in_album !== undefined && legend.talked_about_in_album.length !== 0  &&
                     <>
-                        <p>Albumes que abordan esta leyenda:</p>
-                        <div>
+                        <p><b></b>Albumes que abordan esta leyenda:</p>
+                        <div class="group">
                             {
                                 legend.talked_about_in_album.map((album) => {
                                     return(

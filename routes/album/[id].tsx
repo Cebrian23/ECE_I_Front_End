@@ -11,7 +11,7 @@ export const handler: Handlers<Data> = {
         const id = ctx.params.id;
 
         const data = await Axios.get<AlbumGQL>(`https://ece-i-back-end-ii.deno.dev/album/id?id=${id}`);
-        
+
         return ctx.render({album: data.data});
     }
 }
@@ -25,25 +25,25 @@ const Page = (props: PageProps<Data>) => {
         <div>
             <div class="card_head">
                 <h1>Página del album "{album.name}"</h1>
-                <img src={album.cover}/>
+                <img src={album.cover} width={300} height={350}/>
             </div>
             <div>
                 <p><b>Nombre del album: </b>{album.name}</p>
                 <p><b>Año de publicación: </b>{album.year_of_publish}</p>
-                <p><b>Banda autora: </b><a  href={`/band/${album.creator.id}`}>{album.creator.name}</a></p>
+                <p><b>Banda autora: </b><a  href={`/band/${album.creator.id}`} class="a1">{album.creator.name}</a></p>
                 {
-                    album.songs !== undefined && album.songs.length === 0 &&
+                    album.songs !== undefined && album.songs.length > 0 &&
                     <>
-                        <p>Canciones destacadas:</p>
-                        <li>
+                        <p><b>Canciones destacadas:</b></p>
+                        <ul>
                             {
                                 album.songs.map((song) => {
                                     return(
-                                        <ul><a href={`/song/id/${song.id}`}>{song.name}</a></ul>
+                                        <li><a href={`/song/${song.id}`} class="a1">{song.name}</a></li>
                                     );
                                 })
                             }
-                        </li>
+                        </ul>
                     </>
                 }
                 <p>
@@ -58,76 +58,101 @@ const Page = (props: PageProps<Data>) => {
                     }
                 </p>
                 {
-                    album.talk_about !== undefined &&
+                    (album.talk_about !== null && album.talk_about !== undefined) &&
+                    (
+                        album.talk_about.books.length > 0 || album.talk_about.events.length > 0 ||
+                        album.talk_about.festivities.length > 0 || album.talk_about.heraldries.length > 0 ||
+                        album.talk_about.legends.length > 0 || album.talk_about.miths.length > 0 ||
+                        album.talk_about.monuments.length > 0 || album.talk_about.organizations.length > 0 ||
+                        album.talk_about.people.length > 0
+                    ) &&
                     <>
-                        <p>Temas que aborda:</p>
-                        <ul>
+                        <p><b>Temas que aborda:</b></p>
+                        <li>
                             {
                                 album.talk_about.books.map((book) => {
-                                    <li><a href={`/book/id/${book.id}`}>{book.title}</a></li>
+                                    return(
+                                        <ul><a href={`/book/id/${book.id}`} class="a1">{book.title}</a></ul>
+                                    );
                                 })
                             }
                             {
                                 album.talk_about.events.map((event) => {
-                                    <li><a href={`/event/id/${event.id}`}>{event.name}</a></li>
+                                    return(
+                                        <ul><a href={`/event/id/${event.id}`} class="a1">{event.name}</a></ul>
+                                    );
                                 })
                             }
                             {
                                 album.talk_about.festivities.map((festivity) => {
-                                    <li><a href={`/festivity/id/${festivity.id}`}>{festivity.name}</a></li>
+                                    return(
+                                        <ul><a href={`/festivity/id/${festivity.id}`} class="a1">{festivity.name}</a></ul>
+                                    );
                                 })
                             }
                             {
                                 album.talk_about.heraldries.map((heraldry) => {
-                                    <li><a href={`/heraldry/id/${heraldry.id}`}>{heraldry.name}</a></li>
+                                    return(
+                                        <ul><a href={`/heraldry/id/${heraldry.id}`} class="a1">{heraldry.name}</a></ul>
+                                    );
                                 })
                             }
                             {
                                 album.talk_about.legends.map((legend) => {
-                                    <li><a href={`/legend/id/${legend.id}`}>{legend.name}</a></li>
+                                    return(
+                                        <ul><a href={`/legend/id/${legend.id}`} class="a1">{legend.name}</a></ul>
+                                    );
                                 })
                             }
                             {
                                 album.talk_about.miths.map((mith) => {
-                                    <li><a href={`/mith/id/${mith.id}`}>{mith.name}</a></li>
+                                    return(
+                                        <ul><a href={`/mith/id/${mith.id}`} class="a1">{mith.name}</a></ul>
+                                    );  
                                 })
                             }
                             {
                                 album.talk_about.monuments.map((monument) => {
-                                    <li><a href={`//id/${monument.id}`}>{monument.name}</a></li>
+                                    return(
+                                        <ul><a href={`/monument/id/${monument.id}`} class="a1">{monument.name}</a></ul>
+                                    );
                                 })
                             }
                             {
                                 album.talk_about.organizations.map((organization) => {
-                                    <li><a href={`//id/${organization.id}`}>{organization.name}</a></li>
+                                    return(
+                                        <ul><a href={`/organization/id/${organization.id}`} class="a1">{organization.name}</a></ul>
+                                    );
                                 })
                             }
                             {
                                 album.talk_about.people.map((person) => {
-                                    <li>
-                                        <a href={`//id/${person.id}`}>
-                                            {
-                                                person.contry_from !== "China" &&
-                                                <>
-                                                    {
-                                                        person.surname !== null &&
-                                                        <>{person.name + " " + person.surname}</>
-                                                    }
-                                                    {
-                                                        person.surname === null &&
-                                                        <>{person.name}</>
-                                                    }
-                                                </>
-                                            }
-                                            {
-                                                person.contry_from === "China" &&
-                                                <>{person.surname + " " + person.name}</>
-                                            }
-                                        </a>
-                                    </li>
+                                    return(
+                                        <ul>
+                                            <a href={`/person/id/${person.id}`} class="a1">
+                                                {
+                                                    person.contry_from !== "China" &&
+                                                    <>
+                                                        {
+                                                            person.surname !== null &&
+                                                            <>{person.name + " " + person.surname}</>
+                                                        }
+                                                        {
+                                                            person.surname === null &&
+                                                            <>{person.name}</>
+                                                        }
+                                                    </>
+                                                }
+                                                {
+                                                    person.contry_from === "China" &&
+                                                    <>{person.surname + " " + person.name}</>
+                                                }
+                                            </a>
+                                        </ul>
+                                    );
                                 })
                             }
-                        </ul>
+                        </li>
                     </>
                 }
             </div>

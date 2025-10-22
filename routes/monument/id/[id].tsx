@@ -30,10 +30,6 @@ const Page = (props: PageProps<Data>) => {
             </div>
             <div>
                 <p><b>Nombre: </b>{monument.name}</p>
-                {}
-                {}
-                {}
-                {}
                 <p>
                     <b>¿Sigue existiendo? </b>
                     {
@@ -52,8 +48,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     monument.talked_about_in_song !== undefined && monument.talked_about_in_song.length !== 0  &&
                     <>
-                        <p>Canciones que abordan este monumento:</p>
-                        <div>
+                        <p><b>Canciones que abordan este monumento:</b></p>
+                        <div class="group">
                             {
                                 monument.talked_about_in_song.map((song) => {
                                     return(
@@ -67,8 +63,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     monument.talked_about_in_album !== undefined && monument.talked_about_in_album.length !== 0  &&
                     <>
-                        <p>Albumes que abordan este monumento:</p>
-                        <div>
+                        <p><b>Albumes que abordan este monumento:</b></p>
+                        <div class="group">
                             {
                                 monument.talked_about_in_album.map((album) => {
                                     return(

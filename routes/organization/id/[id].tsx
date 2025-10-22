@@ -33,15 +33,11 @@ const Page = (props: PageProps<Data>) => {
             </div>
             <div>
                 <p><b>Nombre: </b>{organization.name}</p>
-                {}
-                {}
-                {}
-                {}
                 {
                     organization.distinguished_members !== undefined && organization.distinguished_members.length !== 0 &&
                     <>
-                        <p>Miembros destacados de la organización:</p>
-                        <div>
+                        <p><b>Miembros destacados de la organización:</b></p>
+                        <div class="group">
                             {
                                 organization.distinguished_members.map((member) => {
                                     return(
@@ -55,8 +51,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     organization.involved_in !== undefined && organization.involved_in.length !== 0 &&
                     <>
-                        <p>Ha participado en:</p>
-                        <div>
+                        <p><b>Ha participado en:</b></p>
+                        <div class="group">
                             {
                                 organization.involved_in.map((event) => {
                                     <Short_Event event={event}/>
@@ -68,8 +64,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     organization.talked_about_in_song !== undefined && organization.talked_about_in_song.length !== 0  &&
                     <>
-                        <p>Canciones que abordan esta organización:</p>
-                        <div>
+                        <p><b>Canciones que abordan esta organización:</b></p>
+                        <div class="group">
                             {
                                 organization.talked_about_in_song.map((song) => {
                                     return(
@@ -83,8 +79,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     organization.talked_about_in_album !== undefined && organization.talked_about_in_album.length !== 0  &&
                     <>
-                        <p>Albumes que abordan esta organización:</p>
-                        <div>
+                        <p><b>Albumes que abordan esta organización:</b></p>
+                        <div class="group">
                             {
                                 organization.talked_about_in_album.map((album) => {
                                     return(

@@ -13,8 +13,9 @@ type Data = {
 export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
-
+        console.log(id);
         const data = await Axios.get<EventGQL>(`https://ece-i-back-end-ii.deno.dev/event/id?id=${id}`);
+        console.log(data.data);
         
         return ctx.render({event: data.data});
     }
@@ -39,32 +40,38 @@ const Page = (props: PageProps<Data>) => {
                 {
                     event.people_involved !== undefined && event.people_involved.length !== 0 &&
                     <>
-                        {
-                            event.people_involved.map((person) => {
-                                return(
-                                    <Short_Person person={person}/>
-                                );
-                            })
-                        }
+                        <p><b>Personas involucradas:</b></p>
+                        <div>
+                            {
+                                event.people_involved.map((person) => {
+                                    return(
+                                        <Short_Person person={person}/>
+                                    );
+                                })
+                            }
+                        </div>
                     </>
                 }
                 {
                     event.organizations_involved !== undefined && event.organizations_involved.length !== 0 &&
                     <>
-                        {
-                            event.organizations_involved.map((org) => {
-                                return(
-                                    <Short_Organization organization={org}/>
-                                );
-                            })
-                        }
+                        <p><b>Organizaciones involucradas:</b></p>
+                        <div>
+                            {
+                                event.organizations_involved.map((org) => {
+                                    return(
+                                        <Short_Organization organization={org}/>
+                                    );
+                                })
+                            }
+                        </div>
                     </>
                 }
                 {
                     event.talked_about_in_song !== undefined && event.talked_about_in_song.length !== 0  &&
                     <>
-                        <p>Canciones que abordan este evento:</p>
-                        <div>
+                        <p><b>Canciones que abordan este evento:</b></p>
+                        <div class="group">
                             {
                                 event.talked_about_in_song.map((song) => {
                                     return(
@@ -76,10 +83,10 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    event.talked_about_in_album !== undefined && event.talked_about_in_album.length !==0  &&
+                    event.talked_about_in_album !== undefined && event.talked_about_in_album.length !== 0  &&
                     <>
-                        <p>Albumes que abordan este evento:</p>
-                        <div>
+                        <p><b>Albumes que abordan este evento:</b></p>
+                        <div class="group">
                             {
                                 event.talked_about_in_album.map((album) => {
                                     return(

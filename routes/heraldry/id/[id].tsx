@@ -27,15 +27,15 @@ const Page = (props: PageProps<Data>) => {
         <div>
             <div class="card_head">
                 <h1>Página de la heráldica "{heraldry.name}"</h1>
-                <img src={heraldry.image}/>
+                <img src={heraldry.image} width={325} height={350}/>
             </div>
             <div>
                 <p><b>Nombre: </b>{heraldry.name}</p>
                 {
                     heraldry.talked_about_in_song !== undefined && heraldry.talked_about_in_song.length !==0  &&
                     <>
-                        <p>Canciones que abordan esta heráldica:</p>
-                        <div>
+                        <p><b>Canciones que abordan esta heráldica:</b></p>
+                        <div class="group">
                             {
                                 heraldry.talked_about_in_song.map((song) => {
                                     return(
@@ -49,8 +49,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     heraldry.talked_about_in_album !== undefined && heraldry.talked_about_in_album.length !==0  &&
                     <>
-                        <p>Albumes que abordan esta heráldica:</p>
-                        <div>
+                        <p><b>Albumes que abordan esta heráldica:</b></p>
+                        <div class="group">
                             {
                                 heraldry.talked_about_in_album.map((album) => {
                                     return(

@@ -30,7 +30,16 @@ const Page = (props: PageProps<Data>) => {
             <div class="card_head">
                 {
                     person.country_from !== "China" &&
-                    <h1>Página de la persona "{person.name + " " + person.surname}"</h1>
+                    <h1>Página de la persona "
+                        {
+                            person.surname !== null &&
+                            <>{person.name + " " + person.surname}</>
+                        }
+                        {
+                            person.surname === null &&
+                            <>{person.name}</>
+                        }
+                    "</h1>
                 }
                 {
                     person.country_from === "China" &&
@@ -60,28 +69,27 @@ const Page = (props: PageProps<Data>) => {
                     }
                 </p>
                 {
-                    person.nickname !== undefined && person.nickname.length !== 0 &&
-                    <li>
-                        {
-                            person.nickname.map((nick) => {
-                                return(
-                                    <ul>{nick}</ul>
-                                );
-                            })
-                        }
-                    </li>
+                    person.nickname !== null && person.nickname !== undefined && person.nickname.length > 0 &&
+                    <>
+                        <p><b>Apodos:</b></p>
+                        <ul>
+                            {
+                                person.nickname.map((nick) => {
+                                    return(
+                                        <li>{nick}</li>
+                                    );
+                                })
+                            }
+                        </ul>
+                    </>
                 }
-                {}
-                {}
-                {}
-                {}
                 <p><b>País de origen: </b>{person.country_from}</p>
                 <p><b>Oficio: </b>{person.historical_position}</p>
                 {
                     person.member_of !== undefined && person.member_of.length !== 0 &&
                     <>
-                        <p>Es miembre de:</p>
-                        <div>
+                        <p><b></b>Es miembro de:</p>
+                        <div class="group">
                             {
                                 person.member_of.map((org) => {
                                     return(
@@ -95,8 +103,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     person.involved_in !== undefined && person.involved_in.length !== 0 &&
                     <>
-                        <p>Ha participado en:</p>
-                        <div>
+                        <p><b></b>Ha participado en:</p>
+                        <div class="group">
                             {
                                 person.involved_in.map((event) => {
                                     <Short_Event event={event}/>
@@ -108,8 +116,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     person.talked_about_in_song !== undefined && person.talked_about_in_song.length !== 0  &&
                     <>
-                        <p>Canciones que abordan esta persona:</p>
-                        <div>
+                        <p><b>Canciones que abordan esta persona:</b></p>
+                        <div class="group">
                             {
                                 person.talked_about_in_song.map((song) => {
                                     return(
@@ -123,8 +131,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     person.talked_about_in_album !== undefined && person.talked_about_in_album.length !== 0  &&
                     <>
-                        <p>Albumes que abordan esta persona:</p>
-                        <div>
+                        <p><b>Albumes que abordan esta persona:</b></p>
+                        <div  class="group">
                             {
                                 person.talked_about_in_album.map((album) => {
                                     return(
