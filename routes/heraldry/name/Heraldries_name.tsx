@@ -28,7 +28,7 @@ const Page = (props: PageProps<Data>) => {
     const heraldries = props.data.heraldries;
 
     console.log(heraldries);
-
+    
     return(
         <div>
             {
@@ -40,7 +40,7 @@ const Page = (props: PageProps<Data>) => {
                                 heraldry.talked_about_in_song !== undefined && heraldry.talked_about_in_song.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan esta heráldica</h3>
-                                    <div>
+                                    <div class="block_content">
                                         {
                                             heraldry.talked_about_in_song.map((song) => {
                                                 return(
@@ -55,7 +55,7 @@ const Page = (props: PageProps<Data>) => {
                                 heraldry.talked_about_in_album !== undefined && heraldry.talked_about_in_album.length !== 0 &&
                                 <>
                                     <h3>Albumes que abordan esta heráldica</h3>
-                                    <div>
+                                    <div class="block_content">
                                         {
                                             heraldry.talked_about_in_album.map((album) => {
                                                 return(

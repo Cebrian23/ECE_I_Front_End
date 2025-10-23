@@ -80,7 +80,7 @@ const Page = (props: PageProps<Data>) => {
                                 person.talked_about_in_song !== undefined && person.talked_about_in_song.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan esta persona</h3>
-                                    <div>
+                                    <div class="block_content">
                                         {
                                             person.talked_about_in_song.map((song) => {
                                                 return(
@@ -95,7 +95,7 @@ const Page = (props: PageProps<Data>) => {
                                 person.talked_about_in_album !== undefined && person.talked_about_in_album.length !== 0 &&
                                 <>
                                     <h3>Albumes que abordan esta persona</h3>
-                                    <div>
+                                    <div class="block_content">
                                         {
                                             person.talked_about_in_album.map((album) => {
                                                 return(

@@ -59,7 +59,7 @@ const Page = (props: PageProps<Data>) => {
                                 book.talked_about_in_song !== undefined && book.talked_about_in_song.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan este libro</h3>
-                                    <div>
+                                    <div class="block_content">
                                         {
                                             book.talked_about_in_song.map((song) => {
                                                 return(

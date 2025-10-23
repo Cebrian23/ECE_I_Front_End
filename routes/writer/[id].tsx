@@ -20,6 +20,8 @@ export const handler: Handlers<Data> = {
 const Page = (props: PageProps<Data>) => {
     const writer = props.data.writer;
 
+    console.log(writer);
+
     return (
         <div>
             <div class="card_head">
