@@ -118,6 +118,11 @@ button{
     align-items: center;
 }
 
+.block_contents{
+    display: flex;
+    flex-direction: row;
+}
+
 .writer_head{
     display: flex;
     flex-direction: column;
@@ -133,7 +138,7 @@ button{
 .group{
     display: grid;
     text-align: center;
-    grid-template-columns: 350px 30px 350px;
+    grid-template-columns: 350px 350px 350px;
 }
 
 .card_block{
