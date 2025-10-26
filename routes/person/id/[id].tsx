@@ -22,6 +22,10 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const person = props.data.person;
+    const songs = person.talked_about_in_song;
+    const albums = person.talked_about_in_album;
+    const events = person.involved_in;
+    const orgs = person.member_of;
 
     console.log(person);
 
@@ -70,7 +74,7 @@ const Page = (props: PageProps<Data>) => {
                 </p>
                 {
                     person.nickname !== null && person.nickname !== undefined && person.nickname.length > 0 &&
-                    <>
+                    <div>
                         <p><b>Apodos:</b></p>
                         <ul>
                             {
@@ -81,67 +85,67 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </ul>
-                    </>
+                    </div>
                 }
                 <p><b>País de origen: </b>{person.country_from}</p>
                 <p><b>Oficio: </b>{person.historical_position}</p>
                 {
-                    person.member_of !== undefined && person.member_of.length !== 0 &&
-                    <>
+                    orgs !== undefined && orgs.length !== 0 &&
+                    <div>
                         <p><b></b>Es miembro de:</p>
-                        <div class="group">
+                        <div>
                             {
-                                person.member_of.map((org) => {
+                                orgs.map((org) => {
                                     return(
                                         <Short_Organization organization={org}/>
                                     );
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
-                    person.involved_in !== undefined && person.involved_in.length !== 0 &&
-                    <>
+                    events !== undefined && events.length !== 0 &&
+                    <div>
                         <p><b></b>Ha participado en:</p>
-                        <div class="group">
+                        <div>
                             {
-                                person.involved_in.map((event) => {
+                                events.map((event) => {
                                     <Short_Event event={event}/>
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
-                    person.talked_about_in_song !== undefined && person.talked_about_in_song.length !== 0  &&
-                    <>
+                    songs !== undefined && songs.length !== 0  &&
+                    <div>
                         <p><b>Canciones que abordan esta persona:</b></p>
-                        <div class="group">
+                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
-                                person.talked_about_in_song.map((song) => {
+                                songs.map((song) => {
                                     return(
                                         <Short_Song song={song}/>
                                     );
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
-                    person.talked_about_in_album !== undefined && person.talked_about_in_album.length !== 0  &&
-                    <>
+                    albums !== undefined && albums.length !== 0  &&
+                    <div>
                         <p><b>Albumes que abordan esta persona:</b></p>
-                        <div  class="group">
+                        <div  class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                             {
-                                person.talked_about_in_album.map((album) => {
+                                albums.map((album) => {
                                     return(
                                         <Short_Album album={album}/>
                                     );
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
             </div>
         </div>

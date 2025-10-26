@@ -59,16 +59,19 @@ const Page = (props: PageProps<Data>) => {
         <div>
             {
                 events.map((event) => {
+                    const songs = event.talked_about_in_song;
+                    const albums = event.talked_about_in_album;
+
                     return(
                         <div class="block">
                             <h1><a href={`/event/id/${event.id}`} class="a1">{event.name}</a></h1>
                             {
-                                event.talked_about_in_song !== undefined && event.talked_about_in_song.length !== 0 &&
+                                songs !== undefined && songs.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan este evento</h3>
-                                    <div class="block_content">
+                                    <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                                         {
-                                            event.talked_about_in_song.map((song) => {
+                                            songs.map((song) => {
                                                 return(
                                                     <Short_Song song={song}/>
                                                 );
@@ -78,12 +81,12 @@ const Page = (props: PageProps<Data>) => {
                                 </>
                             }
                             {
-                                event.talked_about_in_album !== undefined && event.talked_about_in_album.length !== 0 &&
+                                albums !== undefined && albums.length !== 0 &&
                                 <>
                                     <h3>Albumes que abordan este evento</h3>
-                                    <div class="block_content">
+                                    <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                                         {
-                                            event.talked_about_in_album.map((album) => {
+                                            albums.map((album) => {
                                                 return(
                                                     <Short_Album album={album}/>
                                                 );

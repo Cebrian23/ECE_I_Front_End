@@ -20,6 +20,8 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const monument = props.data.monument;
+    const songs = monument.talked_about_in_song;
+    const albums = monument.talked_about_in_album;
     
     console.log(monument);
 
@@ -46,12 +48,12 @@ const Page = (props: PageProps<Data>) => {
                     <p><b>Localizado en: </b>{monument.country_in}</p>
                 }
                 {
-                    monument.talked_about_in_song !== undefined && monument.talked_about_in_song.length !== 0  &&
+                    songs !== undefined && songs.length !== 0  &&
                     <>
                         <p><b>Canciones que abordan este monumento:</b></p>
-                        <div class="group">
+                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
-                                monument.talked_about_in_song.map((song) => {
+                                songs.map((song) => {
                                     return(
                                         <Short_Song song={song}/>
                                     );
@@ -61,12 +63,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    monument.talked_about_in_album !== undefined && monument.talked_about_in_album.length !== 0  &&
+                    albums !== undefined && albums.length !== 0  &&
                     <>
                         <p><b>Albumes que abordan este monumento:</b></p>
-                        <div class="group">
+                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                             {
-                                monument.talked_about_in_album.map((album) => {
+                                albums.map((album) => {
                                     return(
                                         <Short_Album album={album}/>
                                     );

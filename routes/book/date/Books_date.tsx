@@ -52,16 +52,19 @@ const Page = (props: PageProps<Data>) => {
         <div>
             {
                 books.map((book) => {
+                    const songs = book.talked_about_in_song;
+                    const albums = book.talked_about_in_album;
+
                     return(
                         <div class="block">
                             <h1><a href={`/book/id/${book.id}`} class="a1">{book.title}</a></h1>
                             {
-                                book.talked_about_in_song !== undefined && book.talked_about_in_song.length !== 0 &&
+                                songs !== undefined && songs.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan este libro</h3>
-                                    <div class="block_content">
+                                    <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                                         {
-                                            book.talked_about_in_song.map((song) => {
+                                            songs.map((song) => {
                                                 return(
                                                     <Short_Song song={song}/>
                                                 );
@@ -71,12 +74,12 @@ const Page = (props: PageProps<Data>) => {
                                 </>
                             }
                             {
-                                book.talked_about_in_album !== undefined && book.talked_about_in_album.length !== 0 &&
+                                albums !== undefined && albums.length !== 0 &&
                                 <>
                                     <h3 class="block_name">Albumes que abordan este libro</h3>
-                                    <div class="block_content">
+                                    <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                                         {
-                                            book.talked_about_in_album.map((album) => {
+                                            albums.map((album) => {
                                                 return(
                                                     <Short_Album album={album}/>
                                                 );

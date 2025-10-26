@@ -19,6 +19,7 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const band = props.data.band;
+    const albums = band.albums
 
     console.log(band);
 
@@ -28,18 +29,18 @@ const Page = (props: PageProps<Data>) => {
                 <h1>Página de la banda "{band.name}"</h1>
                 <img class={band.logo}/>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{band.name}</p>
                 <p><b>Albumes de la banda:</b></p>
-                <div class="group">
-                    {
-                        band.albums.map((album) => {
-                            return(
-                                <Shorter_Album album={album}/>
-                            );
-                        })
-                    }
-                </div>
+            </div>
+            <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
+                {
+                    albums.map((album) => {
+                        return(
+                            <Shorter_Album album={album}/>
+                        );
+                    })
+                }
             </div>
         </div>
     );

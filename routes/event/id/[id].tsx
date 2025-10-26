@@ -23,6 +23,10 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const event = props.data.event;
+    const people = event.people_involved;
+    const orgs = event.organizations_involved;
+    const songs = event.talked_about_in_song;
+    const albums = event.talked_about_in_album;
 
     console.log(event);
 
@@ -33,17 +37,13 @@ const Page = (props: PageProps<Data>) => {
             </div>
             <div>
                 <p><b>Nombre: </b>{event.name}</p>
-                {}
-                {}
-                {}
-                {}
                 {
-                    event.people_involved !== undefined && event.people_involved.length !== 0 &&
+                    people !== undefined && people.length !== 0 &&
                     <>
                         <p><b>Personas involucradas:</b></p>
                         <div>
                             {
-                                event.people_involved.map((person) => {
+                                people.map((person) => {
                                     return(
                                         <Short_Person person={person}/>
                                     );
@@ -53,12 +53,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    event.organizations_involved !== undefined && event.organizations_involved.length !== 0 &&
+                    orgs !== undefined && orgs.length !== 0 &&
                     <>
                         <p><b>Organizaciones involucradas:</b></p>
                         <div>
                             {
-                                event.organizations_involved.map((org) => {
+                                orgs.map((org) => {
                                     return(
                                         <Short_Organization organization={org}/>
                                     );
@@ -68,12 +68,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    event.talked_about_in_song !== undefined && event.talked_about_in_song.length !== 0  &&
+                    songs !== undefined && songs.length !== 0  &&
                     <>
                         <p><b>Canciones que abordan este evento:</b></p>
-                        <div class="group">
+                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
-                                event.talked_about_in_song.map((song) => {
+                                songs.map((song) => {
                                     return(
                                         <Short_Song song={song}/>
                                     );
@@ -83,12 +83,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    event.talked_about_in_album !== undefined && event.talked_about_in_album.length !== 0  &&
+                    albums !== undefined && albums.length !== 0  &&
                     <>
                         <p><b>Albumes que abordan este evento:</b></p>
-                        <div class="group">
+                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                             {
-                                event.talked_about_in_album.map((album) => {
+                                albums.map((album) => {
                                     return(
                                         <Short_Album album={album}/>
                                     );

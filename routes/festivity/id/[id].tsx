@@ -20,6 +20,8 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const festivity = props.data.festivity;
+    const songs = festivity.talked_about_in_song;
+    const albums = festivity.talked_about_in_album;
     
     console.log(festivity);
 
@@ -32,12 +34,12 @@ const Page = (props: PageProps<Data>) => {
                 <p><b>Nombre: </b>{festivity.name}</p>
                 <p><b>Fecha: </b>{festivity.date.day + " de " + festivity.date.month}</p>
                 {
-                    festivity.talked_about_in_song !== undefined && festivity.talked_about_in_song.length !==0  &&
+                    songs !== undefined && songs.length !== 0  &&
                     <>
                         <p><b>Canciones que abordan esta festividad:</b></p>
-                        <div class="group">
+                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
-                                festivity.talked_about_in_song.map((song) => {
+                                songs.map((song) => {
                                     return(
                                         <Short_Song song={song}/>
                                     );
@@ -47,12 +49,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    festivity.talked_about_in_album !== undefined && festivity.talked_about_in_album.length !==0  &&
+                    albums !== undefined && albums.length !== 0  &&
                     <>
                         <p><b>Albumes que abordan esta festividad:</b></p>
-                        <div class="group">
+                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                             {
-                                festivity.talked_about_in_album.map((album) => {
+                                albums.map((album) => {
                                     return(
                                         <Short_Album album={album}/>
                                     );

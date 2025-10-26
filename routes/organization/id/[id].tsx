@@ -22,6 +22,10 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const organization = props.data.organization;
+    const songs = organization.talked_about_in_song;
+    const albums = organization.talked_about_in_album;
+    const members = organization.distinguished_members;
+    const events = organization.involved_in;
 
     console.log(organization);
 
@@ -34,12 +38,12 @@ const Page = (props: PageProps<Data>) => {
             <div>
                 <p><b>Nombre: </b>{organization.name}</p>
                 {
-                    organization.distinguished_members !== undefined && organization.distinguished_members.length !== 0 &&
+                    members !== undefined && members.length !== 0 &&
                     <>
                         <p><b>Miembros destacados de la organización:</b></p>
-                        <div class="group">
+                        <div>
                             {
-                                organization.distinguished_members.map((member) => {
+                                members.map((member) => {
                                     return(
                                         <Short_Person person={member}/>
                                     );
@@ -49,12 +53,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    organization.involved_in !== undefined && organization.involved_in.length !== 0 &&
+                    events !== undefined && events.length !== 0 &&
                     <>
-                        <p><b>Ha participado en:</b></p>
-                        <div class="group">
+                        <p><b>Han participado en:</b></p>
+                        <div>
                             {
-                                organization.involved_in.map((event) => {
+                                events.map((event) => {
                                     <Short_Event event={event}/>
                                 })
                             }
@@ -62,12 +66,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    organization.talked_about_in_song !== undefined && organization.talked_about_in_song.length !== 0  &&
+                    songs !== undefined && songs.length !== 0  &&
                     <>
                         <p><b>Canciones que abordan esta organización:</b></p>
-                        <div class="group">
+                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
-                                organization.talked_about_in_song.map((song) => {
+                                songs.map((song) => {
                                     return(
                                         <Short_Song song={song}/>
                                     );
@@ -77,12 +81,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    organization.talked_about_in_album !== undefined && organization.talked_about_in_album.length !== 0  &&
+                    albums !== undefined && albums.length !== 0  &&
                     <>
                         <p><b>Albumes que abordan esta organización:</b></p>
-                        <div class="group">
+                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                             {
-                                organization.talked_about_in_album.map((album) => {
+                                albums.map((album) => {
                                     return(
                                         <Short_Album album={album}/>
                                     );

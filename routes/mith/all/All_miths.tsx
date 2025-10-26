@@ -25,16 +25,19 @@ const Page = (props: PageProps<Data>) => {
         <div>
             {
                 miths.map((mith) => {
+                    const songs = mith.talked_about_in_song;
+                    const albums = mith.talked_about_in_album;
+
                     return(
                         <div class="block">
                             <h1><a href={`/mith/id/${mith.id}`} class="a1">{mith.name}</a></h1>
                             {
-                                mith.talked_about_in_song !== undefined && mith.talked_about_in_song.length !== 0 &&
+                                songs !== undefined && songs.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan este mito</h3>
-                                    <div class="block_content">
+                                    <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                                         {
-                                            mith.talked_about_in_song.map((song) => {
+                                            songs.map((song) => {
                                                 return(
                                                     <Short_Song song={song}/>
                                                 );
@@ -44,12 +47,12 @@ const Page = (props: PageProps<Data>) => {
                                 </>
                             }
                             {
-                                mith.talked_about_in_album !== undefined && mith.talked_about_in_album.length !== 0 &&
+                                albums !== undefined && albums.length !== 0 &&
                                 <>
                                     <h3>Albumes que abordan este mito</h3>
-                                    <div class="block_content">
+                                    <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                                         {
-                                            mith.talked_about_in_album.map((album) => {
+                                            albums.map((album) => {
                                                 return(
                                                     <Short_Album album={album}/>
                                                 );

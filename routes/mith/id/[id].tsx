@@ -20,6 +20,8 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const mith = props.data.mith;
+    const songs = mith.talked_about_in_song;
+    const albums = mith.talked_about_in_album;
 
     console.log(mith);
 
@@ -31,12 +33,12 @@ const Page = (props: PageProps<Data>) => {
             <div>
                 <p><b>Nombre: </b>{mith.name}</p>
                 {
-                    mith.talked_about_in_song !== undefined && mith.talked_about_in_song.length !== 0  &&
+                    songs !== undefined && songs.length !== 0  &&
                     <>
                         <p><b>Canciones que abordan este mito:</b></p>
-                        <div class="group">
+                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
-                                mith.talked_about_in_song.map((song) => {
+                                songs.map((song) => {
                                     return(
                                         <Short_Song song={song}/>
                                     );
@@ -46,12 +48,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    mith.talked_about_in_album !== undefined && mith.talked_about_in_album.length !== 0  &&
+                    albums !== undefined && albums.length !== 0  &&
                     <>
                         <p><b>Albumes que abordan este mito:</b></p>
-                        <div class="group">
+                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                             {
-                                mith.talked_about_in_album.map((album) => {
+                                albums.map((album) => {
                                     return(
                                         <Short_Album album={album}/>
                                     );

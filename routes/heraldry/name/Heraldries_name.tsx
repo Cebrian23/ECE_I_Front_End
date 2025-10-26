@@ -33,16 +33,19 @@ const Page = (props: PageProps<Data>) => {
         <div>
             {
                 heraldries.map((heraldry) => {
+                    const songs = heraldry.talked_about_in_song;
+                    const albums = heraldry.talked_about_in_album;
+
                     return(
                         <div class="block">
                             <h1><a href={`/heraldry/id/${heraldry.id}`} class="a1">{heraldry.name}</a></h1>
                             {
-                                heraldry.talked_about_in_song !== undefined && heraldry.talked_about_in_song.length !== 0 &&
+                                songs !== undefined && songs.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan esta heráldica</h3>
-                                    <div class="block_content">
+                                    <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                                         {
-                                            heraldry.talked_about_in_song.map((song) => {
+                                            songs.map((song) => {
                                                 return(
                                                     <Short_Song song={song}/>
                                                 );
@@ -52,12 +55,12 @@ const Page = (props: PageProps<Data>) => {
                                 </>
                             }
                             {
-                                heraldry.talked_about_in_album !== undefined && heraldry.talked_about_in_album.length !== 0 &&
+                                albums !== undefined && albums.length !== 0 &&
                                 <>
                                     <h3>Albumes que abordan esta heráldica</h3>
-                                    <div class="block_content">
+                                    <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                                         {
-                                            heraldry.talked_about_in_album.map((album) => {
+                                            albums.map((album) => {
                                                 return(
                                                     <Short_Album album={album}/>
                                                 );

@@ -20,6 +20,8 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const heraldry = props.data.heraldry;
+    const songs = heraldry.talked_about_in_song;
+    const albums = heraldry.talked_about_in_album;
 
     console.log(heraldry);
 
@@ -32,12 +34,12 @@ const Page = (props: PageProps<Data>) => {
             <div>
                 <p><b>Nombre: </b>{heraldry.name}</p>
                 {
-                    heraldry.talked_about_in_song !== undefined && heraldry.talked_about_in_song.length !==0  &&
+                    songs !== undefined && songs.length !== 0  &&
                     <>
                         <p><b>Canciones que abordan esta heráldica:</b></p>
-                        <div class="group">
+                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
-                                heraldry.talked_about_in_song.map((song) => {
+                                songs.map((song) => {
                                     return(
                                         <Short_Song song={song}/>
                                     );
@@ -47,12 +49,12 @@ const Page = (props: PageProps<Data>) => {
                     </>
                 }
                 {
-                    heraldry.talked_about_in_album !== undefined && heraldry.talked_about_in_album.length !==0  &&
+                    albums !== undefined && albums.length !== 0  &&
                     <>
                         <p><b>Albumes que abordan esta heráldica:</b></p>
-                        <div class="group">
+                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                             {
-                                heraldry.talked_about_in_album.map((album) => {
+                                albums.map((album) => {
                                     return(
                                         <Short_Album album={album}/>
                                     );

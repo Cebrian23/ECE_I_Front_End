@@ -25,16 +25,19 @@ const Page = (props: PageProps<Data>) => {
         <div>
             {
                 festivities.map((festivity) => {
+                    const songs = festivity.talked_about_in_song;
+                    const albums = festivity.talked_about_in_album;
+
                     return(
                         <div class="block">
                             <h1><a href={`/festivity/id/${festivity.id}`} class="a1">{festivity.name}</a></h1>
                             {
-                                festivity.talked_about_in_song !== undefined && festivity.talked_about_in_song.length !== 0 &&
+                                songs !== undefined && songs.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan esta festividad</h3>
-                                    <div class="block_content">
+                                    <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                                         {
-                                            festivity.talked_about_in_song.map((song) => {
+                                            songs.map((song) => {
                                                 return(
                                                     <Short_Song song={song}/>
                                                 );
@@ -44,12 +47,12 @@ const Page = (props: PageProps<Data>) => {
                                 </>
                             }
                             {
-                                festivity.talked_about_in_album !== undefined && festivity.talked_about_in_album.length !== 0 &&
+                                albums !== undefined && albums.length !== 0 &&
                                 <>
                                     <h3>Albumes que abordan esta festividad</h3>
-                                    <div class="block_content">
+                                    <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
                                         {
-                                            festivity.talked_about_in_album.map((album) => {
+                                            albums.map((album) => {
                                                 return(
                                                     <Short_Album album={album}/>
                                                 );

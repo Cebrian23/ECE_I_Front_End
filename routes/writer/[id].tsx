@@ -19,6 +19,7 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const writer = props.data.writer;
+    const books = writer.books;
 
     console.log(writer);
 
@@ -50,9 +51,9 @@ const Page = (props: PageProps<Data>) => {
                     }
                 </p>
                 <p><b>Libros del autor:</b></p>
-                <div class="group">
+                <div class={books.length === 1 ? "group1" : (books.length === 2 ? "group2" : "group")}>
                     {
-                        writer.books.map((book) => {
+                        books.map((book) => {
                             return(
                                 <Short_Book book={book}/>
                             );
