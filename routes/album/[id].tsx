@@ -68,67 +68,67 @@ const Page = (props: PageProps<Data>) => {
                     ) &&
                     <>
                         <p><b>Temas que aborda:</b></p>
-                        <li>
+                        <ul>
                             {
                                 album.talk_about.books.map((book) => {
                                     return(
-                                        <ul><a href={`/book/id/${book.id}`} class="a1">{book.title}</a></ul>
+                                        <li><a href={`/book/id/${book.id}`} class="a1">{book.title}</a></li>
                                     );
                                 })
                             }
                             {
                                 album.talk_about.events.map((event) => {
                                     return(
-                                        <ul><a href={`/event/id/${event.id}`} class="a1">{event.name}</a></ul>
+                                        <li><a href={`/event/id/${event.id}`} class="a1">{event.name}</a></li>
                                     );
                                 })
                             }
                             {
                                 album.talk_about.festivities.map((festivity) => {
                                     return(
-                                        <ul><a href={`/festivity/id/${festivity.id}`} class="a1">{festivity.name}</a></ul>
+                                        <li><a href={`/festivity/id/${festivity.id}`} class="a1">{festivity.name}</a></li>
                                     );
                                 })
                             }
                             {
                                 album.talk_about.heraldries.map((heraldry) => {
                                     return(
-                                        <ul><a href={`/heraldry/id/${heraldry.id}`} class="a1">{heraldry.name}</a></ul>
+                                        <li><a href={`/heraldry/id/${heraldry.id}`} class="a1">{heraldry.name}</a></li>
                                     );
                                 })
                             }
                             {
                                 album.talk_about.legends.map((legend) => {
                                     return(
-                                        <ul><a href={`/legend/id/${legend.id}`} class="a1">{legend.name}</a></ul>
+                                        <li><a href={`/legend/id/${legend.id}`} class="a1">{legend.name}</a></li>
                                     );
                                 })
                             }
                             {
                                 album.talk_about.miths.map((mith) => {
                                     return(
-                                        <ul><a href={`/mith/id/${mith.id}`} class="a1">{mith.name}</a></ul>
+                                        <li><a href={`/mith/id/${mith.id}`} class="a1">{mith.name}</a></li>
                                     );  
                                 })
                             }
                             {
                                 album.talk_about.monuments.map((monument) => {
                                     return(
-                                        <ul><a href={`/monument/id/${monument.id}`} class="a1">{monument.name}</a></ul>
+                                        <li><a href={`/monument/id/${monument.id}`} class="a1">{monument.name}</a></li>
                                     );
                                 })
                             }
                             {
                                 album.talk_about.organizations.map((organization) => {
                                     return(
-                                        <ul><a href={`/organization/id/${organization.id}`} class="a1">{organization.name}</a></ul>
+                                        <li><a href={`/organization/id/${organization.id}`} class="a1">{organization.name}</a></li>
                                     );
                                 })
                             }
                             {
                                 album.talk_about.people.map((person) => {
                                     return(
-                                        <ul>
+                                        <li>
                                             <a href={`/person/id/${person.id}`} class="a1">
                                                 {
                                                     person.contry_from !== "China" &&
@@ -148,11 +148,11 @@ const Page = (props: PageProps<Data>) => {
                                                     <>{person.surname + " " + person.name}</>
                                                 }
                                             </a>
-                                        </ul>
+                                        </li>
                                     );
                                 })
                             }
-                        </li>
+                        </ul>
                     </>
                 }
             </div>
