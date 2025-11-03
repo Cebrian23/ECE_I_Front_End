@@ -12,13 +12,13 @@ export const handler: Handlers<Data> = {
     GET: async (req: Request, ctx: FreshContext<unknown, Data>) =>{
         const url = new URL(req.url);
         
-        const country_in = url.searchParams.get("country_in")?.replace("%20", " ");
+        const country_in = url.searchParams.get("country")?.replace("%20", " ");
 
         if(!country_in){
             return ctx.render();
         }
-
-        const data = await Axios.get<MonumentGQL[]>(`https://ece-i-back-end-ii.deno.dev/monuments/country_in?country_in=${name}`);
+        
+        const data = await Axios.get<MonumentGQL[]>(`https://ece-i-back-end-ii.deno.dev/monuments/country_in?country_in=${country_in}`);
         
         return ctx.render({monuments: data.data});
     }
