@@ -21,8 +21,12 @@ const NameForm = (props: Props) => {
                         <>Filtro por título</>
                     }
                     {
-                        page_back !== "Literature" &&
+                        page_back !== "Literature" && apellido.valueOf() !== true &&
                         <>Filtro por nombre</>
+                    }
+                    {
+                        page_back !== "Literature" && apellido.valueOf() === true &&
+                        <>Filtro por nombre y apellido</>
                     }
                 </h1>
                 <div class="row_data">
