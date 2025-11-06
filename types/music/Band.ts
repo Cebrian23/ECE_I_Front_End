@@ -1,15 +1,10 @@
-import { Album } from "./Album.ts";
+import { Album, Album_Shorter } from "./Album.ts";
 
 export type BandGQL = {
     id: string,
     name: string,
     logo?: string,
-    albums: {
-        id: string,
-        name: string,
-        year_of_publish: number,
-        cover?: string,
-    }[],
+    albums: Album_Shorter[],
 }
 
 export type Band = {

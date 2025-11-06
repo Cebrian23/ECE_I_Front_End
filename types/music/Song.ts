@@ -46,6 +46,8 @@ export type SongGQL = {
     },
     cover?: string,
     official_video?: string,
+    official_lyric_video?: string,
+    official_cd_video?: string,
     album_in: Album_Short,
 }
 
@@ -54,6 +56,8 @@ export type Song = {
     name: string,
     talk_about: Topics,
     official_video?: string,
+    official_lyric_video?: string,
+    official_cd_video?: string,
 }
 
 export type Song_Short = {
