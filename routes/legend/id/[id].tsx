@@ -35,7 +35,7 @@ const Page = (props: PageProps<Data>) => {
                 {
                     songs !== undefined && songs.length !== 0  &&
                     <>
-                        <p><b></b>Canciones que abordan esta leyenda:</p>
+                        <p><b>Canciones que abordan esta leyenda:</b></p>
                         <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
                             {
                                 songs.map((song) => {
