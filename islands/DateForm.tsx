@@ -45,7 +45,38 @@ const DateForm = (props: Props) => {
     return (
         <div>
             <form>
-                <h1>Filtro por fecha</h1>
+                {
+                    type === "Event" && start === true &&
+                    <h1>Filtro por fecha de inicio de un evento</h1>
+                }
+                {
+                    type === "Event" && start === false &&
+                    <h1>Filtro por fecha de fin de un evento</h1>
+                }
+                {
+                    type === "Person" && start === true &&
+                    <h1>Filtro por fecha de nacimiento de una persona</h1>
+                }
+                {
+                    type === "Person" && start === false &&
+                    <h1>Filtro por fecha de fallecimiento de una persona</h1>
+                }
+                {
+                    type === "Organization" && start === true &&
+                    <h1>Filtro por fecha de creación de una organización</h1>
+                }
+                {
+                    type === "Organization" && start === false &&
+                    <h1>Filtro por fecha de disolución de una organización</h1>
+                }
+                {
+                    type === "Literature" && start === true &&
+                    <h1>Filtro por fecha de publicación de un libro</h1>
+                }
+                {
+                    type === "Literature" && start === false &&
+                    <h1>Filtro por fecha de publicación de un libro</h1>
+                }
                 <div class="row_data">
                     <div class="row_data">
                         <div class="column_data">
