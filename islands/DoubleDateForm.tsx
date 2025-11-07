@@ -177,7 +177,7 @@ const DoubleDateForm = (props: Props) => {
 
                                                             setAc_dc_2(e.currentTarget.value);
                                                         }
-                                                        } required>
+                                                    } required>
                                                         {
                                                             ac_dc_1.valueOf() === "a.C" &&
                                                             <option value="a.C">a.C</option>
