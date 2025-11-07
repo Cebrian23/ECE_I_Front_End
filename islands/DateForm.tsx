@@ -128,6 +128,7 @@ const DateForm = (props: Props) => {
                                     }
                                 </label>
                             }
+                            <br/>
                             {
                                 type === "Festivity" &&
                                 <>
