@@ -17,7 +17,22 @@ const DoubleDateForm = (props: Props) => {
     return(
         <div>
             <form>
-                <h1>Filtro por fecha</h1>
+                {
+                    type === "Event" &&
+                    <h1>Filtro por fecha de inicio y fin de un evento</h1>
+                }
+                {
+                    type === "Person" &&
+                    <h1>Filtro por fecha de nacimiento y fallecimiento de una persona</h1>
+                }
+                {
+                    type === "Organization" &&
+                    <h1>Filtro por fecha de creación y disolución de una organización</h1>
+                }
+                {
+                    type === "Literature" &&
+                    <h1>Filtro por fecha de publicación de un libro</h1>
+                }
                 <div class="colum_data">
                     <div class="row_data">
                         <div class="column_data">
