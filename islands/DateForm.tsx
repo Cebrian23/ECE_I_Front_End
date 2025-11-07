@@ -269,15 +269,6 @@ const DateForm = (props: Props) => {
                         }
                     </div>
                 </div>
-                {
-                    <>
-                        {type_date}
-                        <br/>
-                        {year}
-                        <br/>
-                        {ac_dc}
-                    </>
-                }
             </form>
         </div>
     );
