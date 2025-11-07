@@ -14,9 +14,16 @@ const DateForm = (props: Props) => {
 
     const [day, setDay] = useState<string>("1");
     const [month, setMonth] = useState<string>("");
-    const [year, setYear] = useState<string>("");
+    const [year, setYear] = useState<number>();
     const [ac_dc, setAc_dc] = useState<string>("d.C");
     const [type_date, setType] = useState<string>("");
+
+    if(start === true){
+        setType("Inicio");
+    }
+    else{
+        setType("Fin");
+    }
 
     useEffect(() => {
         if((month.valueOf() === "Abril" || month.valueOf() === "Junio" ||
@@ -29,18 +36,15 @@ const DateForm = (props: Props) => {
         }
 
         if(contador === 0){
-            if(start === true){
-               setYear("1700");
-               setType("Inicio");
-               contador++;
-            }   
-            else if((!start || start === false)){
-               setYear("2025");
-               setType("Fin");
-               contador++;
-            }   
+            if(type_date === "Inicio"){
+                setYear(1700);
+            }
+            else{
+                setYear(2000);
+            }
+            contador++;
         }
-    }, [month, day]);
+    }, [type_date, month, day]);
 
     return (
         <div>
@@ -134,36 +138,52 @@ const DateForm = (props: Props) => {
                             }
                         </div>
                         <div class="column_data">
+                            <div class="row_data">
                             {
-                                start === true && type !== "Festivity"&&
-                                <div class="row_data">
-                                    <input name="year" type="number" min="1700" max="2026" defaultValue="1700" onChange={(e) => setYear(e.currentTarget.value)} required/>
-                                    {
-                                        type !== "Literature" &&
-                                        <select name="ac_dc" onChange={(e) => setAc_dc(e.currentTarget.value)} required>
-                                            <option value="d.C" selected>d.C</option>
-                                            <option value="a.C">a.C</option>
-                                        </select>
-                                    }
-                                    <input name="type_date" type="text" defaultValue="Inicio" hidden required/>
-                                </div>
-                                
+                                start === true && type !== "Festivity" && ac_dc === "d.C" &&
+                                <input name="year" type="number" min="0" max="2026" defaultValue="1700" onChange={(e) => {setYear(Number(e.currentTarget.value))}} required/>
                             }
                             {
-                                start === false && type !== "Festivity" &&
-                                <div class="row_data">
-                                    <input name="year" type="number" min="1700" max="2026" defaultValue="2025" onChange={(e) => setYear(e.currentTarget.value)} required/>
-                                    {
-                                        type !== "Literature" &&
-                                        <select name="ac_dc" onChange={(e) => setAc_dc(e.currentTarget.value)} required>
-                                            <option value="d.C" selected>d.C</option>
-                                            <option value="a.C">a.C</option>
-                                        </select>
-                                    }
-                                    <input name="type_date" type="text" defaultValue="Fin" hidden required/>
-                                </div>
-                                
+                                start === true && type !== "Festivity" && ac_dc === "a.C" &&
+                                <input name="year" type="number" min="0" max="600" defaultValue="400" onChange={(e) => setYear(Number(e.currentTarget.value))} required/>
                             }
+                            {
+                                start === false && type !== "Festivity" && ac_dc === "d.C" &&
+                                <input name="year" type="number" min="0" max="2026" defaultValue="2000" onChange={(e) => setYear(Number(e.currentTarget.value))} required/>
+                            }
+                            {
+                                start === false && type !== "Festivity" && ac_dc === "a.C" &&
+                                <input name="year" type="number" min="0" max="600" defaultValue="40" onChange={(e) => setYear(Number(e.currentTarget.value))} required/>
+                            }
+                            {
+                                type !== "Literature" &&
+                                    <select name="ac_dc" onChange={(e) => 
+                                        {
+                                            if(e.currentTarget.value === "a.C"){
+                                                if(start === true){
+                                                    setYear(400);
+                                                }
+                                                else{
+                                                    setYear(40);
+                                                }
+                                            }
+                                            else if(e.currentTarget.value === "d.C"){
+                                                if(start === true){
+                                                    setYear(1700);
+                                                }
+                                                else{
+                                                    setYear(2000);
+                                                }
+                                            }
+
+                                            setAc_dc(e.currentTarget.value);
+                                        }
+                                    } required>
+                                        <option value="d.C" selected>d.C</option>
+                                        <option value="a.C">a.C</option>
+                                    </select>
+                            }
+                            </div>
                             {
                                 type === "Festivity" &&
                                 <>
@@ -249,6 +269,15 @@ const DateForm = (props: Props) => {
                         }
                     </div>
                 </div>
+                {
+                    <>
+                        {type_date}
+                        <br/>
+                        {year}
+                        <br/>
+                        {ac_dc}
+                    </>
+                }
             </form>
         </div>
     );
