@@ -156,7 +156,7 @@ const DateForm = (props: Props) => {
                                 <input name="year" type="number" min="0" max="600" defaultValue="40" onChange={(e) => setYear(Number(e.currentTarget.value))} required/>
                             }
                             {
-                                type !== "Literature" &&
+                                type !== "Literature" && type !== "Festivity" && 
                                     <select name="ac_dc" onChange={(e) => 
                                         {
                                             if(e.currentTarget.value === "a.C"){
