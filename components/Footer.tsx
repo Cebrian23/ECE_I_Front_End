@@ -1,7 +1,7 @@
 const Footer = () => {
     return(
-        <div class="head">
-            <p class="p_footer">Miguel Ángel Cebrián Fernández (c)</p>
+        <div class="foot">
+            <p>Miguel Ángel Cebrián Fernández (c)</p>
         </div>
     );
 }
