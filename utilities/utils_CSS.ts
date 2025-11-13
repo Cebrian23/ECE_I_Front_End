@@ -10,18 +10,24 @@ import { Song, Song_Short } from "../types/music/Song.ts";
  * @returns Devuelve el estilo que se devería usar a la hora de mostrar las canciones, albumes o libros
  */
 export const Class_Selector = (data: Song[] | Song_Short[] | Album_Shorter[] | Album_Short[] | BookGQL[]): string => {
-        if(data.length === 4 || data.length % 4 === 0){
-            return "group4";
-        }
-        else if(data.length === 3 || data.length % 3 === 0){
-            return "group3";
-        }
-        else if(data.length === 2 || data.length % 2 === 0){
-            return "group2";
-        }
-        else if(data.length === 1){
-            return "group1";
-        }
+    if(data.length === 4 || data.length % 4 === 0){
+        //console.log(4);
+        return "group4";
+    }
+    else if(data.length === 3 || data.length % 3 === 0){
+        //console.log(3);
+        return "group3";
+    }
+    else if(data.length === 2 || data.length % 2 === 0){
+        //console.log(2);
+        return "group2";
+    }
+    else if(data.length === 1){
+        //console.log(1);
+        return "group1";
+    }
+
+    //console.log("default");
     
     return "group3";
 }
