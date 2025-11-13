@@ -34,6 +34,7 @@ export type OrganizationGQL = {
     },
     distinguished_members?: Person_Short[],
     involved_in?: Event_Short[],
+    still_exists: boolean,
     talked_about_in_song?: Song_Short[],
     talked_about_in_album?: Album_Short[],
 }
@@ -45,6 +46,7 @@ export type Organization = {
     creation?: Date,
     dissolution?: Date,
     distinguished_members?: Person[],
+    still_exists: boolean,
 }
 
 export type Organization_Short = {
