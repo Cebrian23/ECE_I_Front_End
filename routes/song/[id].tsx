@@ -11,7 +11,7 @@ export const handler: Handlers<Data> = {
         const id = ctx.params.id;
 
         const data = await Axios.get<SongGQL>(`https://ece-i-back-end-ii.deno.dev/song/id?id=${id}`);
-        
+
         return ctx.render({song: data.data});
     }
 }
@@ -25,9 +25,9 @@ const Page = (props: PageProps<Data>) => {
         <div>
             <div class="card_head">
                 <h1>Página de la canción "{song.name}"</h1>
-                <img src={song.cover} width={250} height={350}/>
+                <img src={song.cover} width={300} height={350}/>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{song.name}</p>
                 <p>
                     <b>Album al que pertence: </b>
@@ -126,6 +126,39 @@ const Page = (props: PageProps<Data>) => {
                             }
                         </ul>
                     </>
+                }
+                {
+                    (song.official_video !== undefined && song.official_video !== null && song.official_video !== "") &&
+                    <div class="card_body">
+                        <p style="align-items: center;"><b>Vídeo oficial:</b></p>
+                        <iframe width="560" height="315" src={song.official_video}
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowFullScreen/>
+                    </div>
+                }
+                {
+                    (song.official_lyric_video !== undefined && song.official_lyric_video !== null && song.official_lyric_video !== "") &&
+                    <div class="card_body">
+                        <p><b>Vídeo oficial con la letra:</b></p>
+                        <iframe width="560" height="315" src={song.official_lyric_video}
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowFullScreen/>
+                    </div>
+                }
+                {
+                    (song.official_cd_video !== undefined && song.official_cd_video !== null && song.official_cd_video !== "") &&
+                    <div class="card_body">
+                        <p><b>Vídeo oficial del CD:</b></p>
+                        <iframe width="560" height="315" src={song.official_cd_video}
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                                allowFullScreen/>
+                    </div>
                 }
             </div>
         </div>

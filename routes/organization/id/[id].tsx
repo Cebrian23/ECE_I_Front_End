@@ -3,8 +3,7 @@ import Axios from "axios";
 import { OrganizationGQL } from "../../../types/history/Organization.ts";
 import Short_Album from "../../../components/Short_Album.tsx";
 import Short_Song from "../../../components/Short_Song.tsx";
-import Short_Event from "../../../components/Short_Event.tsx";
-import Short_Person from "../../../components/Short_Person.tsx";
+import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
     organization: OrganizationGQL,
@@ -27,6 +26,9 @@ const Page = (props: PageProps<Data>) => {
     const members = organization.distinguished_members;
     const events = organization.involved_in;
 
+    const creation_date = organization.creation;
+    const dissolution_date = organization.dissolution;
+
     console.log(organization);
 
     return (
@@ -38,38 +40,147 @@ const Page = (props: PageProps<Data>) => {
             <div>
                 <p><b>Nombre: </b>{organization.name}</p>
                 {
-                    members !== undefined && members.length !== 0 &&
+                    (creation_date?.normal_date !== null || dissolution_date?.normal_date !== null) &&
                     <>
+                        {
+                            creation_date?.normal_date !== null && creation_date?.normal_date !== undefined &&
+                            <>
+                                <p>
+                                    <b>Fecha de creación: </b>
+                                    {
+                                        creation_date.normal_date.day !== null && creation_date.normal_date.day !== undefined &&
+                                        <>{creation_date.normal_date.day + " de "}</>
+                                    }
+                                    {
+                                        creation_date.normal_date.month !== null && creation_date.normal_date.month !== undefined &&
+                                        <>{creation_date.normal_date.month + " de "}</>
+                                    }
+                                    {
+                                        <>{creation_date.normal_date.year + " " + creation_date.normal_date.ac_dc}</>
+                                    }
+                                </p>
+                            </>
+                        }
+                        {
+                            dissolution_date?.normal_date !== null && dissolution_date?.normal_date !== undefined &&
+                            <>
+                                <p>
+                                    <b>Fecha de disolución: </b>
+                                    {
+                                        dissolution_date.normal_date.day !== null && dissolution_date.normal_date.day !== undefined &&
+                                        <>{dissolution_date.normal_date.day + " de "}</>
+                                    }
+                                    {
+                                        dissolution_date.normal_date.month !== null && dissolution_date.normal_date.month !== undefined &&
+                                        <>{dissolution_date.normal_date.month + " de "} </>
+                                    }
+                                    {
+                                        <>{dissolution_date.normal_date.year + " " + dissolution_date.normal_date.ac_dc}</>
+                                    }
+                                </p>
+                            </>
+                        }
+                        {
+                            dissolution_date?.normal_date === null &&
+                            <>
+                                <p><b>Fecha de disolución: </b>Desconocido</p>
+                            </>
+                        }
+                    </>
+                }
+                {
+                    creation_date?.normal_date === null && dissolution_date?.normal_date === null &&
+                    <>
+                        {
+                            (creation_date.century_date?.century === dissolution_date.century_date?.century) &&
+                            (creation_date.century_date?.ac_dc === dissolution_date.century_date?.ac_dc) &&
+                            <p><b>Siglo de creación y disolución</b>{creation_date.century_date?.century + " " + creation_date.century_date?.ac_dc}</p>
+                        }
+                        {
+                            creation_date.century_date?.century !== dissolution_date.century_date?.century &&
+                            <>
+                                <p><b>Siglo de creación</b>{creation_date.century_date?.century + " " + creation_date.century_date?.ac_dc}</p>
+                                <p><b>Siglo de disolución</b>{dissolution_date.century_date?.century + " " + dissolution_date.century_date?.ac_dc}</p>
+                            </>
+                        }
+                    </>
+                }
+                {
+                    (creation_date === null) && (dissolution_date === null) &&
+                    <>
+                        <p><b>¿Sigue existiendo?</b></p>
+                        {
+                            organization.still_exists === false &&
+                            <>No</>
+                        }
+                        {
+                            organization.still_exists === true &&
+                            <>Si</>
+                        }
+                    </>
+                }
+                {
+                    members !== undefined && members.length !== 0 &&
+                    <div>
                         <p><b>Miembros destacados de la organización:</b></p>
                         <div>
                             {
                                 members.map((member) => {
                                     return(
-                                        <Short_Person person={member}/>
+                                        <>
+                                            {
+                                                member.country_from !== "China" &&
+                                                <>
+                                                    {
+                                                        member.surname !== undefined && member.surname !== null &&
+                                                        <li><a href={member.id} class="a1">{member.name + " " + member.surname}</a></li>
+                                                    }
+                                                    {
+                                                        member.surname === undefined && member.surname === null &&
+                                                        <li><a href={member.id} class="a1">{member.name}</a></li>
+                                                    }
+                                                </>
+                                            }
+                                            {
+                                                member.country_from === "China" &&
+                                                <>
+                                                    {
+                                                        member.surname !== undefined && member.surname !== null &&
+                                                        <li><a href={member.id} class="a1">{member.surname + " " + member.name}</a></li>
+                                                    }
+                                                    {
+                                                        member.surname === undefined && member.surname === null &&
+                                                        <li><a href={member.id} class="a1">{member.name}</a></li>
+                                                    }
+                                                </>
+                                            }
+                                        </>
                                     );
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
                     events !== undefined && events.length !== 0 &&
-                    <>
+                    <div>
                         <p><b>Han participado en:</b></p>
-                        <div>
+                        <ul>
                             {
                                 events.map((event) => {
-                                    <Short_Event event={event}/>
+                                    return(
+                                        <li><a href={event.name} class="a1">{event.name}</a></li>
+                                    )
                                 })
                             }
-                        </div>
-                    </>
+                        </ul>
+                    </div>
                 }
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <>
+                    <div>
                         <p><b>Canciones que abordan esta organización:</b></p>
-                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
+                        <div class={Class_Selector(songs)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -78,13 +189,13 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <>
+                    <div>
                         <p><b>Albumes que abordan esta organización:</b></p>
-                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
+                        <div class={Class_Selector(albums)}>
                             {
                                 albums.map((album) => {
                                     return(
@@ -93,7 +204,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
             </div>
         </div>

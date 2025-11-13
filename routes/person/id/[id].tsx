@@ -2,9 +2,8 @@ import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { PersonGQL } from "../../../types/history/Person.ts";
 import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Event from "../../../components/Short_Event.tsx";
 import Short_Song from "../../../components/Short_Song.tsx";
-import Short_Organization from "../../../components/Short_Organization.tsx";
+import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
     person: PersonGQL,
@@ -26,6 +25,9 @@ const Page = (props: PageProps<Data>) => {
     const albums = person.talked_about_in_album;
     const events = person.involved_in;
     const orgs = person.member_of;
+
+    const birth_date = person.birth_date;
+    const death_date = person.death_date;
 
     console.log(person);
 
@@ -87,41 +89,123 @@ const Page = (props: PageProps<Data>) => {
                         </ul>
                     </div>
                 }
+                {
+                    (birth_date?.normal_date !== null || death_date?.normal_date !== null) &&
+                    <>
+                        {
+                            birth_date?.normal_date !== null && birth_date?.normal_date !== undefined &&
+                            <>
+                                <p>
+                                    <b>Fecha de nacimiento: </b>
+                                    {
+                                        birth_date.normal_date.day !== null && birth_date.normal_date.day !== undefined &&
+                                        <>{birth_date.normal_date.day + " de "}</>
+                                    }
+                                    {
+                                        birth_date.normal_date.month !== null && birth_date.normal_date.month !== undefined &&
+                                        <>{birth_date.normal_date.month + " de "} </>
+                                    }
+                                    {
+                                        <>{birth_date.normal_date.year + " " + birth_date.normal_date.ac_dc}</>
+                                    }
+                                </p>
+                            </>
+                        }
+                        {
+                            death_date?.normal_date !== null && death_date?.normal_date !== undefined &&
+                            <>
+                                <p>
+                                    <b>Fecha de fallecimiento: </b>
+                                    {
+                                        death_date.normal_date.day !== null && death_date.normal_date.day !== undefined &&
+                                        <>{death_date.normal_date.day + " de "}</>
+                                    }
+                                    {
+                                        death_date.normal_date.month !== null && death_date.normal_date.month !== undefined &&
+                                        <>{death_date.normal_date.month + " de "} </>
+                                    }
+                                    {
+                                        <>{death_date.normal_date.year + " " + death_date.normal_date.ac_dc}</>
+                                    }
+                                </p>
+                            </>
+                        }
+                        {
+                            death_date?.normal_date === null &&
+                            <>
+                                <p><b>Fecha de fallecimiento: </b>Desconocido</p>
+                            </>
+                        }
+                    </>
+                }
+                {
+                    birth_date?.normal_date === null && death_date?.normal_date === null &&
+                    <>
+                        {
+                            (birth_date.century_date?.century === death_date.century_date?.century) &&
+                            (birth_date.century_date?.ac_dc === death_date.century_date?.ac_dc) &&
+                            <p><b>Siglo de nacimiento y fallecimiento</b>{birth_date.century_date?.century + " " + birth_date.century_date?.ac_dc}</p>
+                        }
+                        {
+                            birth_date.century_date?.century !== death_date.century_date?.century &&
+                            <>
+                                <p><b>Siglo de nacimiento</b>{birth_date.century_date?.century + " " + birth_date.century_date?.ac_dc}</p>
+                                <p><b>Siglo de fallecimiento</b>{death_date.century_date?.century + " " + death_date.century_date?.ac_dc}</p>
+                            </>
+                        }
+                    </>
+                }
+                {
+                    (birth_date === null) && (death_date === null) &&
+                    <>
+                        <p><b>¿Sigue vivo?</b></p>
+                        {
+                            person.still_alive === false &&
+                            <>No</>
+                        }
+                        {
+                            person.still_alive === true &&
+                            <>Si</>
+                        }
+                    </>
+                }
                 <p><b>País de origen: </b>{person.country_from}</p>
                 <p><b>Oficio: </b>{person.historical_position}</p>
                 {
                     orgs !== undefined && orgs.length !== 0 &&
                     <div>
-                        <p><b></b>Es miembro de:</p>
-                        <div>
+                        <p><b>Es miembro de:</b></p>
+                        <ul>
                             {
                                 orgs.map((org) => {
                                     return(
-                                        <Short_Organization organization={org}/>
+                                        <li><a href={org.id} class="a1">{org.name}</a></li>
                                     );
                                 })
                             }
-                        </div>
+                        </ul>
                     </div>
                 }
                 {
                     events !== undefined && events.length !== 0 &&
                     <div>
-                        <p><b></b>Ha participado en:</p>
-                        <div>
+                        <p><b>Ha participado en:</b></p>
+                        <ul>
                             {
                                 events.map((event) => {
-                                    <Short_Event event={event}/>
+                                    return(
+                                        <li><a href={event.name} class="a1">{event.name}</a></li>
+                                    )
                                 })
                             }
-                        </div>
+                        </ul>
                     </div>
                 }
                 {
                     songs !== undefined && songs.length !== 0  &&
                     <div>
                         <p><b>Canciones que abordan esta persona:</b></p>
-                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
+                        <div class={Class_Selector(songs)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -136,7 +220,7 @@ const Page = (props: PageProps<Data>) => {
                     albums !== undefined && albums.length !== 0  &&
                     <div>
                         <p><b>Albumes que abordan esta persona:</b></p>
-                        <div  class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
+                        <div class={Class_Selector(albums)}>
                             {
                                 albums.map((album) => {
                                     return(

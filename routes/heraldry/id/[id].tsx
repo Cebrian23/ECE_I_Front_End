@@ -3,6 +3,7 @@ import Axios from "axios";
 import { HeraldryGQL } from "../../../types/history/Heraldry.ts";
 import Short_Album from "../../../components/Short_Album.tsx";
 import Short_Song from "../../../components/Short_Song.tsx";
+import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
     heraldry: HeraldryGQL,
@@ -37,7 +38,7 @@ const Page = (props: PageProps<Data>) => {
                     songs !== undefined && songs.length !== 0  &&
                     <>
                         <p><b>Canciones que abordan esta heráldica:</b></p>
-                        <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
+                        <div class={Class_Selector(songs)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -52,7 +53,7 @@ const Page = (props: PageProps<Data>) => {
                     albums !== undefined && albums.length !== 0  &&
                     <>
                         <p><b>Albumes que abordan esta heráldica:</b></p>
-                        <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
+                        <div class={Class_Selector(albums)}>
                             {
                                 albums.map((album) => {
                                     return(

@@ -2,6 +2,7 @@ import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { WriterGQL } from "../../types/literature/Writer.ts";
 import Short_Book from "../../components/Short_Book.tsx";
+import { Class_Selector } from "../../utilities/utils_CSS.ts";
 
 type Data = {
     writer: WriterGQL,
@@ -51,7 +52,7 @@ const Page = (props: PageProps<Data>) => {
                     }
                 </p>
                 <p><b>Libros del autor:</b></p>
-                <div class={books.length === 1 ? "group1" : (books.length === 2 ? "group2" : "group")}>
+                <div class={Class_Selector(books)}>
                     {
                         books.map((book) => {
                             return(

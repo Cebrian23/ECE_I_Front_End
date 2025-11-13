@@ -27,7 +27,7 @@ const Page = (props: PageProps<Data>) => {
                 <h1>Página del album "{album.name}"</h1>
                 <img src={album.cover} width={300} height={350}/>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre del album: </b>{album.name}</p>
                 <p><b>Año de publicación: </b>{album.year_of_publish}</p>
                 <p><b>Banda autora: </b><a  href={`/band/${album.creator.id}`} class="a1">{album.creator.name}</a></p>
@@ -128,27 +128,25 @@ const Page = (props: PageProps<Data>) => {
                             {
                                 album.talk_about.people.map((person) => {
                                     return(
-                                        <li>
-                                            <a href={`/person/id/${person.id}`} class="a1">
-                                                {
-                                                    person.contry_from !== "China" &&
-                                                    <>
-                                                        {
-                                                            person.surname !== null &&
-                                                            <>{person.name + " " + person.surname}</>
-                                                        }
-                                                        {
-                                                            person.surname === null &&
-                                                            <>{person.name}</>
-                                                        }
-                                                    </>
-                                                }
-                                                {
-                                                    person.contry_from === "China" &&
-                                                    <>{person.surname + " " + person.name}</>
-                                                }
-                                            </a>
-                                        </li>
+                                        <>
+                                            {
+                                                person.contry_from !== "China" &&
+                                                <li>
+                                                    {
+                                                        person.surname !== null &&
+                                                        <a href={`/person/id/${person.id}`} class="a1">{person.name + " " + person.surname}</a>
+                                                    }
+                                                    {
+                                                        person.surname === null &&
+                                                        <a href={`/person/id/${person.id}`} class="a1">{person.name}</a>
+                                                    }
+                                                </li>
+                                            }
+                                            {
+                                                person.contry_from === "China" &&
+                                                <li><a href={`/person/id/${person.id}`} class="a1">{person.surname + " " + person.name}</a></li>
+                                            }
+                                        </>
                                     );
                                 })
                             }

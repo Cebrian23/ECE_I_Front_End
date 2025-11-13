@@ -3,6 +3,7 @@ import Axios from "axios";
 import { FestivityGQL } from "../../../types/festivity/Festivity.ts";
 import Short_Album from "../../../components/Short_Album.tsx";
 import Short_Song from "../../../components/Short_Song.tsx";
+import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
     festivities: FestivityGQL[],
@@ -35,7 +36,7 @@ const Page = (props: PageProps<Data>) => {
                                 songs !== undefined && songs.length !== 0 &&
                                 <>
                                     <h3>Canciones que abordan esta festividad</h3>
-                                    <div class={songs.length === 1 ? "group1" : (songs.length === 2 ? "group2" : "group")}>
+                                    <div class={Class_Selector(songs)}>
                                         {
                                             songs.map((song) => {
                                                 return(
@@ -50,7 +51,7 @@ const Page = (props: PageProps<Data>) => {
                                 albums !== undefined && albums.length !== 0 &&
                                 <>
                                     <h3>Albumes que abordan esta festividad</h3>
-                                    <div class={albums.length === 1 ? "group1" : (albums.length === 2 ? "group2" : "group")}>
+                                    <div class={Class_Selector(albums)}>
                                         {
                                             albums.map((album) => {
                                                 return(
