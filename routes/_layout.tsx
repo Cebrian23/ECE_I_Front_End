@@ -6,9 +6,14 @@ const Layout = ({Component}: PageProps) => {
     return(
         <div class="layout">
             <Head/>
+            <br/>
+            <br/>
             <div class="content">
                 <Component/>
             </div>
+            <br/>
+            <br/>
+            <br/>
             <Footer/>
         </div>
     );
