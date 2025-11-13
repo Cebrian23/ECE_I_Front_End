@@ -36,6 +36,7 @@ export type PersonGQL = {
     },
     country_from: string,
     historical_position: string,
+    still_alive: boolean,
     involved_in?: Event_Short[],
     member_of?: Organization_Short[],
     talked_about_in_song?: Song_Short[],
@@ -52,6 +53,7 @@ export type Person = {
     death_date?: Date,
     country_from: string,
     historical_position: string,
+    still_alive: boolean,
 }
 
 export type Person_Short = {
