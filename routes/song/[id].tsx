@@ -157,7 +157,7 @@ const Page = (props: PageProps<Data>) => {
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin"
-                                allowFullScreen/>
+                            allowFullScreen/>
                     </div>
                 }
             </div>
