@@ -32,13 +32,15 @@ const Page = (props: PageProps<Data>) => {
                 <h1>Página de la heráldica "{heraldry.name}"</h1>
                 <img src={heraldry.image} width={325} height={350}/>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{heraldry.name}</p>
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <>
-                        <p><b>Canciones que abordan esta heráldica:</b></p>
-                        <div class={Class_Selector(songs)}>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Canciones que abordan esta heráldica:</b></p>
+                        <div class={Class_Selector(songs, true)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -47,13 +49,13 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <>
-                        <p><b>Albumes que abordan esta heráldica:</b></p>
-                        <div class={Class_Selector(albums)}>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Albumes que abordan esta heráldica:</b></p>
+                        <div class={Class_Selector(albums, true)}>
                             {
                                 albums.map((album) => {
                                     return(
@@ -62,7 +64,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
             </div>
         </div>

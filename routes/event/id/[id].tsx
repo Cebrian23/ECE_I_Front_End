@@ -37,7 +37,7 @@ const Page = (props: PageProps<Data>) => {
             <div class="card_head">
                 <h1>Página del evento "{event.name}"</h1>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{event.name}</p>
                 {
                     (start_date?.normal_date !== null || end_date?.normal_date !== null) &&
@@ -139,7 +139,7 @@ const Page = (props: PageProps<Data>) => {
                     people !== undefined && people.length !== 0 &&
                     <div>
                         <p><b>Personas involucradas:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 people.map((person) => {
                                     return(
@@ -181,7 +181,7 @@ const Page = (props: PageProps<Data>) => {
                     orgs !== undefined && orgs.length !== 0 &&
                     <div>
                         <p><b>Organizaciones involucradas:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 orgs.map((org) => {
                                     return(
@@ -192,11 +192,13 @@ const Page = (props: PageProps<Data>) => {
                         </ul>
                     </div>
                 }
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
                     <div>
-                        <p><b>Canciones que abordan este evento:</b></p>
-                        <div class={Class_Selector(songs)}>
+                        <p style="text-indent: 25%;"><b>Canciones que abordan este evento:</b></p>
+                        <div class={Class_Selector(songs, true)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -210,8 +212,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     albums !== undefined && albums.length !== 0  &&
                     <div>
-                        <p><b>Albumes que abordan este evento:</b></p>
-                        <div class={Class_Selector(albums)}>
+                        <p style="text-indent: 25%;"><b>Albumes que abordan este evento:</b></p>
+                        <div class={Class_Selector(albums, true)}>
                             {
                                 albums.map((album) => {
                                     return(

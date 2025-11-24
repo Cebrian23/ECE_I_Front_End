@@ -31,12 +31,14 @@ const Page = (props: PageProps<Data>) => {
             <div class="card_head">
                 <h1>Página del mito "{mith.name}"</h1>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{mith.name}</p>
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <>
-                        <p><b>Canciones que abordan este mito:</b></p>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Canciones que abordan este mito:</b></p>
                         <div class={Class_Selector(songs)}>
                             {
                                 songs.map((song) => {
@@ -46,12 +48,12 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <>
-                        <p><b>Albumes que abordan este mito:</b></p>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Albumes que abordan este mito:</b></p>
                         <div class={Class_Selector(albums)}>
                             {
                                 albums.map((album) => {
@@ -61,7 +63,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
             </div>
         </div>

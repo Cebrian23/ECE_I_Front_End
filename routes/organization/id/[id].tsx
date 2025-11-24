@@ -37,7 +37,7 @@ const Page = (props: PageProps<Data>) => {
                 <h1>Página de la organization "{organization.name}"</h1>
                 <img src={organization.logo}/>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{organization.name}</p>
                 {
                     (creation_date?.normal_date !== null || dissolution_date?.normal_date !== null) &&
@@ -123,7 +123,7 @@ const Page = (props: PageProps<Data>) => {
                     members !== undefined && members.length !== 0 &&
                     <div>
                         <p><b>Miembros destacados de la organización:</b></p>
-                        <div>
+                        <ul style="line-height: 1.5;">
                             {
                                 members.map((member) => {
                                     return(
@@ -158,14 +158,14 @@ const Page = (props: PageProps<Data>) => {
                                     );
                                 })
                             }
-                        </div>
+                        </ul>
                     </div>
                 }
                 {
                     events !== undefined && events.length !== 0 &&
                     <div>
                         <p><b>Han participado en:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 events.map((event) => {
                                     return(
@@ -176,11 +176,13 @@ const Page = (props: PageProps<Data>) => {
                         </ul>
                     </div>
                 }
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
                     <div>
-                        <p><b>Canciones que abordan esta organización:</b></p>
-                        <div class={Class_Selector(songs)}>
+                        <p style="text-indent: 25%;"><b>Canciones que abordan la historia de esta organización:</b></p>
+                        <div class={Class_Selector(songs, true)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -194,8 +196,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     albums !== undefined && albums.length !== 0  &&
                     <div>
-                        <p><b>Albumes que abordan esta organización:</b></p>
-                        <div class={Class_Selector(albums)}>
+                        <p style="text-indent: 25%;"><b>Albumes que abordan la historia de esta organización:</b></p>
+                        <div class={Class_Selector(albums, true)}>
                             {
                                 albums.map((album) => {
                                     return(

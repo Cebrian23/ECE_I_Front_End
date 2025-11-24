@@ -31,7 +31,7 @@ const Page = (props: PageProps<Data>) => {
             <div class="card_head">
                 <h1>Página del monumento "{monument.name}"</h1>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{monument.name}</p>
                 <p>
                     <b>¿Sigue existiendo? </b>
@@ -48,11 +48,13 @@ const Page = (props: PageProps<Data>) => {
                     monument.country_in !== null &&
                     <p><b>Localizado en: </b>{monument.country_in}</p>
                 }
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <>
-                        <p><b>Canciones que abordan este monumento:</b></p>
-                        <div class={Class_Selector(songs)}>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Canciones que hablan este monumento:</b></p>
+                        <div class={Class_Selector(songs, true)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -61,13 +63,13 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <>
-                        <p><b>Albumes que abordan este monumento:</b></p>
-                        <div class={Class_Selector(albums)}>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Albumes que hablan este monumento:</b></p>
+                        <div class={Class_Selector(albums, true)}>
                             {
                                 albums.map((album) => {
                                     return(
@@ -76,7 +78,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
             </div>
         </div>

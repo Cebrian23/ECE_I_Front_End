@@ -31,8 +31,9 @@ const Page = (props: PageProps<Data>) => {
             <div class="card_head">
                 <h1>Página del libro "{book.title}"</h1>
                 <img src={book.cover} width={250}/>
+                <br/>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Título del libro: </b>{book.title}</p>
                 <p><b>Autor: </b>
                     {
@@ -48,11 +49,13 @@ const Page = (props: PageProps<Data>) => {
                     book.year_of_publish !== null &&
                     <p><b>Fecha de publicación: </b>{book.year_of_publish}</p>
                 }
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
                     <div>
-                        <p><b>Canciones que abordan este libro:</b></p>
-                        <div class={Class_Selector(songs)}>
+                        <p style="text-indent: 25%;"><b>Canciones que abordan este libro:</b></p>
+                        <div class={Class_Selector(songs, true)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -66,8 +69,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     albums !== undefined && albums.length !== 0  &&
                     <div>
-                        <p><b>Albumes que abordan este libro:</b></p>
-                        <div class={Class_Selector(albums)}>
+                        <p style="text-indent: 25%;"><b>Albumes que abordan este libro:</b></p>
+                        <div class={Class_Selector(albums, true)}>
                             {
                                 albums.map((album) => {
                                     return(

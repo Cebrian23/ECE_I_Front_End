@@ -33,9 +33,9 @@ const Page = (props: PageProps<Data>) => {
                 <p><b>Banda autora: </b><a  href={`/band/${album.creator.id}`} class="a1">{album.creator.name}</a></p>
                 {
                     album.songs !== undefined && album.songs.length > 0 &&
-                    <>
+                    <div>
                         <p><b>Canciones destacadas:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 album.songs.map((song) => {
                                     return(
@@ -44,7 +44,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </ul>
-                    </>
+                    </div>
                 }
                 <p>
                     <b>¿Es un album conceptual? </b>
@@ -66,9 +66,9 @@ const Page = (props: PageProps<Data>) => {
                         album.talk_about.monuments.length > 0 || album.talk_about.organizations.length > 0 ||
                         album.talk_about.people.length > 0
                     ) &&
-                    <>
+                    <div>
                         <p><b>Temas que aborda:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 album.talk_about.books.map((book) => {
                                     return(
@@ -151,7 +151,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </ul>
-                    </>
+                    </div>
                 }
             </div>
         </div>

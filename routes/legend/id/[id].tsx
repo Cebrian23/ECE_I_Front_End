@@ -31,13 +31,15 @@ const Page = (props: PageProps<Data>) => {
             <div class="card_head">
                 <h1>Página de la leyenda "{legend.name}"</h1>
             </div>
-            <div>
+            <div class="card_body">
                 <p><b>Nombre: </b>{legend.name}</p>
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <>
-                        <p><b>Canciones que abordan esta leyenda:</b></p>
-                        <div class={Class_Selector(songs)}>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Canciones que abordan esta leyenda:</b></p>
+                        <div class={Class_Selector(songs, true)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -46,13 +48,13 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <>
-                        <p><b></b>Albumes que abordan esta leyenda:</p>
-                        <div class={Class_Selector(albums)}>
+                    <div>
+                        <p style="text-indent: 25%;"><b>Albumes que abordan esta leyenda:</b></p>
+                        <div class={Class_Selector(albums, true)}>
                             {
                                 albums.map((album) => {
                                     return(
@@ -61,7 +63,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </div>
-                    </>
+                    </div>
                 }
             </div>
         </div>

@@ -39,7 +39,7 @@ const Page = (props: PageProps<Data>) => {
                 "</h1>
                 <img src={writer.image}/>
             </div>
-            <div>
+            <div class="card_body">
                 <p>
                     <b>Nombre del escritor: </b>
                     {
@@ -52,15 +52,15 @@ const Page = (props: PageProps<Data>) => {
                     }
                 </p>
                 <p><b>Libros del autor:</b></p>
-                <div class={Class_Selector(books)}>
-                    {
-                        books.map((book) => {
-                            return(
-                                <Short_Book book={book}/>
-                            );
-                        })
-                    }
-                </div>
+            </div>
+            <div class={Class_Selector(books, true)}>
+                {
+                    books.map((book) => {
+                        return(
+                            <Short_Book book={book}/>
+                        );
+                    })
+                }
             </div>
         </div>
     );

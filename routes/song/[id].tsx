@@ -33,14 +33,17 @@ const Page = (props: PageProps<Data>) => {
                     <b>Album al que pertence: </b>
                     <a href={`/album/${song.album_in.id}`} class="a1">
                         <i>{song.album_in.name + " (" + song.album_in.year_of_publish + ") "}</i>
-                        <a href={`/band/${song.album_in.creator.id}`} class="a1">{song.album_in.creator.name}</a>
                     </a>
+                </p>
+                <p>
+                    <b>Banda autora del album: </b>
+                    <a href={`/band/${song.album_in.creator.id}`} class="a1">{song.album_in.creator.name}</a>
                 </p>
                 {
                     song.talk_about !== undefined &&
-                    <>
+                    <div>
                         <p><b>Temas que aborda:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 song.talk_about.books.map((book) => {
                                     return(
@@ -125,7 +128,7 @@ const Page = (props: PageProps<Data>) => {
                                 })
                             }
                         </ul>
-                    </>
+                    </div>
                 }
                 {
                     (song.official_video !== undefined && song.official_video !== null && song.official_video !== "") &&

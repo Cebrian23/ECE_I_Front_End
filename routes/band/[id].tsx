@@ -29,13 +29,12 @@ const Page = (props: PageProps<Data>) => {
             <div class="card_head">
                 <h1>Página de la banda "{band.name}"</h1>
                 <img class={band.logo}/>
+                <div style="line-height: 0.75;">
+                <p><b>Nombre: </b>{band.name}</p>
+                <p><b>Albumes de la banda:</b></p></div>
             </div>
             <div>
-                <div class="card_body">
-                    <p><b>Nombre: </b>{band.name}</p>
-                    <p><b>Albumes de la banda:</b></p>
-                </div>
-                <div class={Class_Selector(albums)}>
+                <div class={Class_Selector(albums, true)}>
                     {
                         albums.map((album) => {
                             return(

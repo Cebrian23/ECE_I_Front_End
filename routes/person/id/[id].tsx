@@ -53,7 +53,7 @@ const Page = (props: PageProps<Data>) => {
                 }
                 <img src={person.image}/>
             </div>
-            <div>
+            <div class="card_body">
                 <p>
                     <b>Nombre completo: </b>
                     {
@@ -175,7 +175,7 @@ const Page = (props: PageProps<Data>) => {
                     orgs !== undefined && orgs.length !== 0 &&
                     <div>
                         <p><b>Es miembro de:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 orgs.map((org) => {
                                     return(
@@ -190,7 +190,7 @@ const Page = (props: PageProps<Data>) => {
                     events !== undefined && events.length !== 0 &&
                     <div>
                         <p><b>Ha participado en:</b></p>
-                        <ul>
+                        <ul style="line-height: 1.5;">
                             {
                                 events.map((event) => {
                                     return(
@@ -201,11 +201,13 @@ const Page = (props: PageProps<Data>) => {
                         </ul>
                     </div>
                 }
+            </div>
+            <div>
                 {
                     songs !== undefined && songs.length !== 0  &&
                     <div>
-                        <p><b>Canciones que abordan esta persona:</b></p>
-                        <div class={Class_Selector(songs)}>
+                        <p style="text-indent: 25%;"><b>Canciones que abordan la vida de esta persona:</b></p>
+                        <div class={Class_Selector(songs, true)}>
                             {
                                 songs.map((song) => {
                                     return(
@@ -219,8 +221,8 @@ const Page = (props: PageProps<Data>) => {
                 {
                     albums !== undefined && albums.length !== 0  &&
                     <div>
-                        <p><b>Albumes que abordan esta persona:</b></p>
-                        <div class={Class_Selector(albums)}>
+                        <p style="text-indent: 25%;"><b>Albumes que abordan la vida de esta persona:</b></p>
+                        <div class={Class_Selector(albums, true)}>
                             {
                                 albums.map((album) => {
                                     return(
