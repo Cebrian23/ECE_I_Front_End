@@ -9,7 +9,7 @@ const Short_Album = (props: Data) => {
     
     return(
         <div class="short_block">
-            <image src={album.cover} width={250} height={350}/>
+            <image src={album.cover} width={250} height={350} alt={album.name}/>
             <p>
                 <i><a href={`/album/${album.id}`} class="a1">{album.name + " (" + album.year_of_publish + ")"}</a></i>
             </p>

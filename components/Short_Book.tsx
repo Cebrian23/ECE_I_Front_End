@@ -11,7 +11,7 @@ const Short_Book = (prop: Data) => {
             <br/>
             {
                 book.cover !== null &&
-                <img src={book.cover} width={250} height={350}/>
+                <img src={book.cover} width={250} height={350} alt={book.title}/>
             }
             <p>
                 <i><a href={`/book/id/${book.id}`} class="a1">{book.title}</a></i>
