@@ -116,7 +116,6 @@ button{
 }
 
 .a1{
-    text-decoration: none;
     color: black;
 }
 
@@ -150,8 +149,17 @@ button{
 .card_body{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-indent: 0%;
+    text-align: justify;
+    p{
+        text-indent: 25%; 
+    }
+    li{
+        text-indent: 5%;
+        margin-left: 30%;
+    }
+    iframe{
+        align-self: center;
+    }
     line-height: 0.2;
 }
 
@@ -160,6 +168,14 @@ button{
     text-align: center;
     grid-template-columns: 350px;
     align-content: center;
+}
+
+.group1_ind_page{
+    display: grid;
+    text-align: center;
+    grid-template-columns: 350px;
+    align-content: center;
+    margin-left: 20%;
 }
 
 .group2{
