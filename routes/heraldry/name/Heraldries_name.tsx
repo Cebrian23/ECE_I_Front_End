@@ -70,7 +70,10 @@ const Page = (props: PageProps<Data>) => {
                                     </div>
                                 </>
                             }
-                            <hr width={500}/>
+                            {
+                                heraldries.length > 0 &&
+                                <hr width={500}/>
+                            }
                         </div>
                     );
                 })

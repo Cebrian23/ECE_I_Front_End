@@ -70,7 +70,10 @@ const Page = (props: PageProps<Data>) => {
                                     </div>
                                 </>
                             }
-                            <hr width={500}/>
+                            {
+                                miths.length > 1 &&
+                                <hr width={500}/>
+                            }
                         </div>
                     );
                 })

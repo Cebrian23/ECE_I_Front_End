@@ -82,7 +82,10 @@ const Page = (props: PageProps<Data>) => {
                                     </div>
                                 </>
                             }
-                            <hr width={500}/>
+                            {
+                                people.length > 1 &&
+                                <hr width={500}/>
+                            }
                         </div>
                     );
                 })

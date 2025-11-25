@@ -62,7 +62,10 @@ const Page = (props: PageProps<Data>) => {
                                     </div>
                                 </>
                             }
-                            <hr width={500}/>
+                            {
+                                monuments.length > 1 &&
+                                <hr width={500}/>
+                            }
                         </div>
                     );
                 })
