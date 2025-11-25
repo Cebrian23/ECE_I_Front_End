@@ -84,14 +84,17 @@ const DateForm = (props: Props) => {
                 <div class="row_data">
                     <div class="row_data">
                         <div class="column_data">
+                            <br/>
                             {
                                 type === "Event" &&
                                 <label for="year">
                                     {
-                                        start === true && "Año de inicio:"
+                                        start === true && 
+                                        <>Año de inicio:</>
                                     }
                                     {
-                                        start === false && "Año de fin:"
+                                        start === false && 
+                                        <>Año de fin:</>
                                     }
                                 </label>
                             }
@@ -99,10 +102,12 @@ const DateForm = (props: Props) => {
                                 type === "Person" &&
                                 <label for="year">
                                     {
-                                        start === true && "Año de nacimiento:"
+                                        start === true &&
+                                        <>Año de nacimiento:</>
                                     }
                                     {
-                                        start === false && "Año de fallecimiento:"
+                                        start === false && 
+                                        <>Año de fallecimiento:</>
                                     }
                                 </label>
                             }
@@ -110,10 +115,12 @@ const DateForm = (props: Props) => {
                                 type === "Organization" &&
                                 <label for="year">
                                     {
-                                        start === true && "Año de creación:"
+                                        start === true &&
+                                        <>Año de creación:</>
                                     }
                                     {
-                                        start === false && "Año de disolución:"
+                                        start === false &&
+                                        <>Año de disolución:</>
                                     }
                                 </label>
                             }
@@ -121,10 +128,12 @@ const DateForm = (props: Props) => {
                                 type === "Literature" &&
                                 <label for="year">
                                     {
-                                        start === true && "Año de publicación mínimo:"
+                                        start === true &&
+                                        <>Año de publicación mínimo:</>
                                     }
                                     {
-                                        start === false && "Año de publicación máximo:"
+                                        start === false &&
+                                        <>Año de publicación máximo:</>
                                     }
                                 </label>
                             }
