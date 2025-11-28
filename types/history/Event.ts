@@ -7,30 +7,8 @@ import { Song_Short } from "../music/Song.ts";
 export type EventGQL = {
     id: string,
     name: string,
-    start_date?: {
-        normal_date: {
-            year: number,
-            month: string | null,
-            day: string | null,
-            ac_dc: string,
-        } | null,
-        century_date: {
-            century: string,
-            ac_dc: string,
-        } | null,
-    },
-    end_date?: {
-        normal_date: {
-            year: number,
-            month: string | null,
-            day: string | null,
-            ac_dc: string,
-        } | null,
-        century_date: {
-            century: string,
-            ac_dc: string,
-        } | null,
-    },
+    start_date?: Date,
+    end_date?: Date
     people_involved?: Person_Short[],
     organizations_involved?: Organization_Short[],
     still_active?: boolean,
