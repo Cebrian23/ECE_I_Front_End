@@ -1,49 +1,10 @@
 import { Album_Short } from "./Album.ts";
-import { Topics } from "./Topics.ts";
+import { Topics, Topics_Short } from "./Topics.ts";
 
 export type SongGQL = {
     id: string,
     name: string,
-    talk_about?: {
-        events: {
-            id: string,
-            name: string,
-        }[],
-        organizations: {
-            id: string,
-            name: string,
-        }[],
-        people: {
-            id: string,
-            name: string,
-            surname?: string,
-            contry_from: string,
-        }[],
-        books: {
-            id: string,
-            title: string,
-        }[],
-        heraldries: {
-            id: string,
-            name: string,
-        }[],
-        legends: {
-            id: string,
-            name: string,
-        }[],
-        miths: {
-            id: string,
-            name: string,
-        }[],
-        festivities: {
-            id: string,
-            name: string,
-        }[],
-        monuments: {
-            id: string,
-            name: string,
-        }[],
-    },
+    talk_about?: Topics_Short,
     cover?: string,
     official_video?: string,
     official_lyric_video?: string,
