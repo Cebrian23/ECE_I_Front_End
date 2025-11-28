@@ -1,9 +1,10 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { MithGQL } from "../../../types/legend/Mith.ts";
-import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Song from "../../../components/Short_Song.tsx";
-import { Class_Selector } from "../../../utilities/utils_CSS.ts";
+import Component_Header from "../../../components/Components_Data/General_Components/Component_Header.tsx";
+import Component_Songs from "../../../components/Components_Data/General_Components/Component_Songs.tsx";
+import Component_Albums_I from "../../../components/Components_Data/General_Components/Component_Albums_I.tsx";
+import Mith_Component from "../../../components/Components_Data/Specific_Components/Mith_Component.tsx";
 
 type Data = {
     mith: MithGQL,
@@ -28,42 +29,18 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                <h1>Página del mito "{mith.name}"</h1>
-            </div>
-            <div class="card_body">
-                <p><b>Nombre: </b>{mith.name}</p>
-            </div>
-            <div>
+            <Component_Header name={mith.name} type="mith"/>
+            <Mith_Component name={mith.name}/>
+            <div class="card_songs_albums">
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Canciones que abordan este mito:</b></p>
-                        <div class={Class_Selector(songs)}>
-                            {
-                                songs.map((song) => {
-                                    return(
-                                        <Short_Song song={song}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Songs songs={songs}/>
                 }
+            </div>
+            <div class="card_songs_albums">
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Albumes que abordan este mito:</b></p>
-                        <div class={Class_Selector(albums)}>
-                            {
-                                albums.map((album) => {
-                                    return(
-                                        <Short_Album album={album}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Albums_I albums={albums}/>
                 }
             </div>
         </div>

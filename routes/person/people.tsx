@@ -1,4 +1,4 @@
-import People from "../../islands/People.tsx";
+import People from "../../islands/Pages/People.tsx";
 
 const Page = () => {
     return(

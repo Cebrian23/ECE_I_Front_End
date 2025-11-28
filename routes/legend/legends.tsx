@@ -1,4 +1,4 @@
-import Legends from "../../islands/Legends.tsx";
+import Legends from "../../islands/Pages/Legends.tsx";
 
 const Page = () => {
     return(

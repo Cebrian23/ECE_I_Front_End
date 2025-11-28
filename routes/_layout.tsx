@@ -1,6 +1,6 @@
 import { PageProps } from "$fresh/server.ts";
-import Footer from "../components/Footer.tsx";
-import Head from "../components/Head.tsx";
+import Head from "../components/Layouts/Head.tsx";
+import Footer from "../components/Layouts/Footer.tsx";
 
 const Layout = ({Component}: PageProps) => {
     return(

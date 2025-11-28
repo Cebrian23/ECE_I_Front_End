@@ -1,9 +1,10 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { BookGQL } from "../../../types/literature/Book.ts";
-import Short_Song from "../../../components/Short_Song.tsx";
-import Short_Album from "../../../components/Short_Album.tsx";
-import { Class_Selector } from "../../../utilities/utils_CSS.ts";
+import Component_Header from "../../../components/Components_Data/General_Components/Component_Header.tsx";
+import Component_Songs from "../../../components/Components_Data/General_Components/Component_Songs.tsx";
+import Component_Albums_I from "../../../components/Components_Data/General_Components/Component_Albums_I.tsx";
+import Book_Component from "../../../components/Components_Data/Specific_Components/Book_Component.tsx";
 
 type Data = {
     book: BookGQL,
@@ -28,58 +29,18 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                <h1>Página del libro "{book.title}"</h1>
-                <img src={book.cover} width={250}/>
-                <br/>
-            </div>
-            <div class="card_body">
-                <p><b>Título del libro: </b>{book.title}</p>
-                <p><b>Autor: </b>
-                    {
-                        book.writer.surname === null &&
-                        <a href={`/writer/${book.writer.id}`} class="a1">{book.writer.name}</a>
-                    }
-                    {
-                        book.writer.surname !== null &&
-                        <a href={`/writer/${book.writer.id}`} class="a1">{book.writer.name + " " + book.writer.surname}</a>
-                    }
-                </p>
-                {
-                    book.year_of_publish !== null &&
-                    <p><b>Fecha de publicación: </b>{book.year_of_publish}</p>
-                }
-            </div>
-            <div>
+            <Component_Header name={book.title} type="book" image={book.cover}/>
+            <Book_Component title={book.title} author={book.writer} year_of_publish={book.year_of_publish}/>
+            <div class="card_songs_albums">
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Canciones que abordan este libro:</b></p>
-                        <div class={Class_Selector(songs, true)}>
-                            {
-                                songs.map((song) => {
-                                    return(
-                                        <Short_Song song={song}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Songs songs={songs}/>
                 }
+            </div>
+            <div class="card_songs_albums">
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Albumes que abordan este libro:</b></p>
-                        <div class={Class_Selector(albums, true)}>
-                            {
-                                albums.map((album) => {
-                                    return(
-                                        <Short_Album album={album}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Albums_I albums={albums}/>
                 }
             </div>
         </div>

@@ -1,4 +1,4 @@
-import Miths from "../../islands/Miths.tsx";
+import Miths from "../../islands/Pages/Miths.tsx";
 
 const Page = () => {
     return(

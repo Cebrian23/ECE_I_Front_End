@@ -1,4 +1,4 @@
-import Festivities from "../../islands/Festivities.tsx";
+import Festivities from "../../islands/Pages/Festivities.tsx";
 
 const Page = () => {
     return(

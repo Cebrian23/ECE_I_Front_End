@@ -1,9 +1,10 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { PersonGQL } from "../../../types/history/Person.ts";
-import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Song from "../../../components/Short_Song.tsx";
-import { Class_Selector } from "../../../utilities/utils_CSS.ts";
+import Component_Header from "../../../components/Components_Data/General_Components/Component_Header.tsx";
+import Component_Songs from "../../../components/Components_Data/General_Components/Component_Songs.tsx";
+import Component_Albums_I from "../../../components/Components_Data/General_Components/Component_Albums_I.tsx";
+import Person_Component from "../../../components/Components_Data/Specific_Components/Person_Component.tsx";
 
 type Data = {
     person: PersonGQL,
@@ -33,205 +34,22 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                {
-                    person.country_from !== "China" &&
-                    <h1>Página de la persona "
-                        {
-                            person.surname !== null &&
-                            <>{person.name + " " + person.surname}</>
-                        }
-                        {
-                            person.surname === null &&
-                            <>{person.name}</>
-                        }
-                    "</h1>
-                }
-                {
-                    person.country_from === "China" &&
-                    <h1>Página de la persona "{person.surname + " " + person.name}"</h1>
-                }
-                <img src={person.image}/>
-            </div>
-            <div class="card_body">
-                <p>
-                    <b>Nombre completo: </b>
-                    {
-                        person.country_from !== "China" &&
-                        <>
-                            {
-                                person.surname !== null &&
-                                <>{person.name + " " + person.surname}</>
-                            }
-                            {
-                                person.surname === null &&
-                                <>{person.name}</>
-                            }
-                        </>
-                    }
-                    {
-                        person.country_from === "China" &&
-                        <>{person.surname + " " + person.name}</>
-                    }
-                </p>
-                {
-                    person.nickname !== null && person.nickname !== undefined && person.nickname.length > 0 &&
-                    <div>
-                        <p><b>Apodos:</b></p>
-                        <ul>
-                            {
-                                person.nickname.map((nick) => {
-                                    return(
-                                        <li>{nick}</li>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </div>
-                }
-                {
-                    (birth_date?.normal_date !== null || death_date?.normal_date !== null) &&
-                    <>
-                        {
-                            birth_date?.normal_date !== null && birth_date?.normal_date !== undefined &&
-                            <>
-                                <p>
-                                    <b>Fecha de nacimiento: </b>
-                                    {
-                                        birth_date.normal_date.day !== null && birth_date.normal_date.day !== undefined &&
-                                        <>{birth_date.normal_date.day + " de "}</>
-                                    }
-                                    {
-                                        birth_date.normal_date.month !== null && birth_date.normal_date.month !== undefined &&
-                                        <>{birth_date.normal_date.month + " de "} </>
-                                    }
-                                    {
-                                        <>{birth_date.normal_date.year + " " + birth_date.normal_date.ac_dc}</>
-                                    }
-                                </p>
-                            </>
-                        }
-                        {
-                            death_date?.normal_date !== null && death_date?.normal_date !== undefined &&
-                            <>
-                                <p>
-                                    <b>Fecha de fallecimiento: </b>
-                                    {
-                                        death_date.normal_date.day !== null && death_date.normal_date.day !== undefined &&
-                                        <>{death_date.normal_date.day + " de "}</>
-                                    }
-                                    {
-                                        death_date.normal_date.month !== null && death_date.normal_date.month !== undefined &&
-                                        <>{death_date.normal_date.month + " de "} </>
-                                    }
-                                    {
-                                        <>{death_date.normal_date.year + " " + death_date.normal_date.ac_dc}</>
-                                    }
-                                </p>
-                            </>
-                        }
-                        {
-                            death_date?.normal_date === null &&
-                            <>
-                                <p><b>Fecha de fallecimiento: </b>Desconocido</p>
-                            </>
-                        }
-                    </>
-                }
-                {
-                    birth_date?.normal_date === null && death_date?.normal_date === null &&
-                    <>
-                        {
-                            (birth_date.century_date?.century === death_date.century_date?.century) &&
-                            (birth_date.century_date?.ac_dc === death_date.century_date?.ac_dc) &&
-                            <p><b>Siglo de nacimiento y fallecimiento</b>{birth_date.century_date?.century + " " + birth_date.century_date?.ac_dc}</p>
-                        }
-                        {
-                            birth_date.century_date?.century !== death_date.century_date?.century &&
-                            <>
-                                <p><b>Siglo de nacimiento</b>{birth_date.century_date?.century + " " + birth_date.century_date?.ac_dc}</p>
-                                <p><b>Siglo de fallecimiento</b>{death_date.century_date?.century + " " + death_date.century_date?.ac_dc}</p>
-                            </>
-                        }
-                    </>
-                }
-                {
-                    (birth_date === null) && (death_date === null) &&
-                    <>
-                        <p><b>¿Sigue vivo?</b></p>
-                        {
-                            person.still_alive === false &&
-                            <>No</>
-                        }
-                        {
-                            person.still_alive === true &&
-                            <>Si</>
-                        }
-                    </>
-                }
-                <p><b>País de origen: </b>{person.country_from}</p>
-                <p><b>Oficio: </b>{person.historical_position}</p>
-                {
-                    orgs !== undefined && orgs.length !== 0 &&
-                    <div>
-                        <p><b>Es miembro de:</b></p>
-                        <ul style="line-height: 1.5;">
-                            {
-                                orgs.map((org) => {
-                                    return(
-                                        <li><a href={org.id} class="a1">{org.name}</a></li>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </div>
-                }
-                {
-                    events !== undefined && events.length !== 0 &&
-                    <div>
-                        <p><b>Ha participado en:</b></p>
-                        <ul style="line-height: 1.5;">
-                            {
-                                events.map((event) => {
-                                    return(
-                                        <li><a href={event.name} class="a1">{event.name}</a></li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
-                }
-            </div>
-            <div>
+            <Component_Header name={person.name} surname={person.surname} nation_people={person.country_from} type="person"/>
+            <Person_Component name={person.name} surname={person.surname} nickname={person.nickname}
+                              country_from={person.country_from} historical_position={person.historical_position}
+                              member_of={orgs} involved_in={events} still_alive = {person.still_alive}
+                              birth_date={birth_date} death_date={death_date}
+            />
+            <div class="card_songs_albums">
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Canciones que abordan la vida de esta persona:</b></p>
-                        <div class={Class_Selector(songs, true)}>
-                            {
-                                songs.map((song) => {
-                                    return(
-                                        <Short_Song song={song}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Songs songs={songs}/>
                 }
+            </div>
+            <div class="card_songs_albums">
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Albumes que abordan la vida de esta persona:</b></p>
-                        <div class={Class_Selector(albums, true)}>
-                            {
-                                albums.map((album) => {
-                                    return(
-                                        <Short_Album album={album}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Albums_I albums={albums}/>
                 }
             </div>
         </div>

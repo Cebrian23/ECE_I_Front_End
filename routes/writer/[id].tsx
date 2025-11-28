@@ -1,8 +1,8 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { WriterGQL } from "../../types/literature/Writer.ts";
-import Short_Book from "../../components/Short_Book.tsx";
-import { Class_Selector } from "../../utilities/utils_CSS.ts";
+import Component_Header from "../../components/Components_Data/General_Components/Component_Header.tsx";
+import Component_Books from "../../components/Components_Data/General_Components/Component_Books.tsx";
 
 type Data = {
     writer: WriterGQL,
@@ -26,19 +26,7 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                <h1>Página del escritor "
-                    {
-                        writer.surname !== null &&
-                        <>{writer.name + " " + writer.surname}</>
-                    }
-                    {
-                        writer.surname === null &&
-                        <>{writer.name}</>
-                    }
-                "</h1>
-                <img src={writer.image}/>
-            </div>
+            <Component_Header name={writer.name} surname={writer.surname} type="writer"/>
             <div class="card_body">
                 <p>
                     <b>Nombre del escritor: </b>
@@ -53,15 +41,7 @@ const Page = (props: PageProps<Data>) => {
                 </p>
                 <p><b>Libros del autor:</b></p>
             </div>
-            <div class={Class_Selector(books, true)}>
-                {
-                    books.map((book) => {
-                        return(
-                            <Short_Book book={book}/>
-                        );
-                    })
-                }
-            </div>
+            <Component_Books books={books}/>
         </div>
     );
 }

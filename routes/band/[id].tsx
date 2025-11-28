@@ -1,8 +1,9 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { BandGQL } from "../../types/music/Band.ts";
-import Shorter_Album from "../../components/Shorter_Album.tsx";
-import { Class_Selector } from "../../utilities/utils_CSS.ts";
+import Component_Header from "../../components/Components_Data/General_Components/Component_Header.tsx";
+import Component_Albums_II from "../../components/Components_Data/General_Components/Component_Albums_II.tsx";
+import Band_Component from "../../components/Components_Data/Specific_Components/Band_Component.tsx";
 
 type Data = {
     band: BandGQL,
@@ -26,24 +27,9 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                <h1>Página de la banda "{band.name}"</h1>
-                <img class={band.logo}/>
-                <div style="line-height: 0.75;">
-                <p><b>Nombre: </b>{band.name}</p>
-                <p><b>Albumes de la banda:</b></p></div>
-            </div>
-            <div>
-                <div class={Class_Selector(albums, true)}>
-                    {
-                        albums.map((album) => {
-                            return(
-                                <Shorter_Album album={album}/>
-                            );
-                        })
-                    }
-                </div>
-            </div>
+            <Component_Header name={band.name} type="band"/>
+            <Band_Component name={band.name}/>
+            <Component_Albums_II albums={albums}/>
         </div>
     );
 }

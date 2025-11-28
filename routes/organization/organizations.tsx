@@ -1,4 +1,4 @@
-import Organizations from "../../islands/Organizations.tsx";
+import Organizations from "../../islands/Pages/Organizations.tsx";
 
 const Page = () => {
     return(

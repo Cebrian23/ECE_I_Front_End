@@ -1,4 +1,4 @@
-import Heraldries from "../../islands/Heraldries.tsx";
+import Heraldries from "../../islands/Pages/Heraldries.tsx";
 
 const Page = () => {
     return(

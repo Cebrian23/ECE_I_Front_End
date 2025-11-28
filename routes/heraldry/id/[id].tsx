@@ -1,9 +1,10 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { HeraldryGQL } from "../../../types/history/Heraldry.ts";
-import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Song from "../../../components/Short_Song.tsx";
-import { Class_Selector } from "../../../utilities/utils_CSS.ts";
+import Component_Header from "../../../components/Components_Data/General_Components/Component_Header.tsx";
+import Heraldry_Component from "../../../components/Components_Data/Specific_Components/Heraldry_Component.tsx";
+import Component_Albums_I from "../../../components/Components_Data/General_Components/Component_Albums_I.tsx";
+import Component_Songs from "../../../components/Components_Data/General_Components/Component_Songs.tsx";
 
 type Data = {
     heraldry: HeraldryGQL,
@@ -28,43 +29,18 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                <h1>Página de la heráldica "{heraldry.name}"</h1>
-                <img src={heraldry.image} width={325} height={350}/>
-            </div>
-            <div class="card_body">
-                <p><b>Nombre: </b>{heraldry.name}</p>
-            </div>
-            <div>
+            <Component_Header name={heraldry.name} image={heraldry.image} type="heraldry"/>
+            <Heraldry_Component name={heraldry.name}/>
+            <div class="card_songs_albums">
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Canciones que abordan esta heráldica:</b></p>
-                        <div class={Class_Selector(songs, true)}>
-                            {
-                                songs.map((song) => {
-                                    return(
-                                        <Short_Song song={song}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Songs songs={songs}/>
                 }
+            </div>
+            <div class="card_songs_albums">
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Albumes que abordan esta heráldica:</b></p>
-                        <div class={Class_Selector(albums, true)}>
-                            {
-                                albums.map((album) => {
-                                    return(
-                                        <Short_Album album={album}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Albums_I albums={albums}/>
                 }
             </div>
         </div>

@@ -1,8 +1,8 @@
 import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { EventGQL } from "../../../types/history/Event.ts";
-import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Song from "../../../components/Short_Song.tsx";
+import Short_Album from "../../../components/Shorter_Data/Short_Album.tsx";
+import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
@@ -24,13 +24,9 @@ export const handler: Handlers<Data> = {
         if((!year && !ac_dc && !type) && (!year_a && !ac_dc_1 && !year_b && !ac_dc_2)){
             return ctx.render();
         }
-        
-        console.log(0);
 
         if(year !== undefined){
-            console.log(1);
             if(type!.valueOf() === "Inicio"){
-                console.log(2);
                 const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/start_date?year=${year}&ac_dc=${ac_dc}`);
     
                 return ctx.render({events: data.data});

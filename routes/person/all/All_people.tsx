@@ -1,8 +1,8 @@
 import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { PersonGQL } from "../../../types/history/Person.ts";
-import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Song from "../../../components/Short_Song.tsx";
+import Short_Album from "../../../components/Shorter_Data/Short_Album.tsx";
+import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
@@ -12,8 +12,6 @@ type Data = {
 export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const data = await Axios.get<PersonGQL[]>("https://ece-i-back-end-ii.deno.dev/people");
-
-        console.log(data.data[0].talked_about_in_song);
         
         return ctx.render({people: data.data});
     }

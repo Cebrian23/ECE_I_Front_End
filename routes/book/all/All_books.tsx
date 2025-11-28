@@ -1,8 +1,8 @@
 import { Handlers, FreshContext, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { BookGQL } from "../../../types/literature/Book.ts";
-import Short_Song from "../../../components/Short_Song.tsx";
-import Short_Album from "../../../components/Short_Album.tsx";
+import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
+import Short_Album from "../../../components/Shorter_Data/Short_Album.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {

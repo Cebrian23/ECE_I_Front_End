@@ -1,4 +1,4 @@
-import Literature from "../../islands/Literature.tsx";
+import Literature from "../../islands/Pages/Literature.tsx";
 
 const Page = () => {
     return(

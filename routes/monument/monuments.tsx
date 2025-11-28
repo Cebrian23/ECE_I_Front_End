@@ -1,4 +1,4 @@
-import Monuments from "../../islands/Monuments.tsx";
+import Monuments from "../../islands/Pages/Monuments.tsx";
 
 const Page = () => {
     return(

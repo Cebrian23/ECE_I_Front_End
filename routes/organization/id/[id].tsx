@@ -1,9 +1,10 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { OrganizationGQL } from "../../../types/history/Organization.ts";
-import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Song from "../../../components/Short_Song.tsx";
-import { Class_Selector } from "../../../utilities/utils_CSS.ts";
+import Component_Header from "../../../components/Components_Data/General_Components/Component_Header.tsx";
+import Component_Songs from "../../../components/Components_Data/General_Components/Component_Songs.tsx";
+import Component_Albums_I from "../../../components/Components_Data/General_Components/Component_Albums_I.tsx";
+import Organization_Component from "../../../components/Components_Data/Specific_Components/Organization_Component.tsx";
 
 type Data = {
     organization: OrganizationGQL,
@@ -33,180 +34,21 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                <h1>Página de la organization "{organization.name}"</h1>
-                <img src={organization.logo}/>
-            </div>
-            <div class="card_body">
-                <p><b>Nombre: </b>{organization.name}</p>
-                {
-                    (creation_date?.normal_date !== null || dissolution_date?.normal_date !== null) &&
-                    <>
-                        {
-                            creation_date?.normal_date !== null && creation_date?.normal_date !== undefined &&
-                            <>
-                                <p>
-                                    <b>Fecha de creación: </b>
-                                    {
-                                        creation_date.normal_date.day !== null && creation_date.normal_date.day !== undefined &&
-                                        <>{creation_date.normal_date.day + " de "}</>
-                                    }
-                                    {
-                                        creation_date.normal_date.month !== null && creation_date.normal_date.month !== undefined &&
-                                        <>{creation_date.normal_date.month + " de "}</>
-                                    }
-                                    {
-                                        <>{creation_date.normal_date.year + " " + creation_date.normal_date.ac_dc}</>
-                                    }
-                                </p>
-                            </>
-                        }
-                        {
-                            dissolution_date?.normal_date !== null && dissolution_date?.normal_date !== undefined &&
-                            <>
-                                <p>
-                                    <b>Fecha de disolución: </b>
-                                    {
-                                        dissolution_date.normal_date.day !== null && dissolution_date.normal_date.day !== undefined &&
-                                        <>{dissolution_date.normal_date.day + " de "}</>
-                                    }
-                                    {
-                                        dissolution_date.normal_date.month !== null && dissolution_date.normal_date.month !== undefined &&
-                                        <>{dissolution_date.normal_date.month + " de "} </>
-                                    }
-                                    {
-                                        <>{dissolution_date.normal_date.year + " " + dissolution_date.normal_date.ac_dc}</>
-                                    }
-                                </p>
-                            </>
-                        }
-                        {
-                            dissolution_date?.normal_date === null &&
-                            <>
-                                <p><b>Fecha de disolución: </b>Desconocido</p>
-                            </>
-                        }
-                    </>
-                }
-                {
-                    creation_date?.normal_date === null && dissolution_date?.normal_date === null &&
-                    <>
-                        {
-                            (creation_date.century_date?.century === dissolution_date.century_date?.century) &&
-                            (creation_date.century_date?.ac_dc === dissolution_date.century_date?.ac_dc) &&
-                            <p><b>Siglo de creación y disolución</b>{creation_date.century_date?.century + " " + creation_date.century_date?.ac_dc}</p>
-                        }
-                        {
-                            creation_date.century_date?.century !== dissolution_date.century_date?.century &&
-                            <>
-                                <p><b>Siglo de creación</b>{creation_date.century_date?.century + " " + creation_date.century_date?.ac_dc}</p>
-                                <p><b>Siglo de disolución</b>{dissolution_date.century_date?.century + " " + dissolution_date.century_date?.ac_dc}</p>
-                            </>
-                        }
-                    </>
-                }
-                {
-                    (creation_date === null) && (dissolution_date === null) &&
-                    <>
-                        <p><b>¿Sigue existiendo?</b></p>
-                        {
-                            organization.still_exists === false &&
-                            <>No</>
-                        }
-                        {
-                            organization.still_exists === true &&
-                            <>Si</>
-                        }
-                    </>
-                }
-                {
-                    members !== undefined && members.length !== 0 &&
-                    <div>
-                        <p><b>Miembros destacados de la organización:</b></p>
-                        <ul style="line-height: 1.5;">
-                            {
-                                members.map((member) => {
-                                    return(
-                                        <>
-                                            {
-                                                member.country_from !== "China" &&
-                                                <>
-                                                    {
-                                                        member.surname !== undefined && member.surname !== null &&
-                                                        <li><a href={member.id} class="a1">{member.name + " " + member.surname}</a></li>
-                                                    }
-                                                    {
-                                                        member.surname === undefined && member.surname === null &&
-                                                        <li><a href={member.id} class="a1">{member.name}</a></li>
-                                                    }
-                                                </>
-                                            }
-                                            {
-                                                member.country_from === "China" &&
-                                                <>
-                                                    {
-                                                        member.surname !== undefined && member.surname !== null &&
-                                                        <li><a href={member.id} class="a1">{member.surname + " " + member.name}</a></li>
-                                                    }
-                                                    {
-                                                        member.surname === undefined && member.surname === null &&
-                                                        <li><a href={member.id} class="a1">{member.name}</a></li>
-                                                    }
-                                                </>
-                                            }
-                                        </>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </div>
-                }
-                {
-                    events !== undefined && events.length !== 0 &&
-                    <div>
-                        <p><b>Han participado en:</b></p>
-                        <ul style="line-height: 1.5;">
-                            {
-                                events.map((event) => {
-                                    return(
-                                        <li><a href={event.name} class="a1">{event.name}</a></li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
-                }
-            </div>
-            <div>
+            <Component_Header name={organization.name} type="organization"/>
+            <Organization_Component name={organization.name} members={members} involved_in={events}
+                                    creation_date={creation_date} dissolution_date={dissolution_date}
+                                    still_exists={organization.still_exists}
+            />
+            <div class="card_songs_albums">
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Canciones que abordan la historia de esta organización:</b></p>
-                        <div class={Class_Selector(songs, true)}>
-                            {
-                                songs.map((song) => {
-                                    return(
-                                        <Short_Song song={song}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Songs songs={songs}/>
                 }
+            </div>
+            <div class="card_songs_albums">
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Albumes que abordan la historia de esta organización:</b></p>
-                        <div class={Class_Selector(albums, true)}>
-                            {
-                                albums.map((album) => {
-                                    return(
-                                        <Short_Album album={album}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Albums_I albums={albums}/>
                 }
             </div>
         </div>

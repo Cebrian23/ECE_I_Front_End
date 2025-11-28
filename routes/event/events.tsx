@@ -1,4 +1,4 @@
-import Events from "../../islands/Events.tsx";
+import Events from "../../islands/Pages/Events.tsx";
 
 const Page = () => {
     return(

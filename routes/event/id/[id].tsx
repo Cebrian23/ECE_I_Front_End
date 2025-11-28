@@ -1,9 +1,10 @@
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
 import Axios from "axios";
 import { EventGQL } from "../../../types/history/Event.ts";
-import Short_Album from "../../../components/Short_Album.tsx";
-import Short_Song from "../../../components/Short_Song.tsx";
-import { Class_Selector } from "../../../utilities/utils_CSS.ts";
+import Component_Header from "../../../components/Components_Data/General_Components/Component_Header.tsx";
+import Component_Songs from "../../../components/Components_Data/General_Components/Component_Songs.tsx";
+import Component_Albums_I from "../../../components/Components_Data/General_Components/Component_Albums_I.tsx";
+import Event_Component from "../../../components/Components_Data/Specific_Components/Event_Component.tsx";
 
 type Data = {
     event: EventGQL,
@@ -12,9 +13,8 @@ type Data = {
 export const handler: Handlers<Data> = {
     GET: async (_req: Request, ctx: FreshContext<unknown, Data>) =>{
         const id = ctx.params.id;
-        console.log(id);
+
         const data = await Axios.get<EventGQL>(`https://ece-i-back-end-ii.deno.dev/event/id?id=${id}`);
-        console.log(data.data);
         
         return ctx.render({event: data.data});
     }
@@ -34,195 +34,20 @@ const Page = (props: PageProps<Data>) => {
 
     return (
         <div>
-            <div class="card_head">
-                <h1>Página del evento "{event.name}"</h1>
-            </div>
-            <div class="card_body">
-                <p><b>Nombre: </b>{event.name}</p>
-                {
-                    (start_date?.normal_date !== null || end_date?.normal_date !== null) &&
-                    <>
-                        {
-                            (start_date?.normal_date?.day === end_date?.normal_date?.day) &&
-                            (start_date?.normal_date?.month === end_date?.normal_date?.month) &&
-                            (start_date?.normal_date?.year === end_date?.normal_date?.year) &&
-                            (start_date?.normal_date?.ac_dc === end_date?.normal_date?.ac_dc) &&
-                            <p>
-                                <b>Fecha del evento: </b>
-                                {
-                                    start_date?.normal_date?.day !== null && start_date?.normal_date?.day !== undefined &&
-                                    <>{start_date?.normal_date?.day + " de "}</>
-                                }
-                                {
-                                    start_date?.normal_date?.month !== null && start_date?.normal_date?.month !== undefined &&
-                                    <>{start_date?.normal_date?.month + " de "} </>
-                                }
-                                {
-                                    <>{start_date?.normal_date?.year + " " + start_date?.normal_date?.ac_dc}</>
-                                }
-                            </p>
-                        }
-                        {
-                            (start_date?.normal_date?.day !== end_date?.normal_date?.day) &&
-                            (start_date?.normal_date?.month !== end_date?.normal_date?.month) &&
-                            (start_date?.normal_date?.year !== end_date?.normal_date?.year) &&
-                            (start_date?.normal_date?.ac_dc !== end_date?.normal_date?.ac_dc) &&
-                            <>
-                                <p>
-                                    <b>Fecha de inicio: </b>
-                                    {
-                                        start_date?.normal_date?.day !== null && start_date?.normal_date?.day !== undefined &&
-                                        <>{start_date?.normal_date?.day + " de "}</>
-                                    }
-                                    {
-                                        start_date?.normal_date?.month !== null && start_date?.normal_date?.month !== undefined &&
-                                        <>{start_date?.normal_date?.month + " de "} </>
-                                    }
-                                    {
-                                        <>{start_date?.normal_date?.year + " " + start_date?.normal_date?.ac_dc}</>
-                                    }
-                                </p>
-                                <p>
-                                    <b>Fecha de fin: </b>
-                                    {
-                                        end_date?.normal_date?.day !== null && end_date?.normal_date?.day !== undefined &&
-                                        <>{end_date.normal_date.day + " de "}</>
-                                    }
-                                    {
-                                        end_date?.normal_date?.month !== null && end_date?.normal_date?.month !== undefined &&
-                                        <>{end_date.normal_date.month + " de "} </>
-                                    }
-                                    {
-                                        <>{end_date?.normal_date?.year + " " + end_date?.normal_date?.ac_dc}</>
-                                    }
-                                </p>
-                            </>
-                        }
-                        {
-                            end_date?.normal_date === null && event.still_active === false &&
-                            <p><b>Fecha de fin: </b>Desconocido</p>
-                        }
-                    </>
-                }
-                {
-                    start_date?.normal_date === null && end_date?.normal_date === null &&
-                    <>
-                        {
-                            (start_date.century_date?.century === end_date.century_date?.century) &&
-                            (start_date.century_date?.ac_dc === end_date.century_date?.ac_dc) &&
-                            <p><b>Siglo de nacimiento y fallecimiento</b>{start_date.century_date?.century + " " + start_date.century_date?.ac_dc}</p>
-                        }
-                        {
-                            end_date.century_date?.century !== end_date.century_date?.century &&
-                            <>
-                                <p><b>Siglo de nacimiento</b>{start_date.century_date?.century + " " + start_date.century_date?.ac_dc}</p>
-                                <p><b>Siglo de fallecimiento</b>{end_date.century_date?.century + " " + end_date.century_date?.ac_dc}</p>
-                            </>
-                        }
-                    </>
-                }
-                {
-                    (start_date === null) && (end_date === null) &&
-                    <>
-                        <p><b>¿Sigue activo?</b></p>
-                        {
-                            event.still_active === false &&
-                            <>No</>
-                        }
-                        {
-                            event.still_active === true &&
-                            <>Si</>
-                        }
-                    </>
-                }
-                {
-                    people !== undefined && people.length !== 0 &&
-                    <div>
-                        <p><b>Personas involucradas:</b></p>
-                        <ul style="line-height: 1.5;">
-                            {
-                                people.map((person) => {
-                                    return(
-                                        <>
-                                            {
-                                                person.country_from !== "China" &&
-                                                <>
-                                                    {
-                                                        person.surname !== undefined && person.surname !== null &&
-                                                        <li><a href={person.id} class="a1">{person.name + " " + person.surname}</a></li>
-                                                    }
-                                                    {
-                                                        person.surname === undefined && person.surname === null &&
-                                                        <li><a href={person.id} class="a1">{person.name}</a></li>
-                                                    }
-                                                </>
-                                            }
-                                            {
-                                                person.country_from === "China" &&
-                                                <>
-                                                    {
-                                                        person.surname !== undefined && person.surname !== null &&
-                                                        <li><a href={person.id} class="a1">{person.surname + " " + person.name}</a></li>
-                                                    }
-                                                    {
-                                                        person.surname === undefined && person.surname === null &&
-                                                        <li><a href={person.id} class="a1">{person.name}</a></li>
-                                                    }
-                                                </>
-                                            }
-                                        </>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </div>
-                }
-                {
-                    orgs !== undefined && orgs.length !== 0 &&
-                    <div>
-                        <p><b>Organizaciones involucradas:</b></p>
-                        <ul style="line-height: 1.5;">
-                            {
-                                orgs.map((org) => {
-                                    return(
-                                        <li><a href={org.name} class="a1">{org.name}</a></li>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </div>
-                }
-            </div>
-            <div>
+            <Component_Header name={event.name} type="event"/>
+            <Event_Component name={event.name} people={people} orgs={orgs}
+                             start_date={start_date} end_date={end_date}
+            />
+            <div class="card_songs_albums">
                 {
                     songs !== undefined && songs.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Canciones que abordan este evento:</b></p>
-                        <div class={Class_Selector(songs, true)}>
-                            {
-                                songs.map((song) => {
-                                    return(
-                                        <Short_Song song={song}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Songs songs={songs}/>
                 }
+            </div>
+            <div class="card_songs_albums">
                 {
                     albums !== undefined && albums.length !== 0  &&
-                    <div>
-                        <p style="text-indent: 25%;"><b>Albumes que abordan este evento:</b></p>
-                        <div class={Class_Selector(albums, true)}>
-                            {
-                                albums.map((album) => {
-                                    return(
-                                        <Short_Album album={album}/>
-                                    );
-                                })
-                            }
-                        </div>
-                    </div>
+                    <Component_Albums_I albums={albums}/>
                 }
             </div>
         </div>
