@@ -52,19 +52,19 @@ import * as $person_name_People_name from "./routes/person/name/People_name.tsx"
 import * as $person_people from "./routes/person/people.tsx";
 import * as $song_id_ from "./routes/song/[id].tsx";
 import * as $writer_id_ from "./routes/writer/[id].tsx";
-import * as $CountryForm from "./islands/CountryForm.tsx";
-import * as $DateForm from "./islands/DateForm.tsx";
-import * as $DoubleDateForm from "./islands/DoubleDateForm.tsx";
-import * as $Events from "./islands/Events.tsx";
-import * as $Festivities from "./islands/Festivities.tsx";
-import * as $Heraldries from "./islands/Heraldries.tsx";
-import * as $Legends from "./islands/Legends.tsx";
-import * as $Literature from "./islands/Literature.tsx";
-import * as $Miths from "./islands/Miths.tsx";
-import * as $Monuments from "./islands/Monuments.tsx";
-import * as $NameForm from "./islands/NameForm.tsx";
-import * as $Organizations from "./islands/Organizations.tsx";
-import * as $People from "./islands/People.tsx";
+import * as $Forms_CountryForm from "./islands/Forms/CountryForm.tsx";
+import * as $Forms_DateForm from "./islands/Forms/DateForm.tsx";
+import * as $Forms_DoubleDateForm from "./islands/Forms/DoubleDateForm.tsx";
+import * as $Forms_NameForm from "./islands/Forms/NameForm.tsx";
+import * as $Pages_Events from "./islands/Pages/Events.tsx";
+import * as $Pages_Festivities from "./islands/Pages/Festivities.tsx";
+import * as $Pages_Heraldries from "./islands/Pages/Heraldries.tsx";
+import * as $Pages_Legends from "./islands/Pages/Legends.tsx";
+import * as $Pages_Literature from "./islands/Pages/Literature.tsx";
+import * as $Pages_Miths from "./islands/Pages/Miths.tsx";
+import * as $Pages_Monuments from "./islands/Pages/Monuments.tsx";
+import * as $Pages_Organizations from "./islands/Pages/Organizations.tsx";
+import * as $Pages_People from "./islands/Pages/People.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -129,19 +129,19 @@ const manifest = {
     "./routes/writer/[id].tsx": $writer_id_,
   },
   islands: {
-    "./islands/CountryForm.tsx": $CountryForm,
-    "./islands/DateForm.tsx": $DateForm,
-    "./islands/DoubleDateForm.tsx": $DoubleDateForm,
-    "./islands/Events.tsx": $Events,
-    "./islands/Festivities.tsx": $Festivities,
-    "./islands/Heraldries.tsx": $Heraldries,
-    "./islands/Legends.tsx": $Legends,
-    "./islands/Literature.tsx": $Literature,
-    "./islands/Miths.tsx": $Miths,
-    "./islands/Monuments.tsx": $Monuments,
-    "./islands/NameForm.tsx": $NameForm,
-    "./islands/Organizations.tsx": $Organizations,
-    "./islands/People.tsx": $People,
+    "./islands/Forms/CountryForm.tsx": $Forms_CountryForm,
+    "./islands/Forms/DateForm.tsx": $Forms_DateForm,
+    "./islands/Forms/DoubleDateForm.tsx": $Forms_DoubleDateForm,
+    "./islands/Forms/NameForm.tsx": $Forms_NameForm,
+    "./islands/Pages/Events.tsx": $Pages_Events,
+    "./islands/Pages/Festivities.tsx": $Pages_Festivities,
+    "./islands/Pages/Heraldries.tsx": $Pages_Heraldries,
+    "./islands/Pages/Legends.tsx": $Pages_Legends,
+    "./islands/Pages/Literature.tsx": $Pages_Literature,
+    "./islands/Pages/Miths.tsx": $Pages_Miths,
+    "./islands/Pages/Monuments.tsx": $Pages_Monuments,
+    "./islands/Pages/Organizations.tsx": $Pages_Organizations,
+    "./islands/Pages/People.tsx": $Pages_People,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
