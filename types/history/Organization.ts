@@ -8,30 +8,8 @@ export type OrganizationGQL = {
     id: string,
     name: string,
     logo?: string,
-    creation?: {
-        normal_date: {
-            year: number,
-            month: string | null,
-            day: string | null,
-            ac_dc: string,
-        } | null,
-        century_date: {
-            century: string,
-            ac_dc: string,
-        } | null,
-    },
-    dissolution?: {
-        normal_date: {
-            year: number,
-            month: string | null,
-            day: string | null,
-            ac_dc: string,
-        } | null,
-        century_date: {
-            century: string,
-            ac_dc: string,
-        } | null,
-    },
+    creation?: Date,
+    dissolution?: Date,
     distinguished_members?: Person_Short[],
     involved_in?: Event_Short[],
     still_exists: boolean,
