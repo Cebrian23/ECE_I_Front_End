@@ -1,7 +1,7 @@
 import { useState } from "preact/hooks";
-import NameForm from "./NameForm.tsx";
-import DateForm from "./DateForm.tsx";
-import DoubleDateForm from "./DoubleDateForm.tsx";
+import NameForm from "../Forms/NameForm.tsx";
+import DateForm from "../Forms/DateForm.tsx";
+import DoubleDateForm from "../Forms/DoubleDateForm.tsx";
 
 const Literature = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);

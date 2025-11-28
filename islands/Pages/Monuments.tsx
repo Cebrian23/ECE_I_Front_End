@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
-import NameForm from "./NameForm.tsx";
-import CountryForm from "./CountryForm.tsx";
+import NameForm from "../Forms/NameForm.tsx";
+import CountryForm from "../Forms/CountryForm.tsx";
 
 const Monuments = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);

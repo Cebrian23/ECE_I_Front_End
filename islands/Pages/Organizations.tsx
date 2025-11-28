@@ -1,15 +1,15 @@
 import { useState } from "preact/hooks";
-import NameForm from "./NameForm.tsx";
-import DateForm from "./DateForm.tsx";
-import DoubleDateForm from "./DoubleDateForm.tsx";
+import NameForm from "../Forms/NameForm.tsx";
+import DateForm from "../Forms/DateForm.tsx";
+import DoubleDateForm from "../Forms/DoubleDateForm.tsx";
 
-const Events = () => {
+const Organizations = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);
     const [nameFilter, showNameFilter] = useState<boolean>(false);
     const [initDateFilter, showInitDateFilter] = useState<boolean>(false);
     const [endDateFilter, showEndDateFilter] = useState<boolean>(false);
     const [doubleDateFilter, showDoubleDateFilter] = useState<boolean>(false);
-      
+
     return(
         <div>
             {
@@ -25,40 +25,40 @@ const Events = () => {
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showInitDateFilter(true);
-                    }}>Filtrar por fecha de inicio</button>
+                    }}>Filtrar por fecha de creación</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
-                    }}>Filtrar por fecha de fin</button>
+                    }}>Filtrar por fecha de disolución</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
-                    }}>Filtrar por fecha de inicio y fin</button>
+                    }}>Filtrar por fecha de creación y disolución</button>
                     <br/>
-                    <button type="button" onClick={() => location.href="/event/all/All_events"}>Mostrar todos los datos</button>
+                    <button type="button" onClick={() => location.href="/organization/all/All_organizations"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
             {
                 nameFilter.valueOf() === true &&
-                <NameForm surname={false} page_back="Events"/>
+                <NameForm surname={false} page_back="Organizations"/>
             }
             {
                 initDateFilter.valueOf() === true &&
-                <DateForm type="Event" start page_back="Events"/>
+                <DateForm type="Organization" start page_back="Organizations"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm type="Event" start={false} page_back="Events"/>
+                <DateForm type="Organization" start={false} page_back="Organizations"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&
-                <DoubleDateForm type="Event" page_back="Events"/>
+                <DoubleDateForm type="Organization" page_back="Organizations"/>
             }
         </div>
     );
 }
 
-export default Events;
+export default Organizations;

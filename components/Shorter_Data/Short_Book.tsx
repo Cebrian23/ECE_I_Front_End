@@ -1,4 +1,4 @@
-import { BookGQL } from "../types/literature/Book.ts";
+import { BookGQL } from "../../types/literature/Book.ts";
 
 type Data = {
     book: BookGQL,
@@ -6,13 +6,10 @@ type Data = {
 
 const Short_Book = (prop: Data) => {
     const book = prop.book;
+
     return(
-        <div class="card_block">
-            <br/>
-            {
-                book.cover !== null &&
-                <img src={book.cover} width={250} height={350} alt={book.title}/>
-            }
+        <div class="short_block">
+            <img src={book.cover} width={250} height={300} alt={book.title}/>
             <p>
                 <i><a href={`/book/id/${book.id}`} class="a1">{book.title}</a></i>
                 {
