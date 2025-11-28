@@ -10,30 +10,8 @@ export type PersonGQL = {
     surname?: string,
     nickname?: string[],
     image?: string,
-    birth_date?: {
-        normal_date: {
-            year: number,
-            month: string | null,
-            day: string | null,
-            ac_dc: string,
-        } | null,
-        century_date: {
-            century: string,
-            ac_dc: string,
-        } | null,
-    },
-    death_date?: {
-        normal_date: {
-            year: number,
-            month: string | null,
-            day: string | null,
-            ac_dc: string,
-        } | null,
-        century_date: {
-            century: string,
-            ac_dc: string,
-        } | null
-    },
+    birth_date?: Date,
+    death_date?: Date,
     country_from: string,
     historical_position: string,
     still_alive: boolean,
