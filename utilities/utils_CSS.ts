@@ -11,29 +11,22 @@ import { Song, Song_Short } from "../types/music/Song.ts";
  */
 export const Class_Selector = (data: Song[] | Song_Short[] | Album_Shorter[] | Album_Short[] | BookGQL[], ind_page?: boolean): string => {
     if(data.length === 4 || data.length % 4 === 0){
-        //console.log(4);
+        console.log(4);
         return "group4";
     }
     else if(data.length === 3 || data.length % 3 === 0){
-        //console.log(3);
+        console.log(3);
         return "group3";
     }
     else if(data.length === 2 || data.length % 2 === 0){
-        //console.log(2);
+        console.log(2);
         return "group2";
     }
     else if(data.length === 1){
-        if(ind_page === true){
-            //console.log("ind_page");
-            return "group1_ind_page"
-        }
-        else if(!ind_page || ind_page === false){
-            //console.log(1);
-            return "group1";
-        }
+        console.log(1);
+        return "group1";
     }
 
-    //console.log("default");
-    
+    console.log("default");
     return "group3";
 }
