@@ -5,9 +5,7 @@ type Data = {
     name: string,
     album_in: Album_Short,
     talk_about?: Topics_Short,
-    official_video?: string,
-    official_lyric_video?: string,
-    official_cd_video?: string,
+    videos: boolean
 }
 
 const Song_Component = (props: Data) => {
@@ -15,9 +13,8 @@ const Song_Component = (props: Data) => {
     const album_in = props.album_in;
     const band = album_in.creator;
     const talk_about = props.talk_about;
-    //const official_video = props.official_video;
-    //const official_lyric_video = props.official_lyric_video;
-    //const official_cd_video = props.official_cd_video;
+    const videos = props.videos;
+    console.log(videos);
 
     return(
         <div class="card_head">
@@ -128,7 +125,10 @@ const Song_Component = (props: Data) => {
                         </ul>
                     </div>
                 }
-                <p><b>Videoclips:</b></p>
+                {
+                    videos === true &&
+                    <p><b>Videoclips:</b></p>
+                }
             </div>
         </div>
     );
