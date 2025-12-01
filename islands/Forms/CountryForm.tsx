@@ -18,7 +18,12 @@ const CountryForm = () => {
                 <div class="column_data">
                     <div class="row_buttons">
                         <button type="button" onClick={() => location.href="/monument/monuments"}>Volver</button>
-                        <button type="button" onClick={() => location.href=`/monument/country_in/Monuments_country?country=${country}`}>Enviar</button>
+                        <button type="button" onClick={() => {
+                            const aux = country.trim();
+                            if(aux !== ""){
+                                location.href=`/monument/country_in/Monuments_country?country=${aux}`
+                            }
+                        }}>Enviar</button>
                     </div>
                 </div>
             </form>

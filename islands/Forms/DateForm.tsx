@@ -3,12 +3,14 @@ import { useEffect, useState } from "preact/hooks";
 type Props = {
     type: string;
     start?: boolean;
+    limit?: boolean;
     page_back: string;
 }
 
 const DateForm = (props: Props) => {
     const type: string = props.type;
     const start: boolean | undefined = props.start;
+    const limit: boolean | undefined = props.limit;
     const page_back: string = props.page_back;
     let contador = 0;
 
@@ -50,35 +52,63 @@ const DateForm = (props: Props) => {
         <div>
             <form>
                 {
-                    type === "Event" && start === true &&
+                    type === "Event" && limit === true && start === true &&
+                    <h1>Filtrar desde una fecha de inicio de un evento</h1>
+                }
+                {
+                    type === "Event" && limit === true && start === false &&
+                    <h1>Filtrar hasta una fecha de fin de un evento</h1>
+                }
+                {
+                    type === "Event" && limit === false && start === true &&
                     <h1>Filtro por fecha de inicio de un evento</h1>
                 }
                 {
-                    type === "Event" && start === false &&
+                    type === "Event" && limit === false && start === false &&
                     <h1>Filtro por fecha de fin de un evento</h1>
                 }
                 {
-                    type === "Person" && start === true &&
+                    type === "Person" && limit === true && start === true &&
+                    <h1>Filtrar desde una fecha de nacimiento de una persona</h1>
+                }
+                {
+                    type === "Person" && limit === true && start === false &&
+                    <h1>Filtrar hasta una fecha de fallecimiento de una persona</h1>
+                }
+                {
+                    type === "Person" && limit === false && start === true &&
                     <h1>Filtro por fecha de nacimiento de una persona</h1>
                 }
                 {
-                    type === "Person" && start === false &&
+                    type === "Person" && limit === false && start === false &&
                     <h1>Filtro por fecha de fallecimiento de una persona</h1>
                 }
                 {
-                    type === "Organization" && start === true &&
+                    type === "Organization" && limit === true && start === true &&
+                    <h1>Filtrar desde una fecha de creación de una organización</h1>
+                }
+                {
+                    type === "Organization" && limit === true && start === false &&
+                    <h1>Filtrar hasta una fecha de disolución de una organización</h1>
+                }
+                {
+                    type === "Organization" && limit === false && start === true &&
                     <h1>Filtro por fecha de creación de una organización</h1>
                 }
                 {
-                    type === "Organization" && start === false &&
+                    type === "Organization" && limit === false && start === false &&
                     <h1>Filtro por fecha de disolución de una organización</h1>
                 }
                 {
-                    type === "Literature" && start === true &&
+                    type === "Literature" && limit === false &&
+                    <h1>Filtrar por fecha de publicación</h1>
+                }
+                {
+                    type === "Literature" && limit === true && start === true &&
                     <h1>Filtro por fecha de publicación de un libro</h1>
                 }
                 {
-                    type === "Literature" && start === false &&
+                    type === "Literature" && limit === true && start === false &&
                     <h1>Filtro por fecha de publicación de un libro</h1>
                 }
                 <div class="row_data">
@@ -128,6 +158,10 @@ const DateForm = (props: Props) => {
                                 type === "Literature" &&
                                 <label for="year">
                                     {
+                                        start === undefined &&
+                                        <>Año de publicación:</>
+                                    }
+                                    {
                                         start === true &&
                                         <>Año de publicación mínimo:</>
                                     }
@@ -150,6 +184,10 @@ const DateForm = (props: Props) => {
                         <div class="column_data">
                             <div class="row_data">
                             {
+                                type === "Literature" && start === undefined &&
+                                <input name="year" type="number" min="0" max="2026" defaultValue="1700" onChange={(e) => {setYear(Number(e.currentTarget.value))}} required/>
+                            }
+                            {
                                 start === true && type !== "Festivity" && ac_dc === "d.C" &&
                                 <input name="year" type="number" min="0" max="2026" defaultValue="1700" onChange={(e) => {setYear(Number(e.currentTarget.value))}} required/>
                             }
@@ -167,31 +205,31 @@ const DateForm = (props: Props) => {
                             }
                             {
                                 type !== "Literature" && type !== "Festivity" && 
-                                    <select name="ac_dc" onChange={(e) => 
-                                        {
-                                            if(e.currentTarget.value === "a.C"){
-                                                if(start === true){
-                                                    setYear(400);
-                                                }
-                                                else{
-                                                    setYear(40);
-                                                }
+                                <select name="ac_dc" onChange={(e) => 
+                                    {
+                                        if(e.currentTarget.value === "a.C"){
+                                            if(start === true){
+                                                setYear(400);
                                             }
-                                            else if(e.currentTarget.value === "d.C"){
-                                                if(start === true){
-                                                    setYear(1700);
-                                                }
-                                                else{
-                                                    setYear(2000);
-                                                }
+                                            else{
+                                                setYear(40);
                                             }
-
-                                            setAc_dc(e.currentTarget.value);
                                         }
-                                    } required>
-                                        <option value="d.C" selected>d.C</option>
-                                        <option value="a.C">a.C</option>
-                                    </select>
+                                        else if(e.currentTarget.value === "d.C"){
+                                            if(start === true){
+                                                setYear(1700);
+                                            }
+                                            else{
+                                                setYear(2000);
+                                            }
+                                        }
+
+                                        setAc_dc(e.currentTarget.value);
+                                    }
+                                } required>
+                                    <option value="d.C" selected>d.C</option>
+                                    <option value="a.C">a.C</option>
+                                </select>
                             }
                             </div>
                             {
@@ -246,28 +284,35 @@ const DateForm = (props: Props) => {
                             page_back === "Events" &&
                             <>
                                 <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/event/date/Events_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}`}>Enviar</button>
+                                <button type="button" onClick={() => location.href=`/event/date/Events_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}&limit=${limit}`}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "People" &&
                             <>
                                 <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/person/date/People_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}`}>Enviar</button>
+                                <button type="button" onClick={() => location.href=`/person/date/People_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}&limit=${limit}`}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Organizations" &&
                             <>
                                 <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/organization/date/Organizations_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}`}>Enviar</button>
+                                <button type="button" onClick={() => location.href=`/organization/date/Organizations_date?year=${year}&ac_dc=${ac_dc}&type=${type_date}&limit=${limit}`}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Literature" &&
                             <>
                                 <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/book/date/Books_date?year=${year}&type=${type_date}`}>Enviar</button>
+                                {
+                                    limit === true &&
+                                    <button type="button" onClick={() => location.href=`/book/date/Books_date?year=${year}&type=${type_date}&limit=${limit}`}>Enviar</button>
+                                }
+                                {
+                                    limit === false &&
+                                    <button type="button" onClick={() => location.href=`/book/date/Books_date?year=${year}&limit=${limit}`}>Enviar</button>
+                                }
                             </>
                         }
                         {

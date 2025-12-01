@@ -55,7 +55,7 @@ const NameForm = (props: Props) => {
                             apellido.valueOf() === true &&
                             <>
                                 <br/>
-                                <input type="text" name="surname" onChange={(e) => setSurname(e.currentTarget.value)}/>
+                                <input type="text" name="surname" onChange={(e) => setSurname(e.currentTarget.value)} required/>
                             </>
                         }
                     </div>
@@ -67,8 +67,9 @@ const NameForm = (props: Props) => {
                             <>
                                 <button type="button" onClick={() => location.href="/event/events"}>Volver</button>
                                 <button type="button" onClick={() => {
-                                    if(name !== ""){
-                                        location.href=`/event/name/Events_name?name=${name}`
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/event/name/Events_name?name=${aux}`
                                     }
                                 }}>Enviar</button>
                             </>
@@ -78,18 +79,14 @@ const NameForm = (props: Props) => {
                             <>
                                 <button type="button" onClick={() => location.href="/person/people"}>Volver</button>
                                 {
-                                    surname.valueOf() === "" &&
                                     <button type="button" onClick={() => {
-                                        if(name !== ""){
-                                            location.href=`/person/name/People_name?name=${name}`
+                                        const aux_name = name.trim();
+                                        const aux_surname = surname.trim();
+                                        if(aux_name !== "" && aux_surname === "" && apellido === false){
+                                            location.href=`/person/name/People_name?name=${aux_name}`
                                         }
-                                    }}>Enviar</button>
-                                }
-                                {
-                                    surname.valueOf() !== "" &&
-                                    <button type="button" onClick={() => {
-                                        if(name !== ""){
-                                            location.href=`/person/name/People_name?name=${name}&surname=${surname}`
+                                        else if(aux_name !== "" && aux_surname !== ""){
+                                            location.href=`/person/name/People_name?name=${aux_name}&surname=${aux_surname}`
                                         }
                                     }}>Enviar</button>
                                 }
@@ -100,9 +97,10 @@ const NameForm = (props: Props) => {
                             <>
                                 <button type="button" onClick={() => location.href="/organization/organizations"}>Volver</button>
                                 <button type="button" onClick={() => {
-                                        if(name !== ""){
-                                            location.href=`/organization/name/Organizations_name?name=${name}`
-                                        }
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/organization/name/Organizations_name?name=${aux}`
+                                    }
                                 }}>Enviar</button>
                             </>
                         }
@@ -111,8 +109,9 @@ const NameForm = (props: Props) => {
                             <>
                                 <button type="button" onClick={() => location.href="/book/literature"}>Volver</button>
                                 <button type="button" onClick={() => {
-                                    if(name !== ""){
-                                        location.href=`/book/title/Books_title?title=${name}`
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/book/title/Books_title?title=${aux}`
                                     }
                                 }}>Enviar</button>
                             </>
@@ -121,35 +120,60 @@ const NameForm = (props: Props) => {
                             page_back === "Heraldries" &&
                             <>
                                 <button type="button" onClick={() => location.href="/heraldry/heraldries"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/heraldry/name/Heraldries_name?name=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/heraldry/name/Heraldries_name?name=${aux}`
+                                    }
+                                }}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Legends" &&
                             <>
                                 <button type="button" onClick={() => location.href="/legend/legends"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/legend/name/Legends_name?name=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/legend/name/Legends_name?name=${aux}`
+                                    }
+                                }}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Miths" &&
                             <>
                                 <button type="button" onClick={() => location.href="/mith/miths"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/mith/name/Miths_name?name=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/mith/name/Miths_name?name=${aux}`
+                                    }
+                                }}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Festivities" &&
                             <>
                                 <button type="button" onClick={() => location.href="/festivity/festivities"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/festivity/name/Festivities_name?name=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/festivity/name/Festivities_name?name=${aux}`
+                                    }
+                                }}>Enviar</button>
                             </>
                         }
                         {
                             page_back === "Monuments" &&
                             <>
                                 <button type="button" onClick={() => location.href="/monument/monuments"}>Volver</button>
-                                <button type="button" onClick={() => location.href=`/monument/name/Monuments_name?name=${name}`}>Enviar</button>
+                                <button type="button" onClick={() => {
+                                    const aux = name.trim();
+                                    if(aux !== ""){
+                                        location.href=`/monument/name/Monuments_name?name=${aux}`
+                                    }
+                                }}>Enviar</button>
                             </>
                         }
                     </div>
