@@ -52,6 +52,7 @@ import * as $person_name_People_name from "./routes/person/name/People_name.tsx"
 import * as $person_people from "./routes/person/people.tsx";
 import * as $song_id_ from "./routes/song/[id].tsx";
 import * as $writer_id_ from "./routes/writer/[id].tsx";
+import * as $Forms_CenturyForm from "./islands/Forms/CenturyForm.tsx";
 import * as $Forms_CountryForm from "./islands/Forms/CountryForm.tsx";
 import * as $Forms_DateForm from "./islands/Forms/DateForm.tsx";
 import * as $Forms_DoubleDateForm from "./islands/Forms/DoubleDateForm.tsx";
@@ -129,6 +130,7 @@ const manifest = {
     "./routes/writer/[id].tsx": $writer_id_,
   },
   islands: {
+    "./islands/Forms/CenturyForm.tsx": $Forms_CenturyForm,
     "./islands/Forms/CountryForm.tsx": $Forms_CountryForm,
     "./islands/Forms/DateForm.tsx": $Forms_DateForm,
     "./islands/Forms/DoubleDateForm.tsx": $Forms_DoubleDateForm,
