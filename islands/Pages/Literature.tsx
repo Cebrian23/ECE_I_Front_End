@@ -6,6 +6,7 @@ import DoubleDateForm from "../Forms/DoubleDateForm.tsx";
 const Literature = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);
     const [nameFilter, showNameFilter] = useState<boolean>(false);
+    const [exactDateFilter, showExactDateFilter] = useState<boolean>(false);
     const [initDateFilter, showInitDateFilter] = useState<boolean>(false);
     const [endDateFilter, showEndDateFilter] = useState<boolean>(false);
     const [doubleDateFilter, showDoubleDateFilter] = useState<boolean>(false);
@@ -24,18 +25,23 @@ const Literature = () => {
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
+                        showExactDateFilter(true);
+                    }}>Filtrar por fecha de publicación</button>
+                    <br/>
+                    <button type="button" onClick={() => {
+                        showInitialForm(false);
                         showInitDateFilter(true);
-                    }}>Filtrar por fecha de publicación mínima</button>
+                    }}>Filtrar desde una fecha de publicación</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
-                    }}>Filtrar por fecha de publicación máxima</button>
+                    }}>Filtrar hasta una fecha de publicación</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
-                    }}>Filtrar por fecha de publicación mínima y máxima</button>
+                    }}>Filtrar entre una fecha de publicación mínima y una máxima</button>
                     <br/>
                     <button type="button" onClick={() => location.href="/book/all/All_books"}>Mostrar todos los datos</button>
                     <br/>
@@ -46,12 +52,16 @@ const Literature = () => {
                 <NameForm surname={false} page_back="Literature"/>
             }
             {
+                exactDateFilter.valueOf() === true &&
+                <DateForm type="Literature" limit={false} page_back="Literature"/>
+            }
+            {
                 initDateFilter.valueOf() === true &&
-                <DateForm type="Literature" start page_back="Literature"/>
+                <DateForm type="Literature" limit start page_back="Literature"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm type="Literature" start={false} page_back="Literature"/>
+                <DateForm type="Literature" limit start={false} page_back="Literature"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&

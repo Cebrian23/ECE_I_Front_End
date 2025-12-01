@@ -6,6 +6,9 @@ import DoubleDateForm from "../Forms/DoubleDateForm.tsx";
 const Events = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);
     const [nameFilter, showNameFilter] = useState<boolean>(false);
+    const [exactDateFilter, showExactDateFilter] = useState<boolean>(false);
+    const [exactStartFilter, showExactStartFilter] = useState<boolean>(false);
+    const [exactEndFilter, showExactEndFilter] = useState<boolean>(false);
     const [initDateFilter, showInitDateFilter] = useState<boolean>(false);
     const [endDateFilter, showEndDateFilter] = useState<boolean>(false);
     const [doubleDateFilter, showDoubleDateFilter] = useState<boolean>(false);
@@ -25,17 +28,29 @@ const Events = () => {
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showInitDateFilter(true);
+                    }}>Filtrar desde una fecha de inicio</button>
+                    <br/>
+                    <button type="button" onClick={() => {
+                        showInitialForm(false);
+                        showExactStartFilter(true);
+                        showExactDateFilter(true);
                     }}>Filtrar por fecha de inicio</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
+                    }}>Filtrar hasta una fecha de fin</button>
+                    <br/>
+                    <button type="button" onClick={() => {
+                        showInitialForm(false);
+                        showExactEndFilter(true);
+                        showExactDateFilter(true);
                     }}>Filtrar por fecha de fin</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
-                    }}>Filtrar por fecha de inicio y fin</button>
+                    }}>Filtrar entre una fecha de inicio y una de fin</button>
                     <br/>
                     <button type="button" onClick={() => location.href="/event/all/All_events"}>Mostrar todos los datos</button>
                     <br/>
@@ -46,12 +61,20 @@ const Events = () => {
                 <NameForm surname={false} page_back="Events"/>
             }
             {
+                exactDateFilter.valueOf() === true && exactStartFilter.valueOf() === true &&
+                <DateForm type="Event" limit={false} start page_back="Events"/>
+            }
+            {
+                exactDateFilter.valueOf() === true && exactEndFilter.valueOf() === true &&
+                <DateForm type="Event" limit={false} start={false} page_back="Events"/>
+            }
+            {
                 initDateFilter.valueOf() === true &&
-                <DateForm type="Event" start page_back="Events"/>
+                <DateForm type="Event" limit start page_back="Events"/>
             }
             {
                 endDateFilter.valueOf() === true &&
-                <DateForm type="Event" start={false} page_back="Events"/>
+                <DateForm type="Event" limit start={false} page_back="Events"/>
             }
             {
                 doubleDateFilter.valueOf() === true &&
