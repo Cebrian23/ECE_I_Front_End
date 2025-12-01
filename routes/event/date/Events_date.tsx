@@ -14,8 +14,10 @@ export const handler: Handlers<Data> = {
         const url = new URL(req.url);
         
         const year = url.searchParams.get("year")?.replace("%20", " ");
+        //const century = url.searchParams.get("century")?.replace("%20", " ");
         const ac_dc = url.searchParams.get("ac_dc")?.replace("%20", " ");
         const type = url.searchParams.get("type")?.replace("%20", " ");
+        const limit = url.searchParams.get("limit")?.replace("%20", " ");
         const year_a = url.searchParams.get("year_a")?.replace("%20", " ");
         const ac_dc_1 = url.searchParams.get("ac_dc_1")?.replace("%20", " ");
         const year_b = url.searchParams.get("year_b")?.replace("%20", " ");
@@ -25,23 +27,39 @@ export const handler: Handlers<Data> = {
             return ctx.render();
         }
 
-        if(year !== undefined){
-            if(type!.valueOf() === "Inicio"){
-                const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/start_date?year=${year}&ac_dc=${ac_dc}`);
-    
-                return ctx.render({events: data.data});
-            }
-            else if(type!.valueOf() === "Fin"){
-                const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/end_date?year=${year}&ac_dc=${ac_dc}`);
-    
-                return ctx.render({events: data.data});
+        if(year){
+            if(type && limit){
+                if(type.valueOf() === "Inicio" && limit.valueOf() === "true"){
+                    const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/limit_start_date?year=${year}&ac_dc=${ac_dc}`);
+                    
+                    return ctx.render({events: data.data});
+                }
+                else if(type.valueOf() === "Inicio" && limit.valueOf() === "false"){
+                    const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/start_date?year=${year}&ac_dc=${ac_dc}`);
+                    
+                    return ctx.render({events: data.data});
+                }
+                else if(type.valueOf() === "Fin" && limit.valueOf() === "true"){
+                    const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/limit_end_date?year=${year}&ac_dc=${ac_dc}`);
+                
+                    return ctx.render({events: data.data});
+                }
+                else if(type.valueOf() === "Fin" && limit.valueOf() === "false"){
+                    const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/end_date?year=${year}&ac_dc=${ac_dc}`);
+                
+                    return ctx.render({events: data.data});
+                }
             }
         }
-        else if(year_a !== undefined && year_b !== undefined){
+        else if(year_a && year_b){
             const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/double_date?year_a=${year_a}&ac_dc_1=${ac_dc_1}&year_b=${year_b}&ac_dc_2=${ac_dc_2}`);
     
             return ctx.render({events: data.data});
         }
+        /*else if(century){
+            if(type){}
+            else{}
+        }*/
         
         return ctx.render();
     }

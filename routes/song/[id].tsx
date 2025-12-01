@@ -21,6 +21,22 @@ export const handler: Handlers<Data> = {
 
 const Page = (props: PageProps<Data>) => {
     const song = props.data.song;
+    
+    const video = song.official_video;
+    const lyric = song.official_lyric_video;
+    const cd = song.official_cd_video;
+
+    console.log("video: " + video);
+    console.log("lyric: " + lyric);
+
+    let videos = false;
+
+    if((video !== null && video !== undefined && video !== "") ||
+       (lyric !== null && lyric !== undefined && lyric !== "") ||
+       (cd !== null && cd !== undefined && cd !== "")){
+        videos = true;
+    }
+
 
     console.log(song);
 
@@ -28,11 +44,11 @@ const Page = (props: PageProps<Data>) => {
         <div>
             <Component_Header name={song.name} image={song.cover} type="song"/>
             <Song_Component name={song.name} album_in={song.album_in}
-                            talk_about={song.talk_about}
+                            talk_about={song.talk_about} videos={videos}
             />
-            <Videos_Components official_video={song.official_video}
-                               official_lyric_video={song.official_lyric_video}
-                               official_cd_video={song.official_cd_video}
+            <Videos_Components official_video={video}
+                               official_lyric_video={lyric}
+                               official_cd_video={cd}
             />
         </div>
     );

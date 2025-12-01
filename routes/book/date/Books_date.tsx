@@ -15,6 +15,7 @@ export const handler: Handlers<Data> = {
         
         const year = url.searchParams.get("year")?.replace("%20", " ");
         const type = url.searchParams.get("type")?.replace("%20", " ");
+        const limit = url.searchParams.get("limit")?.replace("%20", " ");
         const year_a = url.searchParams.get("year_a")?.replace("%20", " ");
         const year_b = url.searchParams.get("year_b")?.replace("%20", " ");
 
@@ -23,14 +24,21 @@ export const handler: Handlers<Data> = {
         }
 
         if(year){
-            if(type === "Inicio"){
-                const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/min_date?year=${year}`);
-        
-                return ctx.render({books: data.data});
+            if(limit === "true"){
+                if(type === "Inicio"){
+                    const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/limit_min_date?year=${year}`);
+                
+                    return ctx.render({books: data.data});
+                }
+                else if(type === "Fin"){
+                    const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/limit_max_date?year=${year}`);
+                
+                    return ctx.render({books: data.data});
+                }
             }
-            else if(type === "Fin"){
-                const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/max_date?year=${year}`);
-        
+            else{
+                const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/publish_date?year=${year}`);
+                
                 return ctx.render({books: data.data});
             }
         }
