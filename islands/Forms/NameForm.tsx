@@ -2,15 +2,18 @@ import { useState } from "preact/hooks";
 
 type Props = {
     surname: boolean;
+    nickname?: boolean
     page_back: string;
 }
 
 const NameForm = (props: Props) => {
     const apellido: boolean = props.surname;
+    const nickname: boolean | undefined = props.nickname;
     const page_back: string = props.page_back;
 
     const [name, setName] = useState<string>("");
     const [surname, setSurname] = useState<string>("");
+    const [nick, setNickname] = useState<string>("");
 
     return(
         <div>
@@ -21,12 +24,16 @@ const NameForm = (props: Props) => {
                         <>Filtro por título</>
                     }
                     {
-                        page_back !== "Literature" && apellido.valueOf() !== true &&
+                        page_back !== "Literature" && apellido.valueOf() !== true && (nickname === undefined || nickname === false) &&
                         <>Filtro por nombre</>
                     }
                     {
-                        page_back !== "Literature" && apellido.valueOf() === true &&
+                        page_back !== "Literature" && apellido.valueOf() === true && (nickname === undefined || nickname === false) &&
                         <>Filtro por nombre y apellido</>
+                    }
+                    {
+                        page_back === "People" && nickname?.valueOf() === true &&
+                        <>Filtro por apodo</>
                     }
                 </h1>
                 <div class="row_data">
@@ -37,8 +44,12 @@ const NameForm = (props: Props) => {
                                 <>Título:</>
                             }
                             {
-                                page_back !== "Literature" &&
+                                page_back !== "Literature" && (nickname === undefined || nickname === false) &&
                                 <>Nombre:</>
+                            }
+                            {
+                                page_back !== "Literature" && (nickname !== undefined && nickname === true) &&
+                                <>Apodo:</>
                             }
                         </label>
                         {
@@ -50,7 +61,14 @@ const NameForm = (props: Props) => {
                         }
                     </div>
                     <div class="column_data">
-                        <input type="text" name="name" onChange={(e) => setName(e.currentTarget.value)} required/>
+                        <input type="text" name="name" onChange={(e) => {
+                            if(nickname === undefined || nickname === false){
+                                setName(e.currentTarget.value);
+                            }
+                            else{
+                                setNickname(e.currentTarget.value);
+                            }
+                        }} required/>
                         {
                             apellido.valueOf() === true &&
                             <>
@@ -82,11 +100,15 @@ const NameForm = (props: Props) => {
                                     <button type="button" onClick={() => {
                                         const aux_name = name.trim();
                                         const aux_surname = surname.trim();
+                                        const aux_nickname = nick.trim();
                                         if(aux_name !== "" && aux_surname === "" && apellido === false){
                                             location.href=`/person/name/People_name?name=${aux_name}`
                                         }
                                         else if(aux_name !== "" && aux_surname !== ""){
                                             location.href=`/person/name/People_name?name=${aux_name}&surname=${aux_surname}`
+                                        }
+                                        else if(aux_nickname !== ""){
+                                            location.href=`/person/name/People_name?nickname=${aux_nickname}`
                                         }
                                     }}>Enviar</button>
                                 }
