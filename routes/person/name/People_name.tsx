@@ -15,6 +15,7 @@ export const handler: Handlers<Data> = {
         
         const name = url.searchParams.get("name")?.replace("%20", " ");
         const surname = url.searchParams.get("surname")?.replace("%20", " ");
+        const nickname = url.searchParams.get("nickname")?.replace("%20", " ");
         
         if(name){
             if(surname){
@@ -27,6 +28,11 @@ export const handler: Handlers<Data> = {
         
                 return ctx.render({people: data.data});
             }
+        }
+        else if(nickname){
+            const data = await Axios.get<PersonGQL[]>(`https://ece-i-back-end-ii.deno.dev/people/nickname?nickname=${nickname}`);
+        
+            return ctx.render({people: data.data});
         }
 
         return ctx.render();
