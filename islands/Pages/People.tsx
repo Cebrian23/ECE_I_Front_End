@@ -6,7 +6,8 @@ import DoubleDateForm from "../Forms/DoubleDateForm.tsx";
 const People = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);
     const [nameFilter, showNameFilter] = useState<boolean>(false);
-    const [surnameFilter, showSurameFilter] = useState<boolean>(false);
+    const [surnameFilter, showSurnameFilter] = useState<boolean>(false);
+    const [nicknameFilter, showNicknameFilter] = useState<boolean>(false);
     const [exactDateFilter, showExactDateFilter] = useState<boolean>(false);
     const [exactBirthFilter, showExactBirthFilter] = useState<boolean>(false);
     const [exactDeathFilter, showExactDeathFilter] = useState<boolean>(false);
@@ -29,8 +30,13 @@ const People = () => {
                     <button type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
-                        showSurameFilter(true);
+                        showSurnameFilter(true);
                     }}>Filtrar por nombre y apellido</button>
+                    <br/>
+                    <button type="button" onClick={() => {
+                        showInitialForm(false);
+                        showNicknameFilter(true);
+                    }}>Filtrar por apodo</button>
                     <br/>
                     <button type="button" onClick={() => {
                         showInitialForm(false);
@@ -70,6 +76,10 @@ const People = () => {
             {
                 nameFilter.valueOf() === true && surnameFilter.valueOf() === true &&
                 <NameForm surname page_back="People"/>
+            }
+            {
+                nicknameFilter.valueOf() === true &&
+                <NameForm surname={false} nickname page_back="People"/>
             }
             {
                 exactDateFilter.valueOf() === true && exactBirthFilter.valueOf() === true &&

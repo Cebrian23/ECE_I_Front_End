@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 import NameForm from "../Forms/NameForm.tsx";
-import DateForm from "../Forms/DateForm.tsx";
+import FestivityForm from "../Forms/FestivityForm.tsx";
 
 const Festivities = () => {
     const [initialForm, showInitialForm] = useState<boolean>(true);
@@ -34,7 +34,7 @@ const Festivities = () => {
             }
             {
                 dateFilter.valueOf() === true &&
-                <DateForm type="Festivity" page_back="Festivities"/>
+                <FestivityForm/>
             }
         </div>
     );
