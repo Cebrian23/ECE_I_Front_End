@@ -56,6 +56,7 @@ import * as $Forms_CenturyForm from "./islands/Forms/CenturyForm.tsx";
 import * as $Forms_CountryForm from "./islands/Forms/CountryForm.tsx";
 import * as $Forms_DateForm from "./islands/Forms/DateForm.tsx";
 import * as $Forms_DoubleDateForm from "./islands/Forms/DoubleDateForm.tsx";
+import * as $Forms_FestivityForm from "./islands/Forms/FestivityForm.tsx";
 import * as $Forms_NameForm from "./islands/Forms/NameForm.tsx";
 import * as $Pages_Events from "./islands/Pages/Events.tsx";
 import * as $Pages_Festivities from "./islands/Pages/Festivities.tsx";
@@ -134,6 +135,7 @@ const manifest = {
     "./islands/Forms/CountryForm.tsx": $Forms_CountryForm,
     "./islands/Forms/DateForm.tsx": $Forms_DateForm,
     "./islands/Forms/DoubleDateForm.tsx": $Forms_DoubleDateForm,
+    "./islands/Forms/FestivityForm.tsx": $Forms_FestivityForm,
     "./islands/Forms/NameForm.tsx": $Forms_NameForm,
     "./islands/Pages/Events.tsx": $Pages_Events,
     "./islands/Pages/Festivities.tsx": $Pages_Festivities,
