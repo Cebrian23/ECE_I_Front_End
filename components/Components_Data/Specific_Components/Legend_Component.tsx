@@ -7,8 +7,10 @@ const Legend_Component = (props: Data) => {
 
     return(
         <div class="card_head">
-            <p><b>Nombre: </b>{name}</p>
-            <p><b>Canciones y álbumes que abordan esta leyenda:</b></p>
+            <div> 
+                <p><b>Nombre: </b>{name}</p>
+                <p><b>Canciones y álbumes que abordan esta leyenda:</b></p>
+            </div>
         </div>
     );
 }

@@ -7,8 +7,10 @@ const Mith_Component = (props: Data) => {
 
     return(
         <div class="card_head">
-            <p><b>Nombre: </b>{name}</p>
-            <p><b>Canciones y álbumes que abordan este mito:</b></p>
+            <div>
+                <p><b>Nombre: </b>{name}</p>
+                <p><b>Canciones y álbumes que abordan este mito:</b></p>
+            </div>
         </div>
     );
 }
