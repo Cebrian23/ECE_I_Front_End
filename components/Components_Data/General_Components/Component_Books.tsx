@@ -11,14 +11,16 @@ const Component_Books = (props: Data) => {
     //console.log(books);
 
     return (
-        <div class={Class_Selector(books, true)}>
-            {
-                books.map((book) => {
-                    return(
-                        <Short_Book book={book}/>
-                    );
-                })
-            }
+        <div class="card_head">
+            <div class={Class_Selector(books, true)}>
+                {
+                    books.map((book) => {
+                        return(
+                            <Short_Book book={book}/>
+                        );
+                    })
+                }
+            </div>
         </div>
     )
 }

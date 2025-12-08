@@ -11,14 +11,16 @@ const Component_Albums_I = (props: Data) => {
     //console.log(albums);
     
     return (
-        <div class={Class_Selector(albums, true)}>
-            {
-                albums.map((album) => {
-                    return(
-                        <Short_Album album={album}/>
-                    );
-                })
-            }
+        <div class="card_head">
+            <div class={Class_Selector(albums, true)}>
+                {
+                    albums.map((album) => {
+                        return(
+                            <Short_Album album={album}/>
+                        );
+                    })
+                }
+            </div>
         </div>
     )
 }
