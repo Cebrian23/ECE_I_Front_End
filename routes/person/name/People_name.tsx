@@ -55,7 +55,7 @@ const Page = (props: PageProps<Data>) => {
                         <div class="block">
                             <h1>
                                 {
-                                    person.country_from !== "China" &&
+                                    (person.country_from !== "China" && person.country_from !== "Imperio chino") &&
                                     <a href={`/person/id/${person.id}`} class="a1">
                                         {
                                             person.surname !== null &&
@@ -68,7 +68,7 @@ const Page = (props: PageProps<Data>) => {
                                     </a>
                                 }
                                 {
-                                    person.country_from === "China" &&
+                                    (person.country_from === "China" || person.country_from === "Imperio chino") &&
                                     <a href={`/person/id/${person.id}`} class="a1">{person.surname + " " + person.name}</a>
                                 }
                             </h1>
