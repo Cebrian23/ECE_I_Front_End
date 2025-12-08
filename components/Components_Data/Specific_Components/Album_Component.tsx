@@ -126,7 +126,7 @@ const Album_Component = (props: Data) => {
                                     return(
                                         <li><a href={`/person/id/${person.id}`} class="a1">
                                                 {
-                                                    person.country_from !== "China" &&
+                                                    (person.country_from !== "China" && person.country_from !== "Imperio chino") &&
                                                     <>
                                                         {
                                                             person.surname !== null &&
@@ -139,7 +139,7 @@ const Album_Component = (props: Data) => {
                                                     </>
                                                 }
                                                 {
-                                                    person.country_from === "China" &&
+                                                    (person.country_from === "China" || person.country_from === "Imperio chino") &&
                                                     <>{person.surname + " " + person.name}</>
                                                 }
                                             </a>

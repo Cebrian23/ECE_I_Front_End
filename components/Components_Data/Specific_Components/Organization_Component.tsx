@@ -121,7 +121,7 @@ const Organization_Component = (props: Data) => {
                         <ul>
                             {
                                 members.map((person) => {
-                                    if(person.country_from !== "China"){
+                                    if(person.country_from !== "China" && person.country_from !== "Imperio chino"){
                                         if(person.surname !== null){
                                             return(
                                                 <li><a class="a1" href={`/person/id/${person.id}`}>{person.name} {person.surname}</a></li>

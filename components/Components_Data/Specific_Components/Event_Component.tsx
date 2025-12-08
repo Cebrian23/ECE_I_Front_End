@@ -105,7 +105,7 @@ const Event_Component = (props: Data) => {
                         <ul>
                             {
                                 people.map((person) => {
-                                    if(person.country_from !== "China"){
+                                    if(person.country_from !== "China" && person.country_from !== "Imperio chino"){
                                         if(person.surname !== null){
                                             return(
                                                 <li><a class="a1" href={`/person/id/${person.id}`}>{person.name} {person.surname}</a></li>

@@ -35,7 +35,7 @@ const Person_Component = (props: Data) => {
             <div>
                 <p><b>Nombre completo: </b>
                     {
-                        country_from !== "China" &&
+                        (country_from !== "China" && country_from !== "Imperio chino") &&
                         <>
                             {
                                 surname !== null &&
@@ -48,7 +48,7 @@ const Person_Component = (props: Data) => {
                         </>
                     }
                     {
-                        country_from === "China" &&
+                        (country_from === "China" || country_from === "Imperio chino") &&
                         <>{surname + " " + name}</>
                     }
                 </p>

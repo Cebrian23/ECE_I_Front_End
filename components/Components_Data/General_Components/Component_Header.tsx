@@ -59,7 +59,7 @@ const Component_Header = (props: Data) => {
                 type === "person" &&
                 <h1>Página de la persona "
                 {
-                    nation_people !== "China" &&
+                    (nation_people !== "China" && nation_people !== "Imperio chino") &&
                     <>
                         {
                             surname !== null &&
@@ -72,7 +72,7 @@ const Component_Header = (props: Data) => {
                     </>
                 }
                 {
-                    nation_people === "China" &&
+                    (nation_people === "China" || nation_people === "Imperio chino") &&
                     <>{surname + " " + name}</>
                 }
                 "</h1>
