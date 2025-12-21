@@ -79,6 +79,10 @@ form{
     }
 }
 
+.pageButtonForm{
+    width: 250px;
+}
+
 button{
     border: 1px solid;
     background-color: white;
