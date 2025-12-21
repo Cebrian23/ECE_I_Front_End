@@ -20,39 +20,39 @@ const Events = () => {
                 <form>
                     <h1>Selecciona la acción con la que desea obtener los datos:</h1>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showInitDateFilter(true);
                     }}>Filtrar desde una fecha de inicio</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showExactStartFilter(true);
                         showExactDateFilter(true);
                     }}>Filtrar por fecha de inicio</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
                     }}>Filtrar hasta una fecha de fin</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showExactEndFilter(true);
                         showExactDateFilter(true);
                     }}>Filtrar por fecha de fin</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
                     }}>Filtrar entre una fecha de inicio y una de fin</button>
                     <br/>
-                    <button type="button" onClick={() => location.href="/event/all/All_events"}>Mostrar todos los datos</button>
+                    <button class="pageButtonForm" type="button" onClick={() => location.href="/event/all/All_events"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }

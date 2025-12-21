@@ -12,12 +12,12 @@ const Miths = () => {
                 <form>
                     <h1>Selecciona la acción con la que desea obtener los datos:</h1>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
                     <br/>
-                    <button type="button" onClick={() => location.href="/mith/all/All_miths"}>Mostrar todos los datos</button>
+                    <button class="pageButtonForm" type="button" onClick={() => location.href="/mith/all/All_miths"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }

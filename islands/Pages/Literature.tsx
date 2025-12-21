@@ -18,32 +18,32 @@ const Literature = () => {
                 <form>
                     <h1>Selecciona la acción con la que desea obtener los datos:</h1>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                     }}>Filtrar por título</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showExactDateFilter(true);
                     }}>Filtrar por fecha de publicación</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showInitDateFilter(true);
                     }}>Filtrar desde una fecha de publicación</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
                     }}>Filtrar hasta una fecha de publicación</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
                     }}>Filtrar entre una fecha de publicación mínima y una máxima</button>
                     <br/>
-                    <button type="button" onClick={() => location.href="/book/all/All_books"}>Mostrar todos los datos</button>
+                    <button class="pageButtonForm" type="button" onClick={() => location.href="/book/all/All_books"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }

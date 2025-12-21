@@ -20,39 +20,39 @@ const Organizations = () => {
                 <form>
                     <h1>Selecciona la acción con la que desea obtener los datos:</h1>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showInitDateFilter(true);
                     }}>Filtrar desde una fecha de creación</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showExactCreationFilter(true);
                         showExactDateFilter(true);
                     }}>Filtrar por fecha de creación</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
                     }}>Filtrar hasta una fecha de disolución</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showExactDissolutionFilter(true);
                         showExactDateFilter(true);
                     }}>Filtrar por fecha de disolución</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
                     }}>Filtrar entre una fecha de creación y una disolución</button>
                     <br/>
-                    <button type="button" onClick={() => location.href="/organization/all/All_organizations"}>Mostrar todos los datos</button>
+                    <button class="pageButtonForm" type="button" onClick={() => location.href="/organization/all/All_organizations"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }

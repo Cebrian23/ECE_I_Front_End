@@ -22,50 +22,50 @@ const People = () => {
                 <form>
                     <h1>Selecciona la acción con la que desea obtener los datos:</h1>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                     }}>Filtrar por nombre</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showNameFilter(true);
                         showSurnameFilter(true);
                     }}>Filtrar por nombre y apellido</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showNicknameFilter(true);
                     }}>Filtrar por apodo</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showInitDateFilter(true);
                     }}>Filtrar desde una fecha de nacimiento</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showExactBirthFilter(true);
                         showExactDateFilter(true);
                     }}>Filtrar por fecha de nacimiento</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showEndDateFilter(true);
                     }}>Filtrar hasta una fecha de fallecimiento</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showExactDeathFilter(true);
                         showExactDateFilter(true);
                     }}>Filtrar por fecha de fallecimiento</button>
                     <br/>
-                    <button type="button" onClick={() => {
+                    <button class="pageButtonForm" type="button" onClick={() => {
                         showInitialForm(false);
                         showDoubleDateFilter(true);
                     }}>Filtrar entre una fecha de nacimiento y una de fallecimiento</button>
                     <br/>
-                    <button type="button" onClick={() => location.href="/person/all/All_people"}>Mostrar todos los datos</button>
+                    <button class="pageButtonForm" type="button" onClick={() => location.href="/person/all/All_people"}>Mostrar todos los datos</button>
                     <br/>
                 </form>
             }
