@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                monuments.length === 0 &&
+                <h1>No se ha encontrado ningún monumento</h1>
+            }
+            {
                 monuments.map((monument) => {
                     const songs = monument.talked_about_in_song;
                     const albums = monument.talked_about_in_album;

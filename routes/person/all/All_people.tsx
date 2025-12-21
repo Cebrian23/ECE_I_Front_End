@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                people.length === 0 &&
+                <h1>No se ha encontrado ninguna persona</h1>
+            }
+            {
                 people.map((person) => {
                     const songs = person.talked_about_in_song;
                     const albums = person.talked_about_in_album;

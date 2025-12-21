@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                festivities.length === 0 &&
+                <h1>No se ha encontrado ninguna festividad</h1>
+            }
+            {
                 festivities.map((festivity) => {
                     const songs = festivity.talked_about_in_song;
                     const albums = festivity.talked_about_in_album;

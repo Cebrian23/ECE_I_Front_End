@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                books.length === 0 &&
+                <h1>No se ha encontrado ningún libro</h1>
+            }
+            {
                 books.map((book) => {
                     const songs = book.talked_about_in_song;
                     const albums = book.talked_about_in_album;

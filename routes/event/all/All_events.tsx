@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                events.length === 0 &&
+                <h1>No se ha encontrado ningún evento</h1>
+            }
+            {
                 events.map((event) => {
                     const songs = event.talked_about_in_song;
                     const albums = event.talked_about_in_album;

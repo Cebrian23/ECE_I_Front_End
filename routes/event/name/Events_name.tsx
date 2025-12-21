@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    name: string,
     events: EventGQL[],
 }
 
@@ -21,17 +22,22 @@ export const handler: Handlers<Data> = {
         
         const data = await Axios.get<EventGQL[]>(`https://ece-i-back-end-ii.deno.dev/events/name?name=${name}`);
         
-        return ctx.render({events: data.data});
+        return ctx.render({events: data.data, name: name});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const name = props.data.name;
     const events = props.data.events;
 
     console.log(events);
 
     return(
         <div>
+            {
+                events.length === 0 &&
+                <h1>No se ha encontrado ningún evento cuyo nombre sea "{name}"</h1>
+            }
             {
                 events.map((event) => {
                     const songs = event.talked_about_in_song;

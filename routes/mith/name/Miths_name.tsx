@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    name: string,
     miths: MithGQL[],
 }
 
@@ -21,17 +22,22 @@ export const handler: Handlers<Data> = {
 
         const data = await Axios.get<MithGQL[]>(`https://ece-i-back-end-ii.deno.dev/miths/name?name=${name}`);
         
-        return ctx.render({miths: data.data});
+        return ctx.render({miths: data.data, name: name});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const name = props.data.name;
     const miths = props.data.miths;
 
     console.log(miths);
 
     return(
         <div>
+            {
+                miths.length === 0 &&
+                <h1>No se ha encontrado ningún mito cuyo nombre sea "{name}"</h1>
+            }
             {
                 miths.map((mith) => {
                     const songs = mith.talked_about_in_song;

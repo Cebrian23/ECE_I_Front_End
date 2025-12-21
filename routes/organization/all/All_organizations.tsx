@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                organizations.length === 0 &&
+                <h1>No se ha encontrado ninguna organización</h1>
+            }
+            {
                 organizations.map((organization) => {
                     const songs = organization.talked_about_in_song;
                     const albums = organization.talked_about_in_album;

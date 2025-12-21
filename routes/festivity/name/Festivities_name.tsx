@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    name: string,
     festivities: FestivityGQL[],
 }
 
@@ -21,18 +22,23 @@ export const handler: Handlers<Data> = {
 
         const data = await Axios.get<FestivityGQL[]>(`https://ece-i-back-end-ii.deno.dev/festivities/name?name=${name}`);
         
-        return ctx.render({festivities: data.data});
+        return ctx.render({festivities: data.data, name: name});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const name = props.data.name;
     const festivities = props.data.festivities;
 
     console.log(festivities);
 
     return(
         <div>
-{
+            {
+                festivities.length === 0 &&
+                <h1>No se ha encontrado ninguna festividad cuyo nombre sea "{name}"</h1>
+            }
+            {
                 festivities.map((festivity) => {
                     const songs = festivity.talked_about_in_song;
                     const albums = festivity.talked_about_in_album;

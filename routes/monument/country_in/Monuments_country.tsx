@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    country: string,
     monuments: MonumentGQL[],
 }
 
@@ -21,17 +22,22 @@ export const handler: Handlers<Data> = {
         
         const data = await Axios.get<MonumentGQL[]>(`https://ece-i-back-end-ii.deno.dev/monuments/country_in?country_in=${country_in}`);
         
-        return ctx.render({monuments: data.data});
+        return ctx.render({monuments: data.data, country: country_in});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const country = props.data.country;
     const monuments = props.data.monuments;
 
     console.log(monuments);
 
     return(
         <div>
+            {
+                monuments.length === 0 &&
+                <h1>No se ha encontrado ningún monumento en "{country}"</h1>
+            }
             {
                 monuments.map((monument) => {
                     const songs = monument.talked_about_in_song;

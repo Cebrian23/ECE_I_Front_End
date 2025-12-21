@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    name: string,
     legends: LegendGQL[],
 }
 
@@ -21,17 +22,22 @@ export const handler: Handlers<Data> = {
 
         const data = await Axios.get<LegendGQL[]>(`https://ece-i-back-end-ii.deno.dev/legends/name?name=${name}`);
         
-        return ctx.render({legends: data.data});
+        return ctx.render({legends: data.data, name: name});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const name = props.data.name;
     const legends = props.data.legends;
 
     console.log(legends);
 
     return(
         <div>
+            {
+                legends.length === 0 &&
+                <h1>No se ha encontrado ninguna leyenda cuyo nombre sea "{name}"</h1>
+            }
             {
                 legends.map((legend) => {
                     const songs = legend.talked_about_in_song;

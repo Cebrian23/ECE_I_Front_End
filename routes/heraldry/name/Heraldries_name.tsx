@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    name: string,
     heraldries: HeraldryGQL[],
 }
 
@@ -21,17 +22,22 @@ export const handler: Handlers<Data> = {
 
         const data = await Axios.get<HeraldryGQL[]>(`https://ece-i-back-end-ii.deno.dev/heraldries/name?name=${name}`);
         
-        return ctx.render({heraldries: data.data});
+        return ctx.render({heraldries: data.data, name: name});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const name = props.data.name;
     const heraldries = props.data.heraldries;
 
     console.log(heraldries);
     
     return(
         <div>
+            {
+                heraldries.length === 0 &&
+                <h1>No se ha encontrado ninguna heráldica cuyo nombre sea "{name}"</h1>
+            }
             {
                 heraldries.map((heraldry) => {
                     const songs = heraldry.talked_about_in_song;

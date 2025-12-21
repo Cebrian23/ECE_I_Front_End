@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                heraldries.length === 0 &&
+                <h1>No se ha encontrado ninguna heráldica</h1>
+            }
+            {
                 heraldries.map((heraldry) => {
                     const songs = heraldry.talked_about_in_song;
                     const albums = heraldry.talked_about_in_album;

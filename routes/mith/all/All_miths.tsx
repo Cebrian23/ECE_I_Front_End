@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                miths.length === 0 &&
+                <h1>No se ha encontrado ningún mito</h1>
+            }
+            {
                 miths.map((mith) => {
                     const songs = mith.talked_about_in_song;
                     const albums = mith.talked_about_in_album;

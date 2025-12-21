@@ -6,6 +6,9 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    name?: string,
+    surname?: string,
+    nickname?: string,
     people: PersonGQL[],
 }
 
@@ -21,18 +24,18 @@ export const handler: Handlers<Data> = {
             if(surname){
                 const data = await Axios.get<PersonGQL[]>(`https://ece-i-back-end-ii.deno.dev/people/complete_name?name=${name}&surname=${surname}`);
         
-                return ctx.render({people: data.data});
+                return ctx.render({people: data.data, name: name, surname: surname});
             }
             else{
                 const data = await Axios.get<PersonGQL[]>(`https://ece-i-back-end-ii.deno.dev/people/complete_name?name=${name}`);
         
-                return ctx.render({people: data.data});
+                return ctx.render({people: data.data, name: name});
             }
         }
         else if(nickname){
             const data = await Axios.get<PersonGQL[]>(`https://ece-i-back-end-ii.deno.dev/people/nickname?nickname=${nickname}`);
         
-            return ctx.render({people: data.data});
+            return ctx.render({people: data.data, nickname: nickname});
         }
 
         return ctx.render();
@@ -40,12 +43,27 @@ export const handler: Handlers<Data> = {
 }
 
 const Page = (props: PageProps<Data>) => {
+    const name = props.data.name;
+    const surname = props.data.surname;
+    const nickname = props.data.nickname
     const people = props.data.people;
 
     console.log(people);
 
     return(
         <div>
+            {
+                people.length === 0 && name !== undefined && surname === undefined &&
+                <h1>No se ha encontrado ninguna persona cuyo nombre sea "{name}"</h1>
+            }
+            {
+                people.length === 0 && name !== undefined && surname !== undefined &&
+                <h1>No se ha encontrado ninguna persona cuyo nombre completo sea "{name + " " + surname}"</h1>
+            }
+            {
+                people.length === 0 && nickname !== undefined &&
+                <h1>No se ha encontrado ninguna persona cuyo apodo sea "{nickname}"</h1>
+            }
             {
                 people.map((person) => {
                     const songs = person.talked_about_in_song;

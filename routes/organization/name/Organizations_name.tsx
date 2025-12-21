@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    name: string,
     organizations: OrganizationGQL[],
 }
 
@@ -21,17 +22,22 @@ export const handler: Handlers<Data> = {
 
         const data = await Axios.get<OrganizationGQL[]>(`https://ece-i-back-end-ii.deno.dev/organizations/name?name=${name}`);
         
-        return ctx.render({organizations: data.data});
+        return ctx.render({organizations: data.data, name: name});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const name = props.data.name;
     const organizations = props.data.organizations;
 
     console.log(organizations);
 
     return(
         <div>
+            {
+                organizations.length === 0 &&
+                <h1>No se ha encontrado ninguna organización cuyo nombre sea "{name}"</h1>
+            }
             {
                 organizations.map((organization) => {
                     const songs = organization.talked_about_in_song;

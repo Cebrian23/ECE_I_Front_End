@@ -6,6 +6,7 @@ import Short_Song from "../../../components/Shorter_Data/Short_Song.tsx";
 import { Class_Selector } from "../../../utilities/utils_CSS.ts";
 
 type Data = {
+    title: string,
     books: BookGQL[],
 }
 
@@ -21,17 +22,22 @@ export const handler: Handlers<Data> = {
 
         const data = await Axios.get<BookGQL[]>(`https://ece-i-back-end-ii.deno.dev/books/title?title=${title}`);
         
-        return ctx.render({books: data.data});
+        return ctx.render({books: data.data, title: title});
     }
 }
 
 const Page = (props: PageProps<Data>) => {
+    const title = props.data.title;
     const books = props.data.books;
 
     console.log(books);
 
     return(
-        <div>
+        <div>            
+            {
+                books.length === 0 &&
+                <h1>No se ha encontrado ningún libro cuyo título sea "{title}"</h1>
+            }
             {
                 books.map((book) => {
                     const songs = book.talked_about_in_song;

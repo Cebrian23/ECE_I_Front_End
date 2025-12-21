@@ -25,6 +25,10 @@ const Page = (props: PageProps<Data>) => {
     return(
         <div>
             {
+                legends.length === 0 &&
+                <h1>No se ha encontrado ninguna leyenda</h1>
+            }
+            {
                 legends.map((legend) => {
                     const songs = legend.talked_about_in_song;
                     const albums = legend.talked_about_in_album;
