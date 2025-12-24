@@ -12,6 +12,12 @@ const Videos_Components = (props: Data) => {
     return(
         <div class="card_head">
             {
+                (video === undefined || video === null || video === "") &&
+                (lyric_video === undefined || lyric_video === null || lyric_video === "") &&
+                (cd_video === undefined || cd_video === null || cd_video === "") &&
+                <div>No se ha encontrado ningún vídeo oficial para esta canción</div>
+            }
+            {
                 (video !== undefined && video !== null && video !== "") &&
                 <div>
                     <iframe class="align-items: center;" width="560" height="315" src={video}
